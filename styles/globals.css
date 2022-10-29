@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .animation-play-state:hover {
+    animation-play-state: paused;
+  }
+
+  .custom-h-full {
+    height: calc(100vh - 3.90rem);
+  }
+
+  @media (min-width: 768px) {
+    .custom-h-full {
+      height: calc(100vh - 5rem);
+    }
+  }
+}
