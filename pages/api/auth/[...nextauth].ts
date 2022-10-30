@@ -36,14 +36,12 @@ export const authOptions = {
       clientId: process.env.FACEBOOK_ID!,
       clientSecret: process.env.FACEBOOK_SECRET!,
 
-      profile (profile: any) {
-        console.log(profile)
-
+      profile (profile) {
         return {
           id: profile.id,
           name: profile.name,
           email: profile.email,
-          image: profile.picture
+          image: profile.picture.data.url
         }
       }
     })

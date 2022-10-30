@@ -11,6 +11,24 @@
     height: calc(100vh - 3.90rem);
   }
 
+  .form-divider::before {
+    content: '';
+    display: block;
+    width: 20rem ;
+    position: absolute;
+    height: 2;
+    background: #000;
+    
+  }
+
+  .form-divider::after {
+    left: 0;
+  }
+
+  .form-divider::before {
+    right: 0;
+  }
+
   @media (min-width: 768px) {
     .custom-h-full {
       height: calc(100vh - 5rem);
