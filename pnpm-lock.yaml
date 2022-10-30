@@ -20,6 +20,7 @@ specifiers:
   mongodb: ^4.11.0
   next: 13.0.0
   next-auth: ^4.15.0
+  nodemailer: ^6.8.0
   postcss: ^8.4.18
   react: 18.2.0
   react-dom: 18.2.0
@@ -39,7 +40,8 @@ dependencies:
   eslint-plugin-react: 7.31.10_eslint@8.26.0
   mongodb: 4.11.0
   next: 13.0.0_biqbaboplfbrettd7655fr4n2y
-  next-auth: 4.15.0_r5sq4deac3rmm2d5onhwvomqve
+  next-auth: 4.15.0_lpfza7lqpqeylqwoqom67hspdi
+  nodemailer: 6.8.0
   postcss: 8.4.18
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -864,7 +866,7 @@ packages:
       next-auth: ^4
     dependencies:
       mongodb: 4.11.0
-      next-auth: 4.15.0_r5sq4deac3rmm2d5onhwvomqve
+      next-auth: 4.15.0_lpfza7lqpqeylqwoqom67hspdi
     dev: false
 
   /@next/env/13.0.0:
@@ -2525,7 +2527,7 @@ packages:
   /natural-compare/1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
 
-  /next-auth/4.15.0_r5sq4deac3rmm2d5onhwvomqve:
+  /next-auth/4.15.0_lpfza7lqpqeylqwoqom67hspdi:
     resolution: {integrity: sha512-IasNzGLM2VlmyioDdZaRwBBBm8b5xo+zbbqVWHFh0bY6iQUZ3vuudrsdHNdxkXV3LSHdKNaoWEpYr4BydB7mCw==}
     engines: {node: ^12.19.0 || ^14.15.0 || ^16.13.0}
     peerDependencies:
@@ -2542,6 +2544,7 @@ packages:
       cookie: 0.5.0
       jose: 4.10.4
       next: 13.0.0_biqbaboplfbrettd7655fr4n2y
+      nodemailer: 6.8.0
       oauth: 0.9.15
       openid-client: 5.2.1
       preact: 10.11.2
@@ -2598,6 +2601,11 @@ packages:
 
   /node-releases/2.0.6:
     resolution: {integrity: sha512-PiVXnNuFm5+iYkLBNeq5211hvO38y63T0i2KKh2KnUs3RpzJ+JtODFjkD8yjLwnDkTYF1eKXheUwdssR+NRZdg==}
+    dev: false
+
+  /nodemailer/6.8.0:
+    resolution: {integrity: sha512-EjYvSmHzekz6VNkNd12aUqAco+bOkRe3Of5jVhltqKhEsjw/y0PYPJfp83+s9Wzh1dspYAkUW/YNQ350NATbSQ==}
+    engines: {node: '>=6.0.0'}
     dev: false
 
   /normalize-path/3.0.0:
