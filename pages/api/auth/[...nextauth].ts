@@ -47,6 +47,13 @@ export const authOptions = {
     })
     // ...add more providers here
   ],
+  pages: {
+    signIn: '/login',
+    verifyRequest: '/verify-request' // (used for check email message)
+    // signOut: '/auth/signout',
+    // error: '/auth/error', // Error code passed in query string as ?error=
+    // newUser: '/auth/new-user' // New users will be directed here on first sign in (leave the property out if not of interest)
+  },
   adapter: MongoDBAdapter(clientPromise)
 }
 export default NextAuth(authOptions)

@@ -1,6 +1,6 @@
 import Layout from '@components/Layout'
 import { GetServerSideProps } from 'next'
-import { getSession } from 'next-auth/react'
+import { getSession, signOut } from 'next-auth/react'
 import React from 'react'
 
 const Home: React.FC = () => {
@@ -11,6 +11,9 @@ const Home: React.FC = () => {
       description=''
     >
       <h1>Pagina Inicial</h1>
+      <button className='mt-3 bg-slate-600' onClick={() => signOut()}>
+        SignOut
+      </button>
     </Layout>
   )
 }
