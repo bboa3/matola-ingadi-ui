@@ -1,8 +1,6 @@
 import Layout from '@components/Layout'
 import { events } from '@utils/events'
 import { Event } from 'ingadi'
-import { GetServerSideProps } from 'next'
-import { getSession } from 'next-auth/react'
 import Image from 'next/image'
 import React, { useState } from 'react'
 
@@ -180,21 +178,21 @@ const Home: React.FC = () => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const session = await getSession(context)
+// export const getServerSideProps: GetServerSideProps = async (context) => {
+//   const session = await getSession(context)
 
-  if (!session) {
-    return {
-      redirect: {
-        destination: '/login',
-        permanent: false
-      }
-    }
-  }
+//   if (!session) {
+//     return {
+//       redirect: {
+//         destination: '/login',
+//         permanent: false
+//       }
+//     }
+//   }
 
-  return {
-    props: {}
-  }
-}
+//   return {
+//     props: {}
+//   }
+// }
 
 export default Home

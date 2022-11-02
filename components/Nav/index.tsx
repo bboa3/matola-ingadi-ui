@@ -145,7 +145,7 @@ const Nav: React.FC = () => {
                     : (
                     <Link
                         href='/login'
-                        className='w-full min-w-[4rem] rounded-lg py-1.5 px-3 mx-2 block font-medium text-sm lg:text-base text-center text-white bg-sky-600 hover:bg-sky-700 transition-all duration-100'
+                        className='w-full min-w-[4rem] rounded-full py-1 px-4 mx-2 block font-medium text-sm lg:text-base text-center text-white bg-sky-600 hover:bg-sky-700 transition-all duration-100'
                       >
                         Log In
                     </Link>
