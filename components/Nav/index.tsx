@@ -7,9 +7,9 @@ import Link from 'next/link'
 import React, { Fragment } from 'react'
 
 const navigation = [
-  { name: 'Preços', href: '#' },
-  { name: 'Localização', href: '#' },
-  { name: 'Sobre nós', href: '#' }
+  { name: 'Preços', href: '/precos' },
+  { name: 'Localização', href: '/localizacao' },
+  { name: 'Sobre nós', href: '/sobre-nos' }
 ]
 
 const classNames = (...classes: string[]) => {
@@ -38,13 +38,15 @@ const Nav: React.FC = () => {
                 </Disclosure.Button>
               </div>
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                <div className="flex flex-shrink-0 items-center">
-                  <Image
-                    className="h-8 w-auto"
-                    src={logoImg}
-                    alt="Matola Ingadi"
-                  />
-                </div>
+                <Link href='/'>
+                  <div className="flex flex-shrink-0 items-center">
+                    <Image
+                      className="h-8 w-auto"
+                      src={logoImg}
+                      alt="Matola Ingadi"
+                    />
+                  </div>
+                </Link>
                 <div className="hidden sm:ml-6 sm:block">
                   <ol role="list" className="mx-auto flex max-w-2xl items-center space-x-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
                     {navigation.map((item, index) => {

@@ -2,6 +2,7 @@ import Layout from '@components/Layout'
 import { events } from '@utils/events'
 import { Event } from 'ingadi'
 import Image from 'next/image'
+import Link from 'next/link'
 import React, { useState } from 'react'
 
 const Home: React.FC = () => {
@@ -13,7 +14,7 @@ const Home: React.FC = () => {
       keywords=''
       description=''
     >
-      <div className="bg-white">
+      <div className="bg-white mt-[3rem]">
         <div className="pt-6">
           <nav aria-label="Breadcrumb">
             <ol role="list" className="mx-auto flex max-w-2xl items-center space-x-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
@@ -113,8 +114,8 @@ const Home: React.FC = () => {
             <div className="mt-4 lg:row-span-3 lg:mt-0">
               <h2 className="sr-only">event information</h2>
               <div className='flex items-end justify-center'>
-                <p className="text-3xl tracking-tight text-gray-900">{event.price}/ </p>
-                <p className="text-base font-bold text-gray-500">{event.pricingModel}</p>
+                <p className="text-3xl font-bold tracking-tight text-gray-900">{event.price}</p>
+                <p className="text-base font-bold text-gray-500"> /{event.pricingModel}</p>
               </div>
 
               <div className="mt-10">
@@ -131,12 +132,12 @@ const Home: React.FC = () => {
                 </div>
               </div>
 
-              <button
-                type="submit"
+              <Link
+                href='/precos'
                 className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 py-3 px-8 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
               >
                 Faça uma reserva
-              </button>
+              </Link>
             </div>
 
             <div className="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pt-6 lg:pb-16 lg:pr-8">

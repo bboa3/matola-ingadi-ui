@@ -16,7 +16,7 @@ const Layout: React.FC<Props> = ({ description, keywords, title, children }) => 
       <SEO description={description} keywords={keywords} title={title} />
 
       <Nav />
-      <main className='w-full min-h-screen overflow-hidden pt-[3.9rem]'>
+      <main className='w-full min-h-screen h-full overflow-hidden'>
         {children}
       </main>
       <Footer />
