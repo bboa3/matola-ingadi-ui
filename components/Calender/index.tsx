@@ -32,13 +32,14 @@ const CalendarComponent: React.FC<Props> = ({ selectedDate, setSelectedDate, res
   }
 
   return (
-    <div>
-      <Calendar
-        tileDisabled={tileDisabled}
-        onChange={setSelectedDate}
-        value={selectedDate}
-      />
-    </div>
+    <Calendar
+      tileDisabled={tileDisabled}
+      locale="pt"
+      onChange={setSelectedDate}
+      value={selectedDate}
+      className='styled-calender'
+      minDate={new Date()}
+    />
   )
 }
 

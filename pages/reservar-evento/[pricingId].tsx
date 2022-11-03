@@ -1,9 +1,13 @@
-import CalendarComponent from '@components/Calender'
 import Layout from '@components/Layout'
 import { httpFetch } from '@lib/fetch'
 import { ReservedEventDate } from 'ingadi'
 import { GetStaticProps } from 'next'
+import dynamic from 'next/dynamic'
 import React, { useState } from 'react'
+
+const CalendarComponent = dynamic(() => import('@components/Calender'), {
+  ssr: false
+})
 
 // interface Query {
 //   pricingId: string

@@ -1,4 +1,5 @@
 import { SessionProvider } from 'next-auth/react'
+import '../styles/calendar.css'
 import '../styles/globals.css'
 
 export default function App ({
