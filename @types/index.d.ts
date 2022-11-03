@@ -1,8 +1,22 @@
 declare module 'ingadi' {
   export interface Photo {
-  src: string
-  alt: string
-}
+    alt: string
+    url: string
+  }
+
+  export interface Services {
+    name: string
+    description: string
+    photos: Photo[]
+  }
+
+  export interface Pricing {
+    id: string
+    name: string
+    pricingModel: string
+    price: number
+    services: Services[]
+  }
 
   export interface Event {
     id: string
@@ -13,5 +27,12 @@ declare module 'ingadi' {
     description: string
     highlights: string[]
     details: string
+  }
+
+  export interface ReservedEventDate {
+    id: string
+	  date: string
+		billId: string
+		createdAt: string
   }
 }
