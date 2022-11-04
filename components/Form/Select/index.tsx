@@ -3,8 +3,8 @@ import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
 import React, { Dispatch, Fragment, SetStateAction } from 'react'
 
 export interface ItemSelect {
-  id: string | number
-  name: string | number
+  id: string
+  name: string
 }
 
 interface Props {

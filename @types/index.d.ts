@@ -31,8 +31,16 @@ declare module 'ingadi' {
 
   export interface ReservedEventDate {
     id: string
-	  date: string
-		billId: string
-		createdAt: string
+    date: string
+    billId: string
+    createdAt: string
+  }
+
+  export interface EventReservation {
+    eventDate: string
+    guestsNumber: number,
+    eventType: string,
+    paymentMethodId: string,
+    eventPricingId: string
   }
 }

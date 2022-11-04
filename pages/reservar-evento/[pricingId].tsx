@@ -2,6 +2,7 @@ import Input from '@components/Form/Imput'
 import Radio from '@components/Form/Radio'
 import SelectMenu from '@components/Form/Select'
 import Layout from '@components/Layout'
+import { DataContext } from '@context/data'
 import { CheckIcon } from '@heroicons/react/24/outline'
 import { httpFetch } from '@lib/fetch'
 import validator, { eventTypes, paymentMethods } from '@lib/validator/event-reservation'
@@ -12,7 +13,7 @@ import { ReservedEventDate } from 'ingadi'
 import { GetStaticProps } from 'next'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useContext, useState } from 'react'
 
 const CalendarComponent = dynamic(() => import('@components/Form/Calender'), {
   ssr: false
@@ -23,6 +24,7 @@ interface Props {
 }
 
 const ReservationInfo: React.FC<Props> = ({ reservedDates }) => {
+  const { data, setData } = useContext(DataContext)
   const router = useRouter()
   const { pricingId } = router.query
   const [eventType, setEventType] = useState(eventTypes[0])
@@ -40,15 +42,17 @@ const ReservationInfo: React.FC<Props> = ({ reservedDates }) => {
     validationSchema: validator,
     onSubmit: (values) => {
       const eventDate = dayjs(selectedDate).format('YYYY-MM-DD')
-      const response = httpFetch.post('/bill', {
-        eventDate,
-        numberOfGuests: values.guestsNumber,
-        eventType: eventType.id,
-        paymentMethodId: values.paymentMethodId,
-        eventPricingId: pricingId
-      })
 
-      console.log(response)
+      setData({
+        ...data,
+        eventReservation: {
+          eventDate,
+          guestsNumber: values.guestsNumber,
+          eventType: eventType.id,
+          paymentMethodId: values.paymentMethodId,
+          eventPricingId: pricingId as string
+        }
+      })
       router.push('/atualizar-perfil')
     }
   })
