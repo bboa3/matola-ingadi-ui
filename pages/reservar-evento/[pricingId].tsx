@@ -2,14 +2,17 @@ import Input from '@components/Form/Imput'
 import Radio from '@components/Form/Radio'
 import SelectMenu from '@components/Form/Select'
 import Layout from '@components/Layout'
+import { CheckIcon } from '@heroicons/react/24/outline'
 import { httpFetch } from '@lib/fetch'
 import validator, { eventTypes, paymentMethods } from '@lib/validator/event-reservation'
+import { dateFormatter } from '@utils/day'
 import dayjs from 'dayjs'
+import { useFormik } from 'formik'
 import { ReservedEventDate } from 'ingadi'
 import { GetStaticProps } from 'next'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
-import React, { useState } from 'react'
+import React, { useCallback, useState } from 'react'
 
 const CalendarComponent = dynamic(() => import('@components/Form/Calender'), {
   ssr: false
@@ -20,60 +23,78 @@ interface Props {
 }
 
 const ReservationInfo: React.FC<Props> = ({ reservedDates }) => {
-  const [numberOfGuests, setNumberOfGuests] = useState('')
-  const [eventType, setEventType] = useState(eventTypes[0])
-  const [paymentMethodId, setPaymentMethodId] = useState(paymentMethods[0].id as string)
-  const [selectedDate, setSelectedDate] = useState(new Date())
-  const [dateError, setDateError] = useState('')
-
   const router = useRouter()
   const { pricingId } = router.query
+  const [eventType, setEventType] = useState(eventTypes[0])
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null)
+  const [dateError, setDateError] = useState('')
 
-  const formSubmit = () => {
-    if (selectedDate <= new Date()) { return setDateError('Diga-nos a data em pretende realizar o seu evento') }
+  const { errors, handleChange, handleSubmit } = useFormik({
+    initialValues: {
+      guestsNumber: 0,
+      paymentMethodId: ''
+    },
+    validate: (_values) => {
+      if (!selectedDate) { return setDateError('Selecione a data do evento') }
+    },
+    validationSchema: validator,
+    onSubmit: (values) => {
+      const eventDate = dayjs(selectedDate).format('YYYY-MM-DD')
+      const response = httpFetch.post('/bill', {
+        eventDate,
+        numberOfGuests: values.guestsNumber,
+        eventType: eventType.id,
+        paymentMethodId: values.paymentMethodId,
+        eventPricingId: pricingId
+      })
 
-    setDateError('')
+      console.log(response)
+      router.push('/atualizar-perfil')
+    }
+  })
 
-    const eventDate = dayjs(selectedDate).format('YYYY-MM-DD')
+  const dateFormatterCallback = useCallback(() => {
+    if (!selectedDate) return null
 
-    const validated = validator.cast({
-      numberOfGuests,
-      eventType,
-      paymentMethodId
-    })
+    return dateFormatter(selectedDate)
+  }, [selectedDate])
 
-    const response = httpFetch.post('/bill', {
-      eventDate,
-      numberOfGuests: validated.numberOfGuests,
-      eventType: validated.eventType,
-      paymentMethodId: validated.paymentMethodId,
-      eventPricingId: pricingId
-    })
-
-    console.log(response)
-
-    router.push('/atualizar-perfil')
-  }
-
+  const formattedDate = dateFormatterCallback()
   return (
     <Layout
       title=''
       keywords=''
       description=''
     >
-      <div className='flex justify-center'>
-          <form className="w-full h-full max-w-2xl space-y-5">
+      <div className='flex justify-center py-24' >
+          <form onSubmit={handleSubmit} className="w-full h-full max-w-2xl space-y-5">
             <div className='w-full h-full space-y-3'>
-              <label htmlFor='event-date' className="block text-sm font-medium text-gray-700">
-                Data da realização do evento
+              <label
+                htmlFor='event-date'
+                className="block text-2xl font-medium text-gray-700 "
+              >
+                Selecione a data do evento no calendário abaixo.
               </label>
-              <h3>{dayjs(selectedDate).format('DD/MM/YYYY')}</h3>
+              {
+                formattedDate
+                  ? (
+                  <span className='flex text-sm text-gray-700'>
+                    <CheckIcon className="h-5 w-5 mr-3 text-green-600" aria-hidden="true" />
+                    <span>{formattedDate}</span>
+                  </span>
+                    )
+                  : null
+              }
+
+              <span className='h-2 text-sm text-red-500'>{dateError}</span>
               <CalendarComponent
-                selectedDate={selectedDate}
-                setSelectedDate={setSelectedDate}
+                value={selectedDate}
+                onChange={(e: Date) => {
+                  setDateError('')
+                  setSelectedDate(e)
+                }}
                 reservedDates={reservedDates}
               />
-              <span>{dateError}</span>
             </div>
 
             <SelectMenu
@@ -85,24 +106,27 @@ const ReservationInfo: React.FC<Props> = ({ reservedDates }) => {
 
             <Input
               label='Numero de seus convidados'
-              id='guests-number'
+              id='guestsNumber'
               type='number'
               min='1'
               placeholder='Digite o número'
-              setValue={setNumberOfGuests}
+              onChange={handleChange}
+              error={errors.guestsNumber}
             />
 
             <Radio
               label='Forma de Pagamento para sua reserva'
-              name='payment-method'
-              setValue={setPaymentMethodId}
+              name='paymentMethodId'
+              id='paymentMethodId'
               items={paymentMethods}
+              onChange={handleChange}
+              error={errors.paymentMethodId}
             />
 
             <div className='pt-5'>
               <button
-                onClick={() => formSubmit()}
-                className='w-full h-12 flex justify-center items-center rounded-lg bg-gray-900 hover:bg-gray-800'
+                type='submit'
+                className='w-full h-12 flex justify-center items-center font-medium rounded-lg text-white bg-gray-900 hover:bg-gray-800'
                 >
                 Fazer reserva
               </button>

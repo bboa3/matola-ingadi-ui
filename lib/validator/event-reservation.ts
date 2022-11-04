@@ -18,20 +18,19 @@ export const paymentMethods: ItemSelect[] = [
   { id: '24', name: 'Conta Móvel' }
 ]
 
-const eventTypesIds = eventTypes.map(({ id }) => id) as string[]
 const paymentMethodIds = paymentMethods.map(({ id }) => id) as string[]
 
 const validator = Yup.object({
-  numberOfGuests: Yup.string()
+  guestsNumber: Yup.number()
     .required('Qual é o número de convidados?')
     .min(1, 'Desculpas, pelo menos 1 convidado por favor')
-    .max(350, 'Desculpas, o espaço é limitado a 350 convidados'),
-  eventType: Yup.string()
-    .required('Selecione o typo de evento')
-    .oneOf(eventTypesIds),
+    .max(350, 'Desculpas, o salão é limitado a 350 convidados'),
   paymentMethodId: Yup.string()
     .required('Forma de Pagamento para sua reserva')
     .oneOf(paymentMethodIds)
+  // eventDate: Yup.date()
+  //   .required('Selecione a data do evento')
+  //   .min(new Date()),
 })
 
 export default validator

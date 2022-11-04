@@ -28,6 +28,7 @@
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-react": "^7.31.10",
     "format-number": "^3.0.0",
+    "formik": "^2.2.9",
     "mongodb": "^4.11.0",
     "next": "13.0.0",
     "next-auth": "^4.15.0",

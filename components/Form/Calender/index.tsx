@@ -2,18 +2,16 @@ import { BackwardIcon, ChevronLeftIcon, ChevronRightIcon, ForwardIcon } from '@h
 import dayjs from 'dayjs'
 import { ReservedEventDate } from 'ingadi'
 import React from 'react'
-import Calendar, { CalendarTileProperties } from 'react-calendar'
+import Calendar, { CalendarProps, CalendarTileProperties } from 'react-calendar'
 import 'react-calendar/dist/Calendar.css'
 
 export type TileDisabled = (data: CalendarTileProperties) => boolean
 
-interface Props {
-  selectedDate: Date
-  setSelectedDate: React.Dispatch<React.SetStateAction<Date>>
+interface Props extends CalendarProps {
   reservedDates: ReservedEventDate[]
 }
 
-const CalendarComponent: React.FC<Props> = ({ selectedDate, setSelectedDate, reservedDates }) => {
+const CalendarComponent: React.FC<Props> = ({ reservedDates, ...i }) => {
   const tileDisabled: TileDisabled = ({ date, view }) => {
     if (view === 'month') {
       const isReserved = reservedDates.find(({ date: dDate }) => {
@@ -36,14 +34,13 @@ const CalendarComponent: React.FC<Props> = ({ selectedDate, setSelectedDate, res
     <Calendar
       tileDisabled={tileDisabled}
       locale="pt"
-      onChange={setSelectedDate}
-      value={selectedDate}
       className='styled-calender'
       minDate={new Date()}
       prev2Label={<BackwardIcon className='w-6 h-6' />}
       prevLabel={<ChevronLeftIcon className='w-6 h-6' />}
       next2Label={<ForwardIcon className='w-6 h-6' />}
       nextLabel={<ChevronRightIcon className='w-6 h-6' />}
+      {...i}
     />
   )
 }
