@@ -1,3 +1,4 @@
+import { BackwardIcon, ChevronLeftIcon, ChevronRightIcon, ForwardIcon } from '@heroicons/react/24/outline'
 import dayjs from 'dayjs'
 import { ReservedEventDate } from 'ingadi'
 import React from 'react'
@@ -39,6 +40,10 @@ const CalendarComponent: React.FC<Props> = ({ selectedDate, setSelectedDate, res
       value={selectedDate}
       className='styled-calender'
       minDate={new Date()}
+      prev2Label={<BackwardIcon className='w-6 h-6' />}
+      prevLabel={<ChevronLeftIcon className='w-6 h-6' />}
+      next2Label={<ForwardIcon className='w-6 h-6' />}
+      nextLabel={<ChevronRightIcon className='w-6 h-6' />}
     />
   )
 }

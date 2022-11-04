@@ -1,28 +1,48 @@
-.styled-calender {
+
+.styled-calender.react-calendar {
   width: 100%;
-  height: 30rem;
+  height: 25rem;
   background: white;
   color: #1f2937;
   letter-spacing: 0.02em;
+
+  border-width: 0px;
+  --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
 .styled-calender >.react-calendar__navigation {
+  width: 100%;
+  height: 3.5rem;
   background: #cbd5e1; 
-  padding: 0 .7rem; 
+  padding: 0 .7rem;
 }
 
-.styled-calender >.react-calendar__navigation > button {
-  min-width: 4.4rem;
-  min-height: 4.4rem;
+.styled-calender > .react-calendar__navigation > button {
+  width: 3rem;
+  height: 3rem;
   border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.styled-calender > .react-calendar__navigation button[disabled] {
+.styled-calender > .react-calendar__navigation > button:hover {
+  color: #4f46e5;
+}
+
+.styled-calender >.react-calendar__navigation > .react-calendar__navigation__label {
+  width: 5rem;
+}
+
+.styled-calender >.react-calendar__navigation > .react-calendar__navigation__label:hover {
+  color: #1f2937;
   background-color: transparent;
 }
 
 .styled-calender >.react-calendar__navigation > .react-calendar__navigation__label > span {
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 .styled-calender .react-calendar__navigation .react-calendar__navigation__arrow {
@@ -75,10 +95,6 @@
 .styled-calender .react-calendar__tile--active:enabled:hover,
 .styled-calender .react-calendar__tile--active:enabled:focus {
   background: #4f46e5;
-}
-
-.styled-calender .react-calendar__tile--now {
-  background: rgba(255, 165, 0, 0.2);
 }
 
 .styled-calender .react-calendar__tile--now:enabled:hover,
