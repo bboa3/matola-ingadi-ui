@@ -1,11 +1,11 @@
 import clientPromise from '@lib/mongodb'
 import { MongoDBAdapter } from '@next-auth/mongodb-adapter'
-import NextAuth from 'next-auth'
+import NextAuth, { NextAuthOptions } from 'next-auth'
 import EmailProvider from 'next-auth/providers/email'
 import FacebookProvider from 'next-auth/providers/facebook'
 import GoogleProvider from 'next-auth/providers/google'
 
-export const authOptions = {
+export const authOptions: NextAuthOptions = {
   providers: [
     EmailProvider({
       server: {
@@ -49,10 +49,10 @@ export const authOptions = {
   ],
   pages: {
     signIn: '/login',
-    verifyRequest: '/verify-request' // (used for check email message)
+    verifyRequest: '/verify-request', // (used for check email message)
     // signOut: '/auth/signout',
     // error: '/auth/error', // Error code passed in query string as ?error=
-    // newUser: '/auth/new-user' // New users will be directed here on first sign in (leave the property out if not of interest)
+    newUser: '/precos' // New users will be directed here on first sign in (leave the property out if not of interest)
   },
   adapter: MongoDBAdapter(clientPromise)
 }

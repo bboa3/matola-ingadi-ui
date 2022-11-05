@@ -15,7 +15,6 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
 const Radio: React.FC<Props> = ({ label, name, error, items, ...i }) => (
   <fieldset className='space-y-2'>
       <legend className="block text-sm font-medium text-gray-700">{label}</legend>
-      { error ? <span className='h-2 text-sm text-red-500'>{error}</span> : null}
 
               <div className='flex space-x-7'>
                 {
@@ -32,11 +31,12 @@ const Radio: React.FC<Props> = ({ label, name, error, items, ...i }) => (
                       <label
                         htmlFor={`${item.id}`} className="ml-2 text-base font-medium text-gray-900 dark:text-gray-300"
                       >
-                        {item.name}
-                      </label>
-                  </div>
+                  {item.name}
+            </label>
+          </div>
                   ))
      }
+     <span className='h-5 block text-sm text-red-500'>{error || ''}</span>
     </div>
   </fieldset>
 )

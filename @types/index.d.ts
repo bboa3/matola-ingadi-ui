@@ -43,4 +43,26 @@ declare module 'ingadi' {
     paymentMethodId: string,
     eventPricingId: string
   }
+
+  export interface Address {
+    address1: string
+    streetAddress: string
+    cityOrDistrict: string
+    provinceOrState: string
+    postalCode: string
+    country: string
+    updatedAt: string
+  }
+
+  export interface User {
+    id: string
+    email: string
+    name?: string
+    phoneNumber?: string
+    image?: string
+    emailVerified?: string
+    admin?: boolean
+    address?: Address
+    updatedAt: string
+  }
 }

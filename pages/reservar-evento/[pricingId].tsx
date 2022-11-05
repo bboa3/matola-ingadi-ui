@@ -10,7 +10,8 @@ import { dateFormatter } from '@utils/day'
 import dayjs from 'dayjs'
 import { useFormik } from 'formik'
 import { ReservedEventDate } from 'ingadi'
-import { GetStaticProps } from 'next'
+import { GetServerSideProps } from 'next'
+import { getSession } from 'next-auth/react'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 import React, { useCallback, useContext, useState } from 'react'
@@ -141,21 +142,24 @@ const ReservationInfo: React.FC<Props> = ({ reservedDates }) => {
   )
 }
 
-export async function getStaticPaths () {
-  return {
-    paths: [{ params: { pricingId: 'premium' } }, { params: { pricingId: 'padrao' } }],
-    fallback: false // can also be true or 'blocking'
-  }
-}
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const session = await getSession(context)
 
-export const getStaticProps: GetStaticProps = async () => {
+  if (!session) {
+    return {
+      redirect: {
+        destination: '/login',
+        permanent: false
+      }
+    }
+  }
+
   const { data } = await httpFetch.get('/dates')
 
   return {
     props: {
       reservedDates: data
-    },
-    revalidate: 25 * 60 * 60
+    }
   }
 }
 

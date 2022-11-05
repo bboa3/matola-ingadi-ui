@@ -12,17 +12,18 @@ interface Props {
   items: ItemSelect[]
   setSelected: Dispatch<SetStateAction<ItemSelect>>
   selected: ItemSelect
+  error?: string
 }
 
 const classNames = (...classes: string[]) => {
   return classes.filter(Boolean).join(' ')
 }
 
-const SelectMenu: React.FC<Props> = ({ items, selected, setSelected, label }) => {
+const SelectMenu: React.FC<Props> = ({ items, selected, setSelected, error, label }) => {
   return (
     <Listbox value={selected} onChange={setSelected}>
       {({ open }) => (
-        <div className='space-y-2'>
+        <div className='w-full space-y-2'>
           <Listbox.Label className="block text-sm font-medium text-gray-700">{label}</Listbox.Label>
           <div className="relative mt-1">
             <Listbox.Button className="relative w-full cursor-default rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 text-left shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm">
@@ -82,6 +83,7 @@ const SelectMenu: React.FC<Props> = ({ items, selected, setSelected, label }) =>
               </Listbox.Options>
             </Transition>
           </div>
+          <span className='h-5 block text-sm text-red-500'>{error || ''}</span>
         </div>
       )}
     </Listbox>
