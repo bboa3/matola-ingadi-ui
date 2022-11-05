@@ -44,7 +44,7 @@ const PerfilUpdate: React.FC<Props> = ({ user, token }) => {
     },
     validationSchema: validator,
     onSubmit: (values) => {
-      httpFetch.put('user', {
+      httpFetch.put('/user', {
         name: values.name,
         phoneNumber: values.phoneNumber,
         address: {
@@ -59,12 +59,26 @@ const PerfilUpdate: React.FC<Props> = ({ user, token }) => {
         headers: {
           Authorization: `beaer ${token}`
         }
-      }).then(({ data }) => {
-        console.log(data)
+      }).then((_response) => {
+        httpFetch.post('/bill', {
+          guestsNumber: eventReservation?.guestsNumber,
+          discount: 0,
+          eventPricingId: eventReservation?.eventPricingId,
+          eventType: eventReservation?.eventType,
+          eventDate: eventReservation?.eventDate,
+          paymentMethodId: eventReservation?.paymentMethodId
+        },
+        {
+          headers: {
+            Authorization: `beaer ${token}`
+          }
+        })
+          .then((_response) => {
+            router.push('/bills')
+          })
+          .catch(err => console.log(err))
       })
         .catch(err => console.log(err))
-
-      // router.push('/atualizar-perfil')
     }
   })
 
@@ -157,7 +171,7 @@ const PerfilUpdate: React.FC<Props> = ({ user, token }) => {
                 type='submit'
                 className='w-full h-12 flex justify-center items-center font-medium rounded-lg text-white bg-gray-900 hover:bg-gray-800'
                 >
-                Fazer reserva
+                Confirmar
               </button>
             </div>
           </form>
