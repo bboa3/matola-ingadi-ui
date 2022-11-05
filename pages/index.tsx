@@ -68,7 +68,7 @@ const Home: React.FC = () => {
           <div className="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">
             <div className="aspect-w-3 aspect-h-4 hidden overflow-hidden rounded-lg lg:block">
               <Image
-                src={event.images[0].src}
+                src={event.images[0].url}
                 alt={event.images[0].alt}
                 width={300}
                 height={300}
@@ -78,7 +78,7 @@ const Home: React.FC = () => {
             <div className="hidden lg:grid lg:grid-cols-1 lg:gap-y-8">
               <div className="aspect-w-3 aspect-h-2 overflow-hidden rounded-lg">
               <Image
-                src={event.images[1].src}
+                src={event.images[1].url}
                 alt={event.images[1].alt}
                 width={300}
                 height={300}
@@ -87,7 +87,7 @@ const Home: React.FC = () => {
               </div>
               <div className="aspect-w-3 aspect-h-2 overflow-hidden rounded-lg">
               <Image
-                src={event.images[2].src}
+                src={event.images[2].url}
                 alt={event.images[2].alt}
                 width={300}
                 height={300}
@@ -97,7 +97,7 @@ const Home: React.FC = () => {
             </div>
             <div className="aspect-w-4 aspect-h-5 sm:overflow-hidden sm:rounded-lg lg:aspect-w-3 lg:aspect-h-4">
               <Image
-                src={event.images[3].src}
+                src={event.images[3].url}
                 alt={event.images[3].alt}
                 width={300}
                 height={300}

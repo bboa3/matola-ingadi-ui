@@ -54,7 +54,7 @@ const ReservationInfo: React.FC<Props> = ({ reservedDates }) => {
           eventPricingId: pricingId as string
         }
       })
-      router.push('/atualizar-perfil')
+      router.push('/perfil/atualizar')
     }
   })
 
