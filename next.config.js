@@ -13,6 +13,11 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'tailwindui.com',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: '**.googleusercontent.com',
+        pathname: '/**',
       }
     ],
   }

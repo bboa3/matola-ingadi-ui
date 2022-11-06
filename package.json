@@ -16,6 +16,7 @@
     "@mui/icons-material": "^5.10.9",
     "@mui/material": "^5.10.11",
     "@next-auth/mongodb-adapter": "^1.1.1",
+    "@popperjs/core": "^2.11.6",
     "@stitches/react": "^1.2.8",
     "@typescript-eslint/eslint-plugin": "^5.41.0",
     "autoprefixer": "^10.4.13",

@@ -8,6 +8,7 @@ specifiers:
   '@mui/icons-material': ^5.10.9
   '@mui/material': ^5.10.11
   '@next-auth/mongodb-adapter': ^1.1.1
+  '@popperjs/core': ^2.11.6
   '@stitches/react': ^1.2.8
   '@tailwindcss/forms': ^0.5.3
   '@types/node': 18.11.7
@@ -50,6 +51,7 @@ dependencies:
   '@mui/icons-material': 5.10.9_4ucrevsrp5tdlzg44kesjenzrm
   '@mui/material': 5.10.11_gs4twfomdgooimayvnfrqgiwam
   '@next-auth/mongodb-adapter': 1.1.1_c2hs3f6tdo2m2hud5hzs3zngde
+  '@popperjs/core': 2.11.6
   '@stitches/react': 1.2.8_react@18.2.0
   '@typescript-eslint/eslint-plugin': 5.41.0_huremdigmcnkianavgfk3x6iou
   autoprefixer: 10.4.13_postcss@8.4.18
