@@ -5,6 +5,7 @@ import { Bill, Invoice } from 'bill'
 import dayjs from 'dayjs'
 import { GetServerSideProps } from 'next'
 import { getSession } from 'next-auth/react'
+import { useRouter } from 'next/router'
 import React, { useCallback } from 'react'
 
 interface Props {
@@ -12,15 +13,23 @@ interface Props {
   token: string
 }
 
-const PerfilUpdate: React.FC<Props> = ({ bills, token }) => {
+interface CustomInvoice extends Invoice {
+  billId: string
+}
+
+const UserBills: React.FC<Props> = ({ bills, token }) => {
+  const router = useRouter()
   const findInvoices = useCallback(() => {
-    const allInvoices: Invoice[] = []
+    const allInvoices: CustomInvoice[] = []
 
     for (const bill of bills) {
-      const { invoices } = bill
+      const { invoices, id } = bill
 
       for (const invoice of invoices) {
-        allInvoices.push(invoice)
+        allInvoices.push({
+          ...invoice,
+          billId: id
+        })
       }
     }
 
@@ -50,17 +59,17 @@ const PerfilUpdate: React.FC<Props> = ({ bills, token }) => {
                         <th scope="col" className="py-3 px-6 bg-gray-50 dark:bg-gray-800">
                             Vencimento
                         </th>
-                        <th scope="col" className="py-3 px-6 bg-gray-50 dark:bg-gray-800">
+                        <th scope="col" className="py-3 px-6">
                             Total
                         </th>
-                        <th scope="col" className="py-3 px-6">
+                        <th scope="col" className="py-3 px-6 bg-gray-50 dark:bg-gray-800">
                             Estado
                         </th>
                     </tr>
                 </thead>
                 <tbody>
                   {
-                    invoices.map(({ invoiceId, createdAt, dueAt, total, status }) => {
+                    invoices.map(({ invoiceId, billId, createdAt, dueAt, total, status }) => {
                       const dueDate = dueAt.split('+')[0]
                       const createdDate = createdAt.split('+')[0]
 
@@ -68,7 +77,11 @@ const PerfilUpdate: React.FC<Props> = ({ bills, token }) => {
                       const dueAtFormatted = dayjs(dueDate).format('DD/MM/YYYY')
 
                       return (
-                        <tr key={invoiceId.code} className="border-b border-gray-200 dark:border-gray-700">
+                        <tr
+                          onClick={() => router.push(`/bills/${billId}/${invoiceId.code}`)}
+                          key={invoiceId.code}
+                          className="border-b cursor-pointer border-gray-200 dark:border-gray-700"
+                        >
                           <th scope="row" className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
                             {invoiceId.code}
                           </th>
@@ -78,10 +91,10 @@ const PerfilUpdate: React.FC<Props> = ({ bills, token }) => {
                           <td className="py-4 px-6 bg-gray-50 dark:bg-gray-800">
                             { dueAtFormatted }
                           </td>
-                          <td className="py-4 px-6 bg-gray-50 dark:bg-gray-800">
+                          <td className="py-4 px-6">
                             { moneyFormatter(total) }
                           </td>
-                          <td className="py-4 px-6">
+                          <td className="py-4 px-6 bg-gray-50 dark:bg-gray-800">
                             {
                               status === 'COMPLETED'
                                 ? (
@@ -148,4 +161,4 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   }
 }
 
-export default PerfilUpdate
+export default UserBills
