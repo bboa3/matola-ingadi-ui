@@ -1,11 +1,15 @@
-import CardTestimonial from '@components/Cards/CardTestimonial'
 import Layout from '@components/Layout'
 import { events } from '@utils/events'
 import { Event } from 'ingadi'
 import { useSession } from 'next-auth/react'
+import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import Link from 'next/link'
 import React, { useState } from 'react'
+
+const CardTestimonial = dynamic(() => import('@components/Cards/CardTestimonial'), {
+  ssr: false
+})
 
 const Home: React.FC = () => {
   const session = useSession()

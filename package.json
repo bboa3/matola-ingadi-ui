@@ -28,6 +28,8 @@
     "eslint-plugin-n": "^15.3.0",
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-react": "^7.31.10",
+    "flowbite": "^1.5.3",
+    "flowbite-react": "^0.3.4",
     "format-number": "^3.0.0",
     "formik": "^2.2.9",
     "mongodb": "^4.11.0",

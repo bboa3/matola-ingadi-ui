@@ -1,20 +1,52 @@
 import TestimonialIcon from '@assets/icon/Testimonial'
+import { BackwardIcon, ForwardIcon } from '@heroicons/react/24/outline'
+import { Carousel } from 'flowbite-react'
 import Image from 'next/image'
+
 import React from 'react'
 
 const testimonials = [
   {
     avatar: '',
     eventType: 'Aniversario',
-    name: 'Arlindo Boa'
+    name: 'Arlindo Boa',
+    message: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, necessitatibus, nobis sed et voluptatibus magnam cumque minus, consequatur suscipit vitae aliquid perspiciatis! Asperiores hic nemo nesciunt excepturi aut dolores. Beatae. nobis sed et voluptatibus magnam cumque minus, consequatur suscipit vitae aliquid perspiciatis!'
+  },
+  {
+    avatar: 'https://lh3.googleusercontent.com/a/ALm5wu1k2SJzowXufe---7FcQzb7QxmN3R-cJ9KnxV4wfA=s96-c',
+    eventType: 'Aniversario',
+    name: 'Arlindo Boa',
+    message: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, necessitatibus, nobis sed et voluptatibus magnam cumque minus, consequatur suscipit vitae aliquid perspiciatis! Asperiores hic nemo nesciunt excepturi aut dolores. Beatae. nobis sed et voluptatibus magnam cumque minus, consequatur suscipit vitae aliquid perspiciatis!'
+  },
+  {
+    avatar: 'https://lh3.googleusercontent.com/a/ALm5wu3tzqoEk6RrBHkTnbExr9BcXHXfMMn1oj70mQrK=s96-c',
+    eventType: 'Aniversario',
+    name: 'Arlindo Boa',
+    message: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, necessitatibus, nobis sed et voluptatibus magnam cumque minus, consequatur suscipit vitae aliquid perspiciatis! Asperiores hic nemo nesciunt excepturi aut dolores. Beatae. nobis sed et voluptatibus magnam cumque minus, consequatur suscipit vitae aliquid perspiciatis!'
   }
 ]
 
+const LeftControl: React.FC = () => (
+  <div className='-ml-7 opacity-70 p-1.5 md:p-3 flex justify-center items-center bg-indigo-100 rounded-full' >
+    <BackwardIcon className='w-7 h-7 text-indigo-600' />
+  </div>
+)
+
+const RightControl: React.FC = () => (
+  <div className='-mr-7 opacity-70 p-1.5 md:p-3 flex justify-center items-center bg-indigo-100 rounded-full' >
+    <ForwardIcon className='w-7 h-7 text-indigo-600' />
+  </div>
+)
+
 const CardTestimonial: React.FC = () => {
   return (
-    <div className='w-full'>
+    <Carousel
+      leftControl={<LeftControl />}
+      rightControl={<RightControl />}
+      slideInterval={12000}
+    >
       {
-        testimonials.map(({ name, eventType, avatar }) => (
+        testimonials.map(({ name, message, eventType, avatar }) => (
           <div key={name} className='relative md:flex md:justify-center w-full border border-gray-100 overflow-hidden rounded-lg'>
             <div className='absolute top-0 -left-3 w-64 h-56'>
                 <TestimonialIcon className="w-32 opacity-25 text-indigo-300" />
@@ -22,10 +54,9 @@ const CardTestimonial: React.FC = () => {
 
             <div className='absolute bottom-0 md:right-0 hero-pattern w-24 h-24 md:w-32 md:h-32'></div>
 
-            <div className='min-h-[24rem] pt-32 pb-12 px-4 md:px-12 md:max-w-6xl'>
+            <div className='min-h-[24rem] pt-32 pb-12 px-6 md:px-12 md:max-w-6xl'>
               <p className='md:text-lg'>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, necessitatibus, nobis sed et voluptatibus magnam cumque minus, consequatur suscipit vitae aliquid perspiciatis! Asperiores hic nemo nesciunt excepturi aut dolores. Beatae.
-                nobis sed et voluptatibus magnam cumque minus, consequatur suscipit vitae aliquid perspiciatis!
+                {message}
               </p>
 
               <div className='pt-7 flex justify-end md:justify-start items-center space-x-3'>
@@ -54,7 +85,7 @@ const CardTestimonial: React.FC = () => {
           </div>
         ))
       }
-    </div>
+    </Carousel>
   )
 }
 
