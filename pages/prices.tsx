@@ -4,6 +4,7 @@ import { httpFetch } from '@lib/fetch'
 import { moneyFormatter } from '@utils/money-formatter'
 import { Pricing } from 'ingadi'
 import { GetStaticProps } from 'next'
+import { useSession } from 'next-auth/react'
 import Link from 'next/link'
 import React from 'react'
 
@@ -12,11 +13,15 @@ interface Props {
 }
 
 const PricingPage: React.FC<Props> = ({ pricing }) => {
+  const session = useSession()
+  const user = session.data?.user
+
   return (
     <Layout
       title=''
       keywords=''
       description=''
+      avatar={user?.image ? user?.image : undefined}
     >
       <div className="w-full min-h-screen py-12 px-4 sm:px-6 lg:px-8 bg-white">
         <div className='w-full bg-gray-50 '>
@@ -62,7 +67,7 @@ const PricingPage: React.FC<Props> = ({ pricing }) => {
 
                         <div className='pt-5'>
                           <Link
-                            href={`/reservar-evento/${id}`}
+                            href={`/user/create-event/${id}`}
                             className='w-full h-12 flex justify-center items-center rounded-lg bg-gray-900 hover:bg-gray-800'
                           >
                             Fazer reserva

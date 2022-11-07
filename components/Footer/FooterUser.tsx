@@ -2,7 +2,7 @@ import FacebookIcon from '@mui/icons-material/Facebook'
 import InstagramIcon from '@mui/icons-material/Instagram'
 import Link from 'next/link'
 
-export default function FooterAdmin () {
+export default function FooterUser () {
   return (
     <>
       <footer className="block py-4">
@@ -12,12 +12,11 @@ export default function FooterAdmin () {
             <div className="w-full md:w-4/12 px-4">
               <div className="text-sm text-gray-500 font-semibold py-1 text-center md:text-left">
                 Copyright © {new Date().getFullYear()}{' '}
-                <a
-                  href="https://www.creative-tim.com?ref=nnjs-footer-admin"
-                  className="text-gray-500 hover:text-gray-700 text-sm font-semibold py-1"
+                <span
+                  className="text-gray-500 text-sm font-semibold py-1"
                 >
                   Matola Ingadi, LDA
-                </a>
+                </span>
               </div>
             </div>
             <div className="w-full md:w-8/12 px-4">

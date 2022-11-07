@@ -1,22 +1,26 @@
 import logoImg from '@assets/img/logo.png'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { Bars3Icon, UserIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { signOut, useSession } from 'next-auth/react'
 import Image from 'next/image'
 import Link from 'next/link'
 import React, { Fragment } from 'react'
 
+interface Props {
+  avatar?: string
+}
+
 const navigation = [
-  { name: 'Preços', href: '/precos' },
-  { name: 'Localização', href: '/localizacao' },
-  { name: 'Sobre nós', href: '/sobre-nos' }
+  { name: 'Preços', href: '/prices' },
+  { name: 'Localização', href: '/location' },
+  { name: 'Sobre nós', href: '/about-us' }
 ]
 
 const classNames = (...classes: string[]) => {
   return classes.filter(Boolean).join(' ')
 }
 
-const Nav: React.FC = () => {
+const Nav: React.FC<Props> = ({ avatar }) => {
   const { data: session } = useSession()
   return (
     <Disclosure as="nav" className="bg-white shadow ">
@@ -27,7 +31,7 @@ const Nav: React.FC = () => {
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 {/* Mobile menu button */}
                 <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
-                  <span className="sr-only">Open main menu</span>
+                  <span className="sr-only">Abrir menu</span>
                   {open
                     ? (
                     <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
@@ -96,8 +100,14 @@ const Nav: React.FC = () => {
                     <Menu as="div" className="relative ml-3">
                       <div>
                         <Menu.Button className="flex rounded-full bg-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-                          <span className="sr-only">Open user menu</span>
-                          <UserIcon className="h-8 w-8 rounded-full" aria-hidden='true' />
+                          <span className="sr-only">Abrir perfil</span>
+                          <Image
+                            className="h-8 w-8 rounded-full"
+                            src={ avatar || 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80'}
+                            alt=""
+                            width={32}
+                            height={32}
+                          />
                         </Menu.Button>
                       </div>
                       <Transition
@@ -112,22 +122,22 @@ const Nav: React.FC = () => {
                         <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                           <Menu.Item>
                             {({ active }) => (
-                              <a
-                                href="#"
+                              <Link
+                                href="/user/bills"
                                 className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                               >
-                                Perfil
-                              </a>
+                                Meus eventos
+                              </Link>
                             )}
                           </Menu.Item>
                           <Menu.Item>
                             {({ active }) => (
-                              <a
-                                href="#"
+                              <Link
+                                href="/user/information"
                                 className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                               >
-                                Seus eventos
-                              </a>
+                                Perfil
+                              </Link>
                             )}
                           </Menu.Item>
                           <Menu.Item>

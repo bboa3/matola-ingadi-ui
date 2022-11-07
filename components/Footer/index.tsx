@@ -1,86 +1,64 @@
-import logoImg from '@assets/img/logo.png'
+import FacebookIcon from '@mui/icons-material/Facebook'
 import InstagramIcon from '@mui/icons-material/Instagram'
-import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
 
-const Footer: React.FC = () => {
+export default function Footer () {
   return (
-    <footer className='w-full px-4 sm:px-6 py-8 mt-12 bg-slate-900 text-slate-100 overflow-hidden relative z-10'>
-      <div className='w-full max-w-7xl h-full min-h-[18rem] flex flex-col justify-between mx-auto divide-y'>
-        <div className='w-full h-full pb-3 grid lg:grid-cols-4 gap-4 text-center lg:text-left'>
-          <div className='w-full flex flex-col items-center lg:items-start'>
-            <div className='w-3/4 mb-2 lg:mb-4'>
-              <Image
-                className="h-12 w-auto"
-                src={logoImg}
-                alt="Matola Ingadi"
-              />
+    <>
+      <footer className="block py-4">
+        <div className="container mx-auto px-4">
+          <hr className="mb-4 border-b-1 border-gray-200" />
+          <div className="flex flex-wrap items-center md:justify-between justify-center">
+            <div className="w-full md:w-4/12 px-4">
+              <div className="text-sm text-gray-500 font-semibold py-1 text-center md:text-left">
+                Copyright © {new Date().getFullYear()}{' '}
+                <span
+                  className="text-gray-500 text-sm font-semibold py-1"
+                >
+                  Matola Ingadi, LDA
+                </span>
+              </div>
             </div>
-            <p className='pl-3 mb-3'>
-              <span className='block italic font-sans font-medium mt-4'>O futuro é atitude!</span>
-            </p>
-            <div className='w-[4rem] mb-3 pl-3 flex justify-between items-center'>
-              <a target="_blank" rel="noreferrer" href="https://www.instagram.com/moz.economia/">
-                <InstagramIcon className='hover:text-indigo-700' />
-              </a>
-          </div>
-          <div className='w-full'>
-            <legend className='font-bold mb-3 text-white uppercase px-2'>páginas Populares</legend>
-          </div>
-          <div>
-            <legend className='font-bold mb-3 text-white uppercase px-2'>Soluções</legend>
-            <div className='mb-2 text-slate-100'>
-              <Link href='/precos' className='block px-2 rounded-lg hover:bg-slate-800 hover:text-white'>
-                Preços
-              </Link></div>
-            <div className='mb-2 text-slate-100'>
-              <Link target="_blank" rel="noreferrer" href='https://mozeconomia.docs.apiary.io/'>
-                Acesso à API
-              </Link>
+            <div className="w-full md:w-8/12 px-4">
+              <ul className="flex flex-wrap list-none md:justify-end  justify-center">
+                <li>
+                  <span className='text-gray-600 hover:text-gray-800 text-sm font-semibold block py-1 px-3'>
+                    <Link href='/terms-and-conditions'>Termos e Condições</Link>
+                  </span>
+                </li>
+                <li>
+                  <Link
+                    href="/about-us"
+                    className="text-gray-600 hover:text-gray-800 text-sm font-semibold block py-1 px-3"
+                  >
+                    sobre-nos
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    target="_blank"
+                    rel="noreferrer"
+                    href="https://www.instagram.com/matolaingadi/"
+                    className="text-gray-600 hover:text-gray-800 text-sm font-semibold block py-1 px-3"
+                  >
+                    <InstagramIcon aria-hidden="true" />
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    target="_blank"
+                    rel="noreferrer"
+                    href="https://web.facebook.com/matola.ingadi.1"
+                    className="text-gray-600 hover:text-gray-800 text-sm font-semibold block py-1 px-3"
+                  >
+                    <FacebookIcon aria-hidden="true" />
+                  </Link>
+                </li>
+              </ul>
             </div>
-            <div className='mb-2 text-slate-100'>
-              <Link href='/parceiros' className='block px-2 rounded-lg hover:bg-slate-800 hover:text-white'>Documentação</Link></div>
-            {/* <div className='mb-2 text-slate-100'><a href='/' className='block px-2 rounded-lg hover:bg-slate-800 hover:text-white'>Conta de desenvolvedor</a></div> */}
-          </div>
-          <div>
-            <legend className='font-bold mb-3 text-white uppercase px-2'>Empresa</legend>
-            {/* <div className='mb-2 text-slate-100'><a href='/' className='block px-2 rounded-lg hover:bg-slate-800 hover:text-white'>Blog</a></div> */}
-            <div className='mb-2 text-slate-100'>
-              <Link href='/sobre-nos' className='block px-2 rounded-lg hover:bg-slate-800 hover:text-white'>
-                Sobre nós
-              </Link>
-            </div>
-            <div className='mb-2 text-slate-100'>
-              <Link href='/parceiros' className='block px-2 rounded-lg hover:bg-slate-800 hover:text-white'>
-                Parceiros
-              </Link>
-            </div>
-            <div className='mb-2 text-slate-100'>
-              <Link
-                target="_blank"
-                rel="noreferrer"
-                href='https://calendly.com/mozeconomia/30min?month=2022-07'
-                className='block px-2 rounded-lg hover:bg-slate-800 hover:text-white'
-              >
-                Fale connosco
-              </Link>
-            </div>
-            <div className='mb-2 text-slate-100'>
-              <span className='block px-2 text-slate-400 font-normal'>Av. 25 de Setembro, nº 1695, 1º andar, Maputo, Moçambique</span></div>
           </div>
         </div>
-
-        <div className='w-full pt-2 text-center'>
-          <span>
-            &copy; {new Date().getFullYear()} MozEconomia - todos direitos reservados.
-          </span>
-          <span className='text-sky-600 hover:text-sky-500 ml-2'><Link href='https://www.termsfeed.com/live/986d6c41-ae64-4cef-a3af-ffe508d621bb'>Termos e Condições</Link></span>
-        </div>
-      </div>
-      </div>
-    </footer>
+      </footer>
+    </>
   )
 }
-
-export default Footer

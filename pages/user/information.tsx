@@ -1,6 +1,6 @@
 import Input from '@components/Form/Imput'
 import SelectMenu from '@components/Form/Select'
-import Layout from '@components/Layout'
+import Layout from '@components/Layout/User'
 import { DataContext } from '@context/data'
 import { httpFetch } from '@lib/fetch'
 import validator from '@lib/validator/user'
@@ -10,7 +10,7 @@ import { User } from 'ingadi'
 import { GetServerSideProps } from 'next'
 import { getSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 
 interface Props {
   user: User
@@ -19,16 +19,10 @@ interface Props {
 
 const countries = countryList.map(c => ({ id: c, name: c }))
 
-const PerfilUpdate: React.FC<Props> = ({ user, token }) => {
+const UserBills: React.FC<Props> = ({ user, token }) => {
   const { data } = useContext(DataContext)
   const router = useRouter()
   const eventReservation = data?.eventReservation
-
-  useEffect(() => {
-    if (!eventReservation) {
-      router.push('/precos')
-    }
-  }, [])
 
   const [country, setCountry] = useState(countries[150])
 
@@ -59,37 +53,42 @@ const PerfilUpdate: React.FC<Props> = ({ user, token }) => {
         headers: {
           Authorization: `beaer ${token}`
         }
-      }).then((_response) => {
-        httpFetch.post('/bill', {
-          guestsNumber: eventReservation?.guestsNumber,
-          discount: 0,
-          eventPricingId: eventReservation?.eventPricingId,
-          eventType: eventReservation?.eventType,
-          eventDate: eventReservation?.eventDate,
-          paymentMethodId: eventReservation?.paymentMethodId
-        },
-        {
-          headers: {
-            Authorization: `beaer ${token}`
-          }
-        })
-          .then((_response) => {
-            router.push('/bills')
+      }).then(async (_response) => {
+        if (eventReservation) {
+          await httpFetch.post('/bill', {
+            guestsNumber: eventReservation?.guestsNumber,
+            discount: 0,
+            eventPricingId: eventReservation?.eventPricingId,
+            eventType: eventReservation?.eventType,
+            eventDate: eventReservation?.eventDate,
+            paymentMethodId: eventReservation?.paymentMethodId
+          },
+          {
+            headers: {
+              Authorization: `beaer ${token}`
+            }
           })
-          .catch(err => console.log(err))
+
+          router.push('/user/bills?event=true')
+          return
+        }
+
+        router.push('/user/bills?event=false')
       })
         .catch(err => console.log(err))
     }
   })
 
   return (
-      <Layout
-        title=''
-        keywords=''
-        description=''
-      >
-        <div className='flex justify-center py-24' >
-          <form onSubmit={handleSubmit} className="w-full h-full max-w-2xl space-y-5">
+    <Layout
+      title=''
+      keywords=''
+      description=''
+      avatar={user.image ? user.image : undefined}
+    >
+      <div className="flex flex-wrap justify-center mt-4">
+        <div className='w-full h-full max-w-2xl relative bg-white px-5 rounded-lg'>
+          <form onSubmit={handleSubmit} className="w-full h-full space-y-5">
             <Input
               label='Seu Nome'
               id='name'
@@ -138,7 +137,7 @@ const PerfilUpdate: React.FC<Props> = ({ user, token }) => {
                 error={errors.cityOrDistrict}
               />
 
-              <div className='grid grid-cols-3 gap-2 justify-between items-center'>
+              <div className=' md:grid grid-cols-3 gap-2 justify-between items-center'>
                 <Input
                   label='Província/Estado'
                   id='provinceOrState'
@@ -175,6 +174,7 @@ const PerfilUpdate: React.FC<Props> = ({ user, token }) => {
               </button>
             </div>
           </form>
+        </div>
       </div>
     </Layout>
   )
@@ -205,4 +205,4 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   }
 }
 
-export default PerfilUpdate
+export default UserBills

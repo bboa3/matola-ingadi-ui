@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import React from 'react'
 
 import logoImg from '@assets/img/logo.png'
-import { BanknotesIcon, Bars3Icon, CreditCardIcon, MapIcon, PhoneIcon, XMarkIcon } from '@heroicons/react/24/solid'
+import { Bars3Icon, CreditCardIcon, MapIcon, PhoneIcon, XMarkIcon } from '@heroicons/react/24/solid'
 import NotificationDropdown from 'components/Dropdowns/NotificationDropdown'
 import UserDropdown from 'components/Dropdowns/UserDropdown'
 import { signOut } from 'next-auth/react'
@@ -96,8 +96,19 @@ export default function Sidebar () {
                         flex items-center text-xs uppercase py-3 font-bold
                       `}
                     >
-                      <BanknotesIcon className="h-4 w-4 mr-1 opacity-60 " aria-hidden="true" />
                       Eventos e Faturas
+                    </span>
+                </Link>
+              </li>
+              <li className="w-full items-center">
+                <Link href="/user/create-event">
+                    <span
+                      className={`
+                        ${router.pathname === '/user/create-event' ? 'text-indigo-900' : 'text-gray-700 hover:text-gray-500'}
+                        flex items-center text-xs uppercase py-3 font-bold
+                      `}
+                    >
+                      Criar evento
                     </span>
                 </Link>
               </li>
@@ -117,10 +128,9 @@ export default function Sidebar () {
                   onClick={() => signOut()}
                 >
                     <span
-                      className={`
-                      ${router.pathname === '/user/bills' ? 'text-indigo-900' : 'text-gray-700 hover:text-gray-500'}
-                      flex items-center text-xs uppercase py-3 font-bold
-                      `}
+                      className='text-gray-700 hover:text-gray-500
+                        flex items-center text-xs uppercase py-3 font-bold
+                      '
                     >
                       Sair da Conta
                     </span>
@@ -128,10 +138,10 @@ export default function Sidebar () {
               </li>
 
               <li className="items-center">
-                <Link href="/user/bills">
+                <Link href="/user/information">
                   <span
                       className={`
-                      ${router.pathname === '/user/bills' ? 'text-indigo-900' : 'text-gray-700 hover:text-gray-500'}
+                      ${router.pathname === '/user/information' ? 'text-indigo-900' : 'text-gray-700 hover:text-gray-500'}
                       flex items-center text-xs uppercase py-3 font-bold
                       `}
                   >
@@ -147,12 +157,11 @@ export default function Sidebar () {
             {/* Navigation */}
             <ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
               <li className="inline-flex">
-                <Link href="/user/bills">
+                <Link href="/contact">
                   <span
-                      className={`
-                      ${router.pathname === '/user/bills' ? 'text-indigo-900' : 'text-gray-700 hover:text-gray-500'}
+                      className='text-gray-700 hover:text-gray-500
                       flex items-center text-xs uppercase py-3 font-bold
-                      `}
+                      '
                   >
                       <PhoneIcon className="h-4 w-4 mr-1" aria-hidden="true" />
                       Contactos
@@ -161,12 +170,11 @@ export default function Sidebar () {
               </li>
 
               <li className="inline-flex">
-                <Link href="/user/bills">
+                <Link href="/location">
                   <span
-                      className={`
-                      ${router.pathname === '/user/bills' ? 'text-indigo-900' : 'text-gray-700 hover:text-gray-500'}
+                      className='text-gray-700 hover:text-gray-500
                       flex items-center text-xs uppercase py-3 font-bold
-                      `}
+                      '
                   >
                       <MapIcon className="h-4 w-4 mr-1" aria-hidden="true" />
                       Localização
@@ -175,12 +183,11 @@ export default function Sidebar () {
               </li>
 
               <li className="inline-flex">
-                <Link href="/user/bills">
+                <Link href="/prices">
                   <span
-                      className={`
-                      ${router.pathname === '/user/bills' ? 'text-indigo-900' : 'text-gray-700 hover:text-gray-500'}
+                      className='text-gray-700 hover:text-gray-500
                       flex items-center text-xs uppercase py-3 font-bold
-                      `}
+                      '
                   >
                     <CreditCardIcon className="h-4 w-4 mr-1" aria-hidden="true" />
                     Preços
@@ -189,12 +196,11 @@ export default function Sidebar () {
               </li>
 
               <li className="inline-flex">
-                <Link href="/user/bills">
+                <Link href="/about-us">
                   <span
-                      className={`
-                      ${router.pathname === '/user/bills' ? 'text-indigo-900' : 'text-gray-700 hover:text-gray-500'}
+                      className='text-gray-700 hover:text-gray-500
                       flex items-center text-xs uppercase py-3 font-bold
-                      `}
+                    '
                   >
                     Sobre nós
                   </span>

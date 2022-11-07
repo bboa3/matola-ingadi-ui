@@ -11,7 +11,7 @@ import dayjs from 'dayjs'
 import { useFormik } from 'formik'
 import { ReservedEventDate } from 'ingadi'
 import { GetServerSideProps } from 'next'
-import { getSession } from 'next-auth/react'
+import { getSession, useSession } from 'next-auth/react'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 import React, { useCallback, useContext, useState } from 'react'
@@ -25,6 +25,8 @@ interface Props {
 }
 
 const ReservationInfo: React.FC<Props> = ({ reservedDates }) => {
+  const session = useSession()
+
   const { data, setData } = useContext(DataContext)
   const router = useRouter()
   const { pricingId } = router.query
@@ -54,7 +56,7 @@ const ReservationInfo: React.FC<Props> = ({ reservedDates }) => {
           eventPricingId: pricingId as string
         }
       })
-      router.push('/perfil/atualizar')
+      router.push('/user/information')
     }
   })
 
@@ -65,11 +67,15 @@ const ReservationInfo: React.FC<Props> = ({ reservedDates }) => {
   }, [selectedDate])
 
   const formattedDate = dateFormatterCallback()
+
+  const user = session.data?.user
+
   return (
     <Layout
       title=''
       keywords=''
       description=''
+      avatar={user?.image ? user?.image : undefined}
     >
       <div className='flex justify-center py-24' >
           <form onSubmit={handleSubmit} className="w-full h-full max-w-2xl space-y-5">

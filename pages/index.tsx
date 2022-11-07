@@ -1,18 +1,23 @@
 import Layout from '@components/Layout'
 import { events } from '@utils/events'
 import { Event } from 'ingadi'
+import { useSession } from 'next-auth/react'
 import Image from 'next/image'
 import Link from 'next/link'
 import React, { useState } from 'react'
 
 const Home: React.FC = () => {
+  const session = useSession()
   const [event, setEvent] = useState<Event>(events[0])
+
+  const user = session.data?.user
 
   return (
     <Layout
       title=''
       keywords=''
       description=''
+      avatar={user?.image ? user?.image : undefined}
     >
       <div className="bg-white mt-[3rem]">
         <div className="pt-6">
@@ -133,7 +138,7 @@ const Home: React.FC = () => {
               </div>
 
               <Link
-                href='/precos'
+                href='/prices'
                 className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 py-3 px-8 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
               >
                 Faça uma reserva
@@ -178,22 +183,5 @@ const Home: React.FC = () => {
     </Layout>
   )
 }
-
-// export const getServerSideProps: GetServerSideProps = async (context) => {
-//   const session = await getSession(context)
-
-//   if (!session) {
-//     return {
-//       redirect: {
-//         destination: '/login',
-//         permanent: false
-//       }
-//     }
-//   }
-
-//   return {
-//     props: {}
-//   }
-// }
 
 export default Home

@@ -1,3 +1,4 @@
+import Alert from '@components/Alert/Sucess'
 import CardNextEvents from '@components/Cards/CardNextEvents'
 import Layout from '@components/Layout/User'
 import Loading from '@components/Loading'
@@ -7,6 +8,7 @@ import CardUserInvoices, { CustomInvoice } from 'components/Cards/CardUserInvoic
 import { GetServerSideProps } from 'next'
 import { User } from 'next-auth'
 import { getSession } from 'next-auth/react'
+import { useRouter } from 'next/router'
 import React, { useCallback } from 'react'
 
 interface Props {
@@ -15,6 +17,9 @@ interface Props {
 }
 
 const UserBills: React.FC<Props> = ({ bills, user }) => {
+  const router = useRouter()
+  const { event: isNewEvent } = router.query
+
   const findInvoices = useCallback(() => {
     if (!bills) return null
     const allInvoices: CustomInvoice[] = []
@@ -45,6 +50,18 @@ const UserBills: React.FC<Props> = ({ bills, user }) => {
       avatar={user.image ? user.image : undefined}
     >
       <div className="flex flex-wrap mt-4">
+        {
+          isNewEvent
+            ? (
+            <Alert>
+              <span className="inline-block align-middle mr-8">
+                <b className="capitalize">{user.name} </b>
+                O seu evento está agora reservado
+              </span>
+            </Alert>
+              )
+            : null
+        }
         <div className="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
           <CardUserInvoices invoices={invoices} />
         </div>
