@@ -1,8 +1,7 @@
 import TestimonialIcon from '@assets/icon/Testimonial'
-import { BackwardIcon, ForwardIcon } from '@heroicons/react/24/outline'
+import { LeftControl, RightControl } from '@components/Button/Arrows'
 import { Carousel } from 'flowbite-react'
 import Image from 'next/image'
-
 import React from 'react'
 
 const testimonials = [
@@ -26,19 +25,7 @@ const testimonials = [
   }
 ]
 
-const LeftControl: React.FC = () => (
-  <div className='-ml-7 opacity-70 p-1.5 md:p-3 flex justify-center items-center bg-indigo-100 rounded-full' >
-    <BackwardIcon className='w-7 h-7 text-indigo-600' />
-  </div>
-)
-
-const RightControl: React.FC = () => (
-  <div className='-mr-7 opacity-70 p-1.5 md:p-3 flex justify-center items-center bg-indigo-100 rounded-full' >
-    <ForwardIcon className='w-7 h-7 text-indigo-600' />
-  </div>
-)
-
-const CardTestimonial: React.FC = () => {
+const CarouselTestimonial: React.FC = () => {
   return (
     <Carousel
       leftControl={<LeftControl />}
@@ -89,4 +76,4 @@ const CardTestimonial: React.FC = () => {
   )
 }
 
-export default CardTestimonial
+export default CarouselTestimonial

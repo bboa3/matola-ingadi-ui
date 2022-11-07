@@ -7,7 +7,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React, { useState } from 'react'
 
-const CardTestimonial = dynamic(() => import('@components/Cards/CardTestimonial'), {
+const CardTestimonial = dynamic(() => import('@components/Carousel/CardTestimonial'), {
   ssr: false
 })
 
