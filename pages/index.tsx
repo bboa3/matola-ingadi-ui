@@ -1,3 +1,4 @@
+import CarouselGallery from '@components/Carousel/CarouselGallery'
 import Layout from '@components/Layout'
 import { events } from '@utils/events'
 import { Event } from 'ingadi'
@@ -7,7 +8,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React, { useState } from 'react'
 
-const CardTestimonial = dynamic(() => import('@components/Carousel/CardTestimonial'), {
+const CardTestimonial = dynamic(() => import('@components/Carousel/CarouselTestimonial'), {
   ssr: false
 })
 
@@ -75,7 +76,11 @@ const Home: React.FC = () => {
           <h1 className="text-xl text-center font-bold tracking-tight text-gray-900 sm:text-xl">{event.name}</h1>
 
           {/* Image gallery */}
-          <div className="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">
+          <div className='w-full h-[calc(100vh-10rem)] lg:hidden px-4 pt-3'>
+            <CarouselGallery images={event.images} />
+          </div>
+
+          <div className="hidden md:block mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">
             <div className="aspect-w-3 aspect-h-4 hidden overflow-hidden rounded-lg lg:block">
               <Image
                 src={event.images[0].url}
@@ -92,7 +97,7 @@ const Home: React.FC = () => {
                 alt={event.images[1].alt}
                 width={300}
                 height={300}
-                  className="h-full w-full object-cover object-center"
+                className="h-full w-full object-cover object-center"
                 />
               </div>
               <div className="aspect-w-3 aspect-h-2 overflow-hidden rounded-lg">
