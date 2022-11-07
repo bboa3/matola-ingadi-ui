@@ -9,19 +9,19 @@ const testimonials = [
     avatar: '',
     eventType: 'Aniversario',
     name: 'Arlindo Boa',
-    message: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, necessitatibus, nobis sed et voluptatibus magnam cumque minus, consequatur suscipit vitae aliquid perspiciatis! Asperiores hic nemo nesciunt excepturi aut dolores. Beatae. nobis sed et voluptatibus magnam cumque minus, consequatur suscipit vitae aliquid perspiciatis!'
+    message: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita quae quidem aliquam impedit ea sequi sed fugiat pariatur ad, praesentium sapiente esse minima voluptatum. Vitae suscipit voluptate consequuntur cumque iusto.'
   },
   {
     avatar: 'https://lh3.googleusercontent.com/a/ALm5wu1k2SJzowXufe---7FcQzb7QxmN3R-cJ9KnxV4wfA=s96-c',
     eventType: 'Aniversario',
     name: 'Arlindo Boa',
-    message: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, necessitatibus, nobis sed et voluptatibus magnam cumque minus, consequatur suscipit vitae aliquid perspiciatis! Asperiores hic nemo nesciunt excepturi aut dolores. Beatae. nobis sed et voluptatibus magnam cumque minus, consequatur suscipit vitae aliquid perspiciatis!'
+    message: 'L  elit. Tenetur, necessitatibus, nobis sed et vol ipsum dolor sit amet  adipisicing elit. Tenetur, necessitatibus, nobis sed et voluptatibus magnam cumque minus, consequatur suscipit vitae aliquid perspiciatis! Asperiores hic nemo nesciunt excepturi aut dolores. Beatae. nobis sed et voluptatibus magnam cumque minus, consequatur suscipit vitae aliquid perspiciatis!'
   },
   {
     avatar: 'https://lh3.googleusercontent.com/a/ALm5wu3tzqoEk6RrBHkTnbExr9BcXHXfMMn1oj70mQrK=s96-c',
     eventType: 'Aniversario',
     name: 'Arlindo Boa',
-    message: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, necessitatibus, nobis sed et voluptatibus magnam cumque minus, consequatur suscipit vitae aliquid perspiciatis! Asperiores hic nemo nesciunt excepturi aut dolores. Beatae. nobis sed et voluptatibus magnam cumque minus, consequatur suscipit vitae aliquid perspiciatis!'
+    message: 'Tenetur, necessitatibus, nobis sed et vol. Tenetur, necessitatibus, nobis sed et vol. Minima at ullam vitae nam beatae nihil! Temporibus, quis reprehenderit, ipsa rem sequi repellendus officia voluptatibus maiores aut animi optio quo perferendis.'
   }
 ]
 
