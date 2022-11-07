@@ -1,7 +1,7 @@
 import Input from '@components/Form/Imput'
 import Radio from '@components/Form/Radio'
 import SelectMenu from '@components/Form/Select'
-import Layout from '@components/Layout'
+import Layout from '@components/Layout/User'
 import { DataContext } from '@context/data'
 import { CheckIcon } from '@heroicons/react/24/outline'
 import { httpFetch } from '@lib/fetch'
@@ -26,7 +26,6 @@ interface Props {
 
 const ReservationInfo: React.FC<Props> = ({ reservedDates }) => {
   const session = useSession()
-
   const { data, setData } = useContext(DataContext)
   const router = useRouter()
   const { pricingId } = router.query
@@ -75,29 +74,30 @@ const ReservationInfo: React.FC<Props> = ({ reservedDates }) => {
       title=''
       keywords=''
       description=''
-      avatar={user?.image ? user?.image : undefined}
+      avatar={user?.image ? user.image : undefined}
     >
-      <div className='flex justify-center py-24' >
+      <div className="flex flex-wrap justify-center mt-4">
+        <div className='w-full h-full max-w-2xl relative'>
           <form onSubmit={handleSubmit} className="w-full h-full max-w-2xl space-y-5">
-            <div className='w-full h-full space-y-3'>
-              <label
-                htmlFor='event-date'
-                className="block text-2xl font-medium text-gray-700 "
-              >
-                Selecione a data do evento no calendário abaixo.
-              </label>
-              {
-                formattedDate
-                  ? (
-                  <span className='flex text-sm text-gray-700'>
-                    <CheckIcon className="h-5 w-5 mr-3 text-green-600" aria-hidden="true" />
-                    <span>{formattedDate}</span>
-                  </span>
-                    )
-                  : null
-              }
-
-              <span className='h-2 text-sm text-red-500'>{dateError}</span>
+            <div className='w-full h-full bg-gray-50 space-y-3 rounded-lg'>
+              <p className='p-5 pb-0'>
+                {
+                  formattedDate
+                    ? (
+                    <span className='flex justify-center items-center text-lg font-medium text-gray-700'>
+                      <CheckIcon className="h-5 w-5 mr-3 text-green-600" aria-hidden="true" />
+                      <span>{formattedDate}</span>
+                    </span>
+                      )
+                    : null
+                }
+                <label
+                  htmlFor='event-date'
+                  className="block text-xs text-center pt-2 text-gray-700 "
+                >
+                  Selecione a data do evento no calendário abaixo.
+                </label>
+              </p>
               <CalendarComponent
                 value={selectedDate}
                 onChange={(e: Date) => {
@@ -106,6 +106,7 @@ const ReservationInfo: React.FC<Props> = ({ reservedDates }) => {
                 }}
                 reservedDates={reservedDates}
               />
+              <span className='h-2 p-1 text-sm text-red-500'>{dateError}</span>
             </div>
 
             <SelectMenu
@@ -143,6 +144,7 @@ const ReservationInfo: React.FC<Props> = ({ reservedDates }) => {
               </button>
             </div>
           </form>
+        </div>
       </div>
     </Layout>
   )

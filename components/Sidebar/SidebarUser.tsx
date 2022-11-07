@@ -101,12 +101,9 @@ export default function Sidebar () {
                 </Link>
               </li>
               <li className="w-full items-center">
-                <Link href="/user/create-event">
+                <Link href="/prices">
                     <span
-                      className={`
-                        ${router.pathname === '/user/create-event' ? 'text-indigo-900' : 'text-gray-700 hover:text-gray-500'}
-                        flex items-center text-xs uppercase py-3 font-bold
-                      `}
+                      className= 'text-gray-700 hover:text-gray-500 flex items-center text-xs uppercase py-3 font-bold'
                     >
                       Criar evento
                     </span>
