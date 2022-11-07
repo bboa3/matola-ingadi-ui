@@ -1,3 +1,4 @@
+import CardTestimonial from '@components/Cards/CardTestimonial'
 import Layout from '@components/Layout'
 import { events } from '@utils/events'
 import { Event } from 'ingadi'
@@ -19,7 +20,7 @@ const Home: React.FC = () => {
       description=''
       avatar={user?.image ? user?.image : undefined}
     >
-      <div className="bg-white mt-[3rem]">
+      <div className="w-full bg-white mt-[3rem]">
         <div className="pt-6">
           <nav aria-label="Breadcrumb">
             <ol role="list" className="mx-auto flex max-w-2xl items-center space-x-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
@@ -178,6 +179,9 @@ const Home: React.FC = () => {
               </div>
             </div>
           </div>
+        </div>
+        <div className='w-full px-4 pt-10 pb-16 sm:px-6'>
+          <CardTestimonial />
         </div>
       </div>
     </Layout>
