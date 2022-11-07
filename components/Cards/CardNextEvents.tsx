@@ -6,9 +6,9 @@ interface Props {
   invoices: CustomInvoice[]
 }
 
-const CardNextEvents: React.FC<Props> = ({ invoices }) => {
-  const today = dayjs(new Date())
+const today = dayjs(new Date())
 
+const CardNextEvents: React.FC<Props> = ({ invoices }) => {
   const getNextEvents = useCallback(() => {
     const newInvoices: CustomInvoice[] = []
 
@@ -89,11 +89,13 @@ const CardNextEvents: React.FC<Props> = ({ invoices }) => {
                   )
                 : (
                   <tbody>
-                    <th></th>
-                    <td className="border-t-0 px-5 align-middle border-l-0 border-r-0 text-xs text-gray-600 whitespace-nowrap p-4">
-                      Sem evento
-                    </td>
-                    <td></td>
+                    <tr>
+                      <th></th>
+                      <td className="border-t-0 px-5 align-middle border-l-0 border-r-0 text-xs text-gray-600 whitespace-nowrap p-4">
+                        Sem evento
+                      </td>
+                      <td></td>
+                    </tr>
                   </tbody>
                   )
             }
