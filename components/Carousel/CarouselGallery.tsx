@@ -18,6 +18,7 @@ const CarouselGallery: React.FC<Props> = ({ images }) => {
       {
         images.map(({ url, alt }) => (
           <Image
+            key={url}
             className="h-full w-full object-cover object-center"
             src={url}
             alt={alt}
