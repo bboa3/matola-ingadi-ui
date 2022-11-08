@@ -1,4 +1,4 @@
-import Alert from '@components/Alert/Sucess'
+import Alert from '@components/Alert/Success'
 import CardNextEvents from '@components/Cards/CardNextEvents'
 import Layout from '@components/Layout/User'
 import Loading from '@components/Loading'

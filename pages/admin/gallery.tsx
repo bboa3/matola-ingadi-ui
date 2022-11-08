@@ -1,3 +1,4 @@
+import SuccessAlert from '@components/Alert/Success'
 import Layout from '@components/Layout/User'
 import { httpFetch } from '@lib/fetch'
 import { events } from '@utils/events'
@@ -14,6 +15,7 @@ interface Props {
 
 const GalleryAdmin: React.FC<Props> = ({ user, token }) => {
   const [event, setEvent] = useState<Event>(events[0])
+  const [showSuccessAlert, setShowSuccessAlert] = useState(false)
   const { images } = event
   const [image0, setImage0] = useState<File>()
   const [image0Preview, setImage0Preview] = useState<string>(images[0].url)
@@ -28,6 +30,8 @@ const GalleryAdmin: React.FC<Props> = ({ user, token }) => {
   const [image3Preview, setImage3Preview] = useState<string>(images[2].url)
 
   useEffect(() => {
+    setShowSuccessAlert(false)
+
     if (image0) {
       const reader = new FileReader()
       reader.onloadend = () => {
@@ -40,6 +44,8 @@ const GalleryAdmin: React.FC<Props> = ({ user, token }) => {
   }, [image0])
 
   useEffect(() => {
+    setShowSuccessAlert(false)
+
     if (image1) {
       const reader = new FileReader()
       reader.onloadend = () => {
@@ -52,6 +58,8 @@ const GalleryAdmin: React.FC<Props> = ({ user, token }) => {
   }, [image1])
 
   useEffect(() => {
+    setShowSuccessAlert(false)
+
     if (image2) {
       const reader = new FileReader()
       reader.onloadend = () => {
@@ -64,6 +72,8 @@ const GalleryAdmin: React.FC<Props> = ({ user, token }) => {
   }, [image2])
 
   useEffect(() => {
+    setShowSuccessAlert(false)
+
     if (image3) {
       const reader = new FileReader()
       reader.onloadend = () => {
@@ -100,8 +110,8 @@ const GalleryAdmin: React.FC<Props> = ({ user, token }) => {
     httpFetch.post('/design/gallery', formData, {
       headers: { Authorization: `beaer ${token}` }
     })
-      .then(({ data }) => {
-        console.log(data)
+      .then(() => {
+        setShowSuccessAlert(true)
       })
       .catch(err => console.log(err))
   }
@@ -114,6 +124,13 @@ const GalleryAdmin: React.FC<Props> = ({ user, token }) => {
       avatar={user.image ? user.image : undefined}
     >
       <div className="flex flex-wrap justify-center mt-4">
+        { showSuccessAlert
+          ? (<SuccessAlert> <span className="inline-block align-middle mr-8">
+              <b className="capitalize">{user.name} </b>
+              você atualizou a galeria coom sucesso
+            </span></SuccessAlert>)
+          : null
+        }
         <div className='w-full h-full max-w-2xl relative bg-white px-5 rounded-lg'>
           <nav aria-label="Breadcrumb" className='mt-5'>
             <ol role="list" className="mx-auto flex max-w-2xl items-center space-x-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8">

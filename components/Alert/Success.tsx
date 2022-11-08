@@ -4,7 +4,7 @@ interface Props {
   children: ReactNode
 }
 
-const Alert: React.FC<Props> = ({ children }) => {
+const SuccessAlert: React.FC<Props> = ({ children }) => {
   const [showAlert, setShowAlert] = React.useState(true)
 
   setInterval(() => {
@@ -34,4 +34,4 @@ const Alert: React.FC<Props> = ({ children }) => {
   )
 }
 
-export default Alert
+export default SuccessAlert
