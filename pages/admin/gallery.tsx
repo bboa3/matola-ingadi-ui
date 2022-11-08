@@ -41,7 +41,7 @@ const GalleryAdmin: React.FC<Props> = ({ user, token, galleries }) => {
     } else {
       setImage0Preview(images[0].url)
     }
-  }, [image0])
+  }, [image0, gallery])
 
   useEffect(() => {
     setShowSuccessAlert(false)
@@ -55,7 +55,7 @@ const GalleryAdmin: React.FC<Props> = ({ user, token, galleries }) => {
     } else {
       setImage1Preview(images[1].url)
     }
-  }, [image1])
+  }, [image1, gallery])
 
   useEffect(() => {
     setShowSuccessAlert(false)
@@ -69,7 +69,7 @@ const GalleryAdmin: React.FC<Props> = ({ user, token, galleries }) => {
     } else {
       setImage2Preview(images[2].url)
     }
-  }, [image2])
+  }, [image2, gallery])
 
   useEffect(() => {
     setShowSuccessAlert(false)
@@ -83,7 +83,7 @@ const GalleryAdmin: React.FC<Props> = ({ user, token, galleries }) => {
     } else {
       setImage3Preview(images[3].url)
     }
-  }, [image3])
+  }, [image3, gallery])
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
@@ -132,7 +132,7 @@ const GalleryAdmin: React.FC<Props> = ({ user, token, galleries }) => {
           : null
         }
         <div className='w-full h-full max-w-2xl relative bg-white px-5 rounded-lg'>
-          <nav aria-label="Breadcrumb" className='mt-5'>
+          <nav aria-label="Breadcrumb">
             <ol role="list" className="mx-auto flex max-w-2xl items-center space-x-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
               {galleries.map((gallery, index) => {
                 const lastEventIndex = galleries.length - 1
