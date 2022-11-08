@@ -1,8 +1,7 @@
 import SuccessAlert from '@components/Alert/Success'
 import Layout from '@components/Layout/Admin'
 import { httpFetch } from '@lib/fetch'
-import { events } from '@utils/events'
-import { Event, User } from 'ingadi'
+import { Gallery, User } from 'ingadi'
 import { GetServerSideProps } from 'next'
 import { getSession } from 'next-auth/react'
 import Image from 'next/image'
@@ -10,13 +9,14 @@ import React, { FormEvent, useEffect, useState } from 'react'
 
 interface Props {
   user: User
-  token: string
+  token: string,
+  galleries: Gallery[]
 }
 
-const GalleryAdmin: React.FC<Props> = ({ user, token }) => {
-  const [event, setEvent] = useState<Event>(events[0])
+const GalleryAdmin: React.FC<Props> = ({ user, token, galleries }) => {
+  const [gallery, setGallery] = useState<Gallery>(galleries[0])
   const [showSuccessAlert, setShowSuccessAlert] = useState(false)
-  const { images } = event
+  const { images } = gallery
   const [image0, setImage0] = useState<File>()
   const [image0Preview, setImage0Preview] = useState<string>(images[0].url)
 
@@ -105,9 +105,9 @@ const GalleryAdmin: React.FC<Props> = ({ user, token }) => {
       formData.append('image3', image3)
     }
 
-    formData.append('eventTypeId', event.id)
+    formData.append('galleryId', gallery.id)
 
-    httpFetch.post('/design/gallery', formData, {
+    httpFetch.post('/design/gallery/images', formData, {
       headers: { Authorization: `beaer ${token}` }
     })
       .then(() => {
@@ -134,18 +134,18 @@ const GalleryAdmin: React.FC<Props> = ({ user, token }) => {
         <div className='w-full h-full max-w-2xl relative bg-white px-5 rounded-lg'>
           <nav aria-label="Breadcrumb" className='mt-5'>
             <ol role="list" className="mx-auto flex max-w-2xl items-center space-x-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-              {events.map((event, index) => {
-                const lastEventIndex = events.length - 1
+              {galleries.map((gallery, index) => {
+                const lastEventIndex = galleries.length - 1
 
                 if (index !== lastEventIndex) {
                   return (
-                    <li key={event.id}>
+                    <li key={gallery.id}>
                       <div className="flex items-center">
                         <button
-                          onClick={() => setEvent(event)}
+                          onClick={() => setGallery(gallery)}
                           className={`mr-2 text-sm font-medium ${index === 0 ? 'text-gray-900' : 'text-gray-500 hover:text-gray-700'}`}
                         >
-                          {event.name}
+                          {gallery.name}
                         </button>
                         <svg
                           width={16}
@@ -164,12 +164,12 @@ const GalleryAdmin: React.FC<Props> = ({ user, token }) => {
                 }
 
                 return (
-                  <li key={event.id} className="text-sm">
+                  <li key={gallery.id} className="text-sm">
                     <button
-                      onClick={() => setEvent(event)}
+                      onClick={() => setGallery(gallery)}
                       className="font-medium text-gray-500 hover:text-gray-700"
                     >
-                      {event.name}
+                      {gallery.name}
                     </button>
                   </li>
                 )
@@ -178,14 +178,14 @@ const GalleryAdmin: React.FC<Props> = ({ user, token }) => {
             </ol>
           </nav>
 
-          <h1 className="text-xl text-center font-bold tracking-tight text-gray-900 sm:text-xl">{event.name}</h1>
+          <h1 className="text-xl text-center font-bold tracking-tight text-gray-900 sm:text-xl">{gallery.name}</h1>
 
           <form onSubmit={handleSubmit} className="hidden md:block mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">
             <div className="aspect-w-3 aspect-h-4 hidden overflow-hidden rounded-lg lg:block">
               <label htmlFor="dropzone-1mage0" className="flex flex-col justify-center items-center w-full h-64 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer hover:bg-gray-100">
                 <Image
                   src={image0Preview}
-                  alt={event.images[0].alt}
+                  alt={gallery.images[0].alt}
                   width={300}
                   height={300}
                   className="h-full w-full object-cover object-center"
@@ -210,7 +210,7 @@ const GalleryAdmin: React.FC<Props> = ({ user, token }) => {
                 <label htmlFor="dropzone-1mage1" className="flex flex-col justify-center items-center bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer hover:bg-gray-100">
                   <Image
                     src={image1Preview}
-                    alt={event.images[1].alt}
+                    alt={gallery.images[1].alt}
                     width={300}
                     height={300}
                     className="h-full w-full object-cover object-center"
@@ -233,7 +233,7 @@ const GalleryAdmin: React.FC<Props> = ({ user, token }) => {
                 <label htmlFor="dropzone-1mage2" className="flex flex-col justify-center items-center bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer hover:bg-gray-100">
                   <Image
                     src={image2Preview}
-                    alt={event.images[2].alt}
+                    alt={gallery.images[2].alt}
                     width={300}
                     height={300}
                     className="h-full w-full object-cover object-center"
@@ -258,7 +258,7 @@ const GalleryAdmin: React.FC<Props> = ({ user, token }) => {
               <label htmlFor="dropzone-1mage3" className="flex flex-col justify-center items-center w-full h-64 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer hover:bg-gray-100">
                 <Image
                   src={image3Preview}
-                  alt={event.images[3].alt}
+                  alt={gallery.images[3].alt}
                   width={300}
                   height={300}
                   className="h-full w-full object-cover object-center"
@@ -306,14 +306,26 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     }
   }
 
-  const { data } = await httpFetch.get('/user', {
+  const { data: user } = await httpFetch.get('/user', {
     headers: { Authorization: `beaer ${token}` }
   })
 
+  if (!user.admin) {
+    return {
+      redirect: {
+        destination: '/login',
+        permanent: false
+      }
+    }
+  }
+
+  const { data: galleries } = await httpFetch.get('/design/gallery')
+
   return {
     props: {
-      user: data,
-      token
+      user,
+      token,
+      galleries
     }
   }
 }

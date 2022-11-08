@@ -1,8 +1,7 @@
-import Gallery from '@components/Gallery'
+import GalleryComponent from '@components/Gallery'
 import Layout from '@components/Layout'
 import { httpFetch } from '@lib/fetch'
-import { events } from '@utils/events'
-import { Event, Pricing } from 'ingadi'
+import { Gallery, Pricing } from 'ingadi'
 import { GetStaticProps } from 'next'
 import { useSession } from 'next-auth/react'
 import dynamic from 'next/dynamic'
@@ -15,11 +14,12 @@ const CardTestimonial = dynamic(() => import('@components/Carousel/CarouselTesti
 
 interface Props {
   pricing: Pricing[]
+  galleries: Gallery[]
 }
 
-const Home: React.FC<Props> = ({ pricing }) => {
+const Home: React.FC<Props> = ({ pricing, galleries }) => {
   const session = useSession()
-  const [event, setEvent] = useState<Event>(events[0])
+  const [gallery, setGallery] = useState<Gallery>(galleries[0])
 
   const user = session.data?.user
 
@@ -36,18 +36,18 @@ const Home: React.FC<Props> = ({ pricing }) => {
         <div className="pt-6">
           <nav aria-label="Breadcrumb">
             <ol role="list" className="mx-auto flex max-w-2xl items-center space-x-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-              {events.map((event, index) => {
-                const lastEventIndex = events.length - 1
+              {galleries.map((gallery, index) => {
+                const lastEventIndex = galleries.length - 1
 
                 if (index !== lastEventIndex) {
                   return (
-                    <li key={event.id}>
+                    <li key={gallery.id}>
                       <div className="flex items-center">
                         <button
-                          onClick={() => setEvent(event)}
+                          onClick={() => setGallery(gallery)}
                           className={`mr-2 text-sm font-medium ${index === 0 ? 'text-gray-900' : 'text-gray-500 hover:text-gray-700'}`}
                         >
-                          {event.name}
+                          {gallery.name}
                         </button>
                         <svg
                           width={16}
@@ -66,12 +66,12 @@ const Home: React.FC<Props> = ({ pricing }) => {
                 }
 
                 return (
-                  <li key={event.id} className="text-sm">
+                  <li key={gallery.id} className="text-sm">
                     <button
-                      onClick={() => setEvent(event)}
+                      onClick={() => setGallery(gallery)}
                       className="font-medium text-gray-500 hover:text-gray-700"
                     >
-                      {event.name}
+                      {gallery.name}
                     </button>
                   </li>
                 )
@@ -80,10 +80,10 @@ const Home: React.FC<Props> = ({ pricing }) => {
             </ol>
           </nav>
 
-          <h1 className="text-xl text-center font-bold tracking-tight text-gray-900 sm:text-xl">{event.name}</h1>
+          <h1 className="text-xl text-center font-bold tracking-tight text-gray-900 sm:text-xl">{gallery.name}</h1>
 
           {/* Image gallery */}
-          <Gallery images={event.images} />
+          <GalleryComponent images={gallery.images} />
 
           {/* event info */}
           <div className="mx-auto max-w-2xl px-4 pt-10 pb-16 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pt-16 lg:pb-24">
@@ -102,7 +102,7 @@ const Home: React.FC<Props> = ({ pricing }) => {
 
                 <div className="mt-4">
                   <ul role="list" className="list-disc space-y-2 pl-4 text-sm">
-                    {event.highlights.map((highlight) => (
+                    {gallery.highlights.map((highlight) => (
                       <li key={highlight} className="text-gray-400">
                         <span className="text-gray-600">{highlight}</span>
                       </li>
@@ -125,7 +125,7 @@ const Home: React.FC<Props> = ({ pricing }) => {
                 <h3 className="sr-only">Description</h3>
 
                 <div className="space-y-6">
-                  <p className="text-base text-gray-900">{event.description}</p>
+                  <p className="text-base text-gray-900">{gallery.description}</p>
                 </div>
               </div>
 
@@ -134,7 +134,7 @@ const Home: React.FC<Props> = ({ pricing }) => {
 
                 <div className="mt-4">
                   <ul role="list" className="list-disc space-y-2 pl-4 text-sm">
-                    {event.highlights.map((highlight) => (
+                    {gallery.highlights.map((highlight) => (
                       <li key={highlight} className="text-gray-400">
                         <span className="text-gray-600">{highlight}</span>
                       </li>
@@ -147,7 +147,7 @@ const Home: React.FC<Props> = ({ pricing }) => {
                 <h2 className="text-sm font-medium text-gray-900">Details</h2>
 
                 <div className="mt-4 space-y-6">
-                  <p className="text-sm text-gray-600">{event.details}</p>
+                  <p className="text-sm text-gray-600">{gallery.details}</p>
                 </div>
               </div>
             </div>
@@ -162,13 +162,16 @@ const Home: React.FC<Props> = ({ pricing }) => {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const { data } = await httpFetch.get('/services')
+  const { data: pricing } = await httpFetch.get('/services')
+
+  const { data: galleries } = await httpFetch.get('/design/gallery')
 
   return {
     props: {
-      pricing: data
+      pricing,
+      galleries
     },
-    revalidate: 25 * 60 * 60
+    revalidate: 3 * 60
   }
 }
 

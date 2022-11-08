@@ -18,7 +18,12 @@ const nextConfig = {
         protocol: 'https',
         hostname: '**.googleusercontent.com',
         pathname: '/**',
-      }
+      },
+      {
+        protocol: 'https',
+        hostname: '**.s3.amazonaws.com',
+        pathname: '/**',
+      },
     ],
   }
 }

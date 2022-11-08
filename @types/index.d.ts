@@ -18,7 +18,7 @@ declare module 'ingadi' {
     services: Services[]
   }
 
-  export interface Event {
+  export interface Gallery {
     id: string
     name: string
     images: Photo[]
