@@ -1,7 +1,6 @@
 import Layout from '@components/Layout/User'
 import { httpFetch } from '@lib/fetch'
 import { events } from '@utils/events'
-import axios from 'axios'
 import { Event, User } from 'ingadi'
 import { GetServerSideProps } from 'next'
 import { getSession } from 'next-auth/react'
@@ -98,7 +97,7 @@ const GalleryAdmin: React.FC<Props> = ({ user, token }) => {
 
     formData.append('eventTypeId', event.id)
 
-    axios.post('/api/gallery', formData, {
+    httpFetch.post('/design/gallery', formData, {
       headers: { Authorization: `beaer ${token}` }
     })
       .then(({ data }) => {
