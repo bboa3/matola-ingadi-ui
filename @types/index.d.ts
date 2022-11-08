@@ -21,8 +21,6 @@ declare module 'ingadi' {
   export interface Event {
     id: string
     name: string
-    price: string
-    pricingModel: string
     images: Photo[]
     description: string
     highlights: string[]

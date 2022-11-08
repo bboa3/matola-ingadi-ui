@@ -1,7 +1,9 @@
 import Gallery from '@components/Gallery'
 import Layout from '@components/Layout'
+import { httpFetch } from '@lib/fetch'
 import { events } from '@utils/events'
-import { Event } from 'ingadi'
+import { Event, Pricing } from 'ingadi'
+import { GetStaticProps } from 'next'
 import { useSession } from 'next-auth/react'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
@@ -11,11 +13,17 @@ const CardTestimonial = dynamic(() => import('@components/Carousel/CarouselTesti
   ssr: false
 })
 
-const Home: React.FC = () => {
+interface Props {
+  pricing: Pricing[]
+}
+
+const Home: React.FC<Props> = ({ pricing }) => {
   const session = useSession()
   const [event, setEvent] = useState<Event>(events[0])
 
   const user = session.data?.user
+
+  const standardPricing = pricing[0]
 
   return (
     <Layout
@@ -85,8 +93,8 @@ const Home: React.FC = () => {
             <div className="mt-4 lg:row-span-3 lg:mt-0">
               <h2 className="sr-only">event information</h2>
               <div className='flex items-end justify-center'>
-                <p className="text-3xl font-bold tracking-tight text-gray-900">{event.price}</p>
-                <p className="text-base font-bold text-gray-500"> /{event.pricingModel}</p>
+                <p className="text-3xl font-bold tracking-tight text-gray-900">{standardPricing.price}</p>
+                <p className="text-base font-bold text-gray-500"> /{standardPricing.pricingModel}</p>
               </div>
 
               <div className="mt-10">
@@ -151,6 +159,17 @@ const Home: React.FC = () => {
       </div>
     </Layout>
   )
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+  const { data } = await httpFetch.get('/services')
+
+  return {
+    props: {
+      pricing: data
+    },
+    revalidate: 25 * 60 * 60
+  }
 }
 
 export default Home

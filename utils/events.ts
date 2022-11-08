@@ -4,8 +4,6 @@ export const events: Event[] = [
   {
     id: 'wedding',
     name: 'Casamentos',
-    price: '650,00MT',
-    pricingModel: 'Convidado',
     images: [
       {
         url: 'https://tailwindui.com/img/ecommerce-images/product-page-02-secondary-product-shot.jpg',
@@ -38,8 +36,6 @@ export const events: Event[] = [
   {
     id: 'birthdays',
     name: 'Aniversários',
-    price: '650,00MT',
-    pricingModel: 'Convidado',
     images: [
       {
         url: 'https://tailwindui.com/img/ecommerce-images/product-page-02-secondary-product-shot.jpg',
@@ -72,8 +68,6 @@ export const events: Event[] = [
   {
     id: 'corporate-events',
     name: 'Eventos Corporativos',
-    price: '650,00MT',
-    pricingModel: 'Convidado',
     images: [
       {
         url: 'https://tailwindui.com/img/ecommerce-images/product-page-02-secondary-product-shot.jpg',
@@ -104,11 +98,3 @@ export const events: Event[] = [
     'The 6-Pack includes two black, two white, and two heather gray Basic Tees. Sign up for our subscription service and be the first to get new, exciting colors, like our upcoming "Charcoal Gray" limited release.'
   }
 ]
-
-export const findEventById = (eventId: string) => {
-  for (const event of events) {
-    const { id } = event
-
-    if (id === eventId) return event
-  }
-}

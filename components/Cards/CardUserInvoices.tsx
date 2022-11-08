@@ -88,7 +88,7 @@ const CardUserInvoices: React.FC<Props> = ({ invoices }) => {
                         {
                               status === 'COMPLETED'
                                 ? (
-                                <span className='py-0.5 px-1 text-white font-medium bg-green-600 rounded-lg'>
+                                <span className='py-1 px-1.5 text-white font-medium bg-green-600 rounded-lg'>
                                   Pago
                                 </span>
                                   )
@@ -97,7 +97,7 @@ const CardUserInvoices: React.FC<Props> = ({ invoices }) => {
                             {
                               status === 'PENDING'
                                 ? (
-                                <span className='py-0.5 px-1 text-gray-900 font-medium bg-yellow-500 rounded-lg'>
+                                <span className='py-1 px-1.5 text-gray-900 font-medium bg-yellow-500 rounded-lg'>
                                   Pendente
                                 </span>
                                   )
@@ -106,7 +106,7 @@ const CardUserInvoices: React.FC<Props> = ({ invoices }) => {
                             {
                               status === 'FAILED'
                                 ? (
-                                <span className='py-0.5 px-1 text-white font-medium bg-red-600 rounded-lg'>
+                                <span className='py-1 px-1.5 text-white font-medium bg-red-600 rounded-lg'>
                                   Fracassada
                                 </span>
                                   )
