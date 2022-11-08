@@ -1,5 +1,5 @@
 import SuccessAlert from '@components/Alert/Success'
-import Layout from '@components/Layout/User'
+import Layout from '@components/Layout/Admin'
 import { httpFetch } from '@lib/fetch'
 import { events } from '@utils/events'
 import { Event, User } from 'ingadi'
