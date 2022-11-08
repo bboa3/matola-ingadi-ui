@@ -1,4 +1,4 @@
-import coupleImg from '@assets/img/couple-in-marriage.jpg'
+import coupleImg from '@assets/img/couple-in-marriage.webp'
 import Image from 'next/image'
 
 export default function HeaderStats () {
@@ -13,6 +13,7 @@ export default function HeaderStats () {
             className='w-full mix-blend-overlay h-auto absolute'
             src={coupleImg}
             alt='Casamento'
+            priority
           />
         </div>
       </div>
