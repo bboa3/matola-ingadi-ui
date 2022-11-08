@@ -1,13 +1,12 @@
 import Layout from '@components/Layout/User'
 import { httpFetch } from '@lib/fetch'
-import validator from '@lib/validator/user'
 import { events } from '@utils/events'
-import { useFormik } from 'formik'
+import axios from 'axios'
 import { Event, User } from 'ingadi'
 import { GetServerSideProps } from 'next'
 import { getSession } from 'next-auth/react'
 import Image from 'next/image'
-import React, { useEffect, useState } from 'react'
+import React, { FormEvent, useEffect, useState } from 'react'
 
 interface Props {
   user: User
@@ -77,20 +76,36 @@ const GalleryAdmin: React.FC<Props> = ({ user, token }) => {
     }
   }, [image3])
 
-  const { handleSubmit } = useFormik({
-    initialValues: {},
-    validationSchema: validator,
-    onSubmit: (values) => {
-      httpFetch.put('/user', {},
-        {
-          headers: {
-            Authorization: `beaer ${token}`
-          }
-        }).then(async (_response) => {
-      })
-        .catch(err => console.log(err))
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault()
+
+    const formData = new FormData()
+
+    if (image0) {
+      formData.append('image0', image0)
     }
-  })
+    if (image1) {
+      formData.append('image1', image1)
+    }
+
+    if (image2) {
+      formData.append('image2', image2)
+    }
+
+    if (image3) {
+      formData.append('image3', image3)
+    }
+
+    formData.append('eventTypeId', event.id)
+
+    axios.post('/api/gallery', formData, {
+      headers: { Authorization: `beaer ${token}` }
+    })
+      .then(({ data }) => {
+        console.log(data)
+      })
+      .catch(err => console.log(err))
+  }
 
   return (
     <Layout
