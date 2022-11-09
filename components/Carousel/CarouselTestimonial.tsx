@@ -36,7 +36,7 @@ const CarouselTestimonial: React.FC<Props> = ({ testimonials }) => {
                   <p className='text-indigo-600'>Evento, {eventType}</p>
                 </div>
                 <div>
-                  <button className="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                  <div className="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                     <span className="sr-only">Abrir Perfil</span>
                     <Image
                       className="h-12 w-12 rounded-full"
@@ -45,7 +45,7 @@ const CarouselTestimonial: React.FC<Props> = ({ testimonials }) => {
                       width={32}
                       height={32}
                     />
-                  </button>
+                  </div>
                 </div>
                 <div className='hidden md:block text-start'>
                   <p>{name}</p>

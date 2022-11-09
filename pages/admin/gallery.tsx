@@ -127,7 +127,7 @@ const GalleryAdmin: React.FC<Props> = ({ user, token, galleries }) => {
         { showSuccessAlert
           ? (<SuccessAlert> <span className="inline-block align-middle mr-8">
               <b className="capitalize">{user.name} </b>
-              você atualizou a galeria coom sucesso
+              você atualizou a galeria com sucesso
             </span></SuccessAlert>)
           : null
         }
