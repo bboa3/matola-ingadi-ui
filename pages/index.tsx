@@ -1,6 +1,7 @@
 import GalleryComponent from '@components/Gallery'
 import Layout from '@components/Layout'
 import { httpFetch } from '@lib/fetch'
+import { Testimonial } from 'design'
 import { Gallery, Pricing } from 'ingadi'
 import { GetStaticProps } from 'next'
 import { useSession } from 'next-auth/react'
@@ -15,9 +16,10 @@ const CardTestimonial = dynamic(() => import('@components/Carousel/CarouselTesti
 interface Props {
   pricing: Pricing[]
   galleries: Gallery[]
+  testimonials: Testimonial[]
 }
 
-const Home: React.FC<Props> = ({ pricing, galleries }) => {
+const Home: React.FC<Props> = ({ pricing, galleries, testimonials }) => {
   const session = useSession()
   const [gallery, setGallery] = useState<Gallery>(galleries[0])
 
@@ -154,7 +156,7 @@ const Home: React.FC<Props> = ({ pricing, galleries }) => {
           </div>
         </div>
         <div className='w-full px-4 pt-10 pb-16 sm:px-6'>
-          <CardTestimonial />
+          <CardTestimonial testimonials={testimonials} />
         </div>
       </div>
     </Layout>
@@ -165,11 +167,13 @@ export const getStaticProps: GetStaticProps = async () => {
   const { data: pricing } = await httpFetch.get('/services')
 
   const { data: galleries } = await httpFetch.get('/design/gallery')
+  const { data: testimonials } = await httpFetch.get('/design/testimonial')
 
   return {
     props: {
       pricing,
-      galleries
+      galleries,
+      testimonials
     },
     revalidate: 3 * 60
   }
