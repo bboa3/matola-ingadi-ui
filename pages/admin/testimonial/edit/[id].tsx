@@ -59,11 +59,12 @@ const TestimonialPage: React.FC<Props> = ({ user, token, testimonial }) => {
         formData.append('image', image)
       }
 
+      formData.append('testimonialId', testimonial.id)
       formData.append('name', values.name)
       formData.append('eventType', eventType.name)
       formData.append('description', values.description)
 
-      httpFetch.post('/design/testimonial', formData, {
+      httpFetch.put('/design/testimonial', formData, {
         headers: { Authorization: `beaer ${token}` }
       })
         .then(() => {

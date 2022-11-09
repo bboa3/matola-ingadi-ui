@@ -35,11 +35,12 @@ const TestimonialPage: React.FC<Props> = ({ user, token }) => {
         setImagePreview(reader.result as string)
       }
       reader.readAsDataURL(image)
+
       setShowImageError(false)
     } else {
       setImagePreview(userImg)
     }
-  }, [image, userImg])
+  }, [image])
 
   const { errors, values, handleChange, handleSubmit } = useFormik({
     initialValues: {
