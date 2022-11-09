@@ -2,7 +2,7 @@ import SuccessAlert from '@components/Alert/Success'
 import Input from '@components/Form/Imput'
 import SelectMenu from '@components/Form/Select'
 import Textarea from '@components/Form/Textarea'
-import Layout from '@components/Layout/User'
+import Layout from '@components/Layout/Admin'
 import { httpFetch } from '@lib/fetch'
 import { eventTypes } from '@lib/validator/event-reservation'
 import validator from '@lib/validator/testimonial'
@@ -23,6 +23,7 @@ interface Props {
 const TestimonialPage: React.FC<Props> = ({ user, token, testimonial }) => {
   const [image, setImage] = useState<File>()
   const [eventType, setEventType] = useState(eventTypes[0])
+  const [showImageError, setShowImageError] = useState(false)
 
   const [showSuccessAlert, setShowSuccessAlert] = useState(false)
   const [imagePreview, setImagePreview] = useState<string>(testimonial.image)
@@ -36,6 +37,7 @@ const TestimonialPage: React.FC<Props> = ({ user, token, testimonial }) => {
         setImagePreview(reader.result as string)
       }
       reader.readAsDataURL(image)
+      setShowImageError(false)
     } else {
       setImagePreview(testimonial.image)
     }
@@ -45,6 +47,9 @@ const TestimonialPage: React.FC<Props> = ({ user, token, testimonial }) => {
     initialValues: {
       name: testimonial.name,
       description: testimonial.description
+    },
+    validate: (_values) => {
+      if (!image) { return setShowImageError(true) }
     },
     validationSchema: validator,
     onSubmit: (values) => {
@@ -107,6 +112,13 @@ const TestimonialPage: React.FC<Props> = ({ user, token, testimonial }) => {
                   className="hidden"
                 />
               </label>
+              {
+              showImageError
+                ? (
+                <span className='h-5 block text-sm text-red-500'>Adicione a photo do cliente</span>
+                  )
+                : null
+              }
             </div>
 
             <Input
