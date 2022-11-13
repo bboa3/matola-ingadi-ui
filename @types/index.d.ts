@@ -38,7 +38,6 @@ declare module 'ingadi' {
     eventDate: string
     guestsNumber: number,
     eventType: string,
-    paymentMethodId: string,
     eventPricingId: string
   }
 

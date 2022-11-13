@@ -1,6 +1,7 @@
 import Input from '@components/Form/Imput'
 import SelectMenu from '@components/Form/Select'
 import Layout from '@components/Layout/User'
+import Loading from '@components/Loading'
 import { DataContext } from '@context/data'
 import { httpFetch } from '@lib/fetch'
 import validator from '@lib/validator/user'
@@ -23,6 +24,7 @@ const UserBills: React.FC<Props> = ({ user, token }) => {
   const { data } = useContext(DataContext)
   const router = useRouter()
   const eventReservation = data?.eventReservation
+  const [loading, setLoading] = useState(false)
 
   const [country, setCountry] = useState(countries[150])
 
@@ -55,13 +57,13 @@ const UserBills: React.FC<Props> = ({ user, token }) => {
         }
       }).then(async (_response) => {
         if (eventReservation) {
+          setLoading(true)
           await httpFetch.post('/bill', {
             guestsNumber: eventReservation?.guestsNumber,
             discount: 0,
             eventPricingId: eventReservation?.eventPricingId,
             eventType: eventReservation?.eventType,
-            eventDate: eventReservation?.eventDate,
-            paymentMethodId: eventReservation?.paymentMethodId
+            eventDate: eventReservation?.eventDate
           },
           {
             headers: {
@@ -88,92 +90,96 @@ const UserBills: React.FC<Props> = ({ user, token }) => {
     >
       <div className="flex flex-wrap justify-center mt-4">
         <div className='w-full h-full max-w-2xl relative bg-white px-5 rounded-lg'>
-          <form onSubmit={handleSubmit} className="w-full h-full space-y-5">
-            <Input
-              label='Seu Nome'
-              id='name'
-              type='text'
-              value={values.name}
-              onChange={handleChange}
-              error={errors.name}
-            />
-
-            <Input
-              label='Seu Contacto'
-              id='phoneNumber'
-              type='tel'
-              value={values.phoneNumber}
-              onChange={handleChange}
-              error={errors.phoneNumber}
-            />
-
-            <fieldset>
-              <legend>Seu endereço</legend>
-
+          {loading
+            ? <Loading />
+            : (
+            <form onSubmit={handleSubmit} className="w-full h-full space-y-5">
               <Input
-                label='Endereço da Rua'
-                id='streetAddress'
+                label='Seu Nome'
+                id='name'
                 type='text'
-                value={values.streetAddress}
+                value={values.name}
                 onChange={handleChange}
-                error={errors.streetAddress}
+                error={errors.name}
               />
 
               <Input
-                label='Endereço 1'
-                id='address1'
-                type='text'
-                value={values.address1}
+                label='Seu Contacto'
+                id='phoneNumber'
+                type='tel'
+                value={values.phoneNumber}
                 onChange={handleChange}
-                error={errors.address1}
+                error={errors.phoneNumber}
               />
 
-              <Input
-                label='Cidade/Distrito'
-                id='cityOrDistrict'
-                type='text'
-                value={values.cityOrDistrict}
-                onChange={handleChange}
-                error={errors.cityOrDistrict}
-              />
+              <fieldset>
+                <legend>Seu endereço</legend>
 
-              <div className=' md:grid grid-cols-3 gap-2 justify-between items-center'>
                 <Input
-                  label='Província/Estado'
-                  id='provinceOrState'
+                  label='Endereço da Rua'
+                  id='streetAddress'
                   type='text'
-                  value={values.provinceOrState}
+                  value={values.streetAddress}
                   onChange={handleChange}
-                  error={errors.provinceOrState}
+                  error={errors.streetAddress}
                 />
 
                 <Input
-                  label='Zip/Código Postal'
-                  id='postalCode'
+                  label='Endereço 1'
+                  id='address1'
                   type='text'
-                  value={values.postalCode}
+                  value={values.address1}
                   onChange={handleChange}
-                  error={errors.postalCode}
+                  error={errors.address1}
                 />
 
-                <SelectMenu
-                  label='País'
-                  selected={country}
-                  setSelected={setCountry}
-                  items={countries}
+                <Input
+                  label='Cidade/Distrito'
+                  id='cityOrDistrict'
+                  type='text'
+                  value={values.cityOrDistrict}
+                  onChange={handleChange}
+                  error={errors.cityOrDistrict}
                 />
+
+                <div className=' md:grid grid-cols-3 gap-2 justify-between items-center'>
+                  <Input
+                    label='Província/Estado'
+                    id='provinceOrState'
+                    type='text'
+                    value={values.provinceOrState}
+                    onChange={handleChange}
+                    error={errors.provinceOrState}
+                  />
+
+                  <Input
+                    label='Zip/Código Postal'
+                    id='postalCode'
+                    type='text'
+                    value={values.postalCode}
+                    onChange={handleChange}
+                    error={errors.postalCode}
+                  />
+
+                  <SelectMenu
+                    label='País'
+                    selected={country}
+                    setSelected={setCountry}
+                    items={countries}
+                  />
+                </div>
+              </fieldset>
+
+              <div className='pt-5'>
+                <button
+                  type='submit'
+                  className='w-full h-12 flex justify-center items-center font-medium rounded-lg text-white bg-gray-900 hover:bg-gray-800'
+                  >
+                  Confirmar
+                </button>
               </div>
-            </fieldset>
-
-            <div className='pt-5'>
-              <button
-                type='submit'
-                className='w-full h-12 flex justify-center items-center font-medium rounded-lg text-white bg-gray-900 hover:bg-gray-800'
-                >
-                Confirmar
-              </button>
-            </div>
-          </form>
+            </form>
+              )}
         </div>
       </div>
     </Layout>

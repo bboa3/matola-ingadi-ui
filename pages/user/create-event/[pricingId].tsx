@@ -1,11 +1,10 @@
 import Input from '@components/Form/Imput'
-import Radio from '@components/Form/Radio'
 import SelectMenu from '@components/Form/Select'
 import Layout from '@components/Layout/User'
 import { DataContext } from '@context/data'
 import { CheckIcon } from '@heroicons/react/24/outline'
 import { httpFetch } from '@lib/fetch'
-import validator, { eventTypes, paymentMethods } from '@lib/validator/event-reservation'
+import validator, { eventTypes } from '@lib/validator/event-reservation'
 import { dateFormatter } from '@utils/day'
 import dayjs from 'dayjs'
 import { useFormik } from 'formik'
@@ -35,8 +34,7 @@ const ReservationInfo: React.FC<Props> = ({ reservedDates }) => {
 
   const { errors, handleChange, handleSubmit } = useFormik({
     initialValues: {
-      guestsNumber: 0,
-      paymentMethodId: ''
+      guestsNumber: 0
     },
     validate: (_values) => {
       if (!selectedDate) { return setDateError('Selecione a data do evento') }
@@ -51,7 +49,6 @@ const ReservationInfo: React.FC<Props> = ({ reservedDates }) => {
           eventDate,
           guestsNumber: values.guestsNumber,
           eventType: eventType.id,
-          paymentMethodId: values.paymentMethodId,
           eventPricingId: pricingId as string
         }
       })
@@ -124,15 +121,6 @@ const ReservationInfo: React.FC<Props> = ({ reservedDates }) => {
               placeholder='Digite o número'
               onChange={handleChange}
               error={errors.guestsNumber}
-            />
-
-            <Radio
-              label='Forma de Pagamento para sua reserva'
-              name='paymentMethodId'
-              id='paymentMethodId'
-              items={paymentMethods}
-              onChange={handleChange}
-              error={errors.paymentMethodId}
             />
 
             <div className='pt-5'>

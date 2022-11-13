@@ -1,19 +1,13 @@
+import { Skeleton } from '@mui/material'
 import React from 'react'
 
 const Loading: React.FC = () => (
-  <div className="w-full h-[80vh] flex justify-center items-center">
-  <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="30px" viewBox="0 0 24 30" xmlSpace="preserve">
-    <rect x="0" y="0" width="4" height="20" className='fill-sky-900'>
-      <animate attributeName="opacity" attributeType="XML" values="1; .2; 1" begin="0s" dur="0.6s" repeatCount="indefinite" />
-    </rect>
-    <rect x="7" y="0" width="4" height="20" className='fill-sky-900'>
-      <animate attributeName="opacity" attributeType="XML" values="1; .2; 1" begin="0.2s" dur="0.6s" repeatCount="indefinite" />
-    </rect>
-    <rect x="14" y="0" width="4" height="20" className='fill-sky-900'>
-      <animate attributeName="opacity" attributeType="XML" values="1; .2; 1" begin="0.4s" dur="0.6s" repeatCount="indefinite" />
-    </rect>
-  </svg>
-</div>
+  <div className='w-full flex items-end flex-col'>
+    <Skeleton variant="rounded" width='70%' height={25} />
+    <Skeleton className='my-2' animation="wave" variant="rounded" width='100%' height={100} />
+    <Skeleton className='my-2' variant="rounded" width='100%' height={130} />
+    <Skeleton variant="rounded" width='100%' height={60} />
+  </div>
 )
 
 export default Loading
