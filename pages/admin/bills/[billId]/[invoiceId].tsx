@@ -1,16 +1,18 @@
-import SelectMenu from '@components/Form/Select'
+import SelectMenu, { ItemSelect } from '@components/Form/Select'
+import Textarea from '@components/Form/Textarea'
 import Layout from '@components/Layout/User'
 import { httpFetch } from '@lib/fetch'
-import { paymentMethods as selectMethods } from '@lib/validator/event-reservation'
+import validator from '@lib/validator/admin-payment-confirm'
 import { dateFormatter } from '@utils/day'
 import { moneyFormatter } from '@utils/money-formatter'
 import { paymentMethodCalculator } from '@utils/payment-method-calculator'
 import { Bill, Invoice, PaymentMethod } from 'bill'
+import { useFormik } from 'formik'
 import { GetServerSideProps } from 'next'
 import { getSession } from 'next-auth/react'
+import Image from 'next/image'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 
 interface Props {
   token: string
@@ -18,10 +20,13 @@ interface Props {
   billId: string
   invoice: Invoice
   paymentMethods: PaymentMethod[]
+  selectMethods: ItemSelect[]
 }
 
-const UserInvoice: React.FC<Props> = ({ invoiceUrl, token, billId, invoice, paymentMethods }) => {
-  const router = useRouter()
+const UserInvoice: React.FC<Props> = ({ invoiceUrl, token, billId, invoice, paymentMethods, selectMethods }) => {
+  const [image, setImage] = useState<File>()
+  const [showImageError, setShowImageError] = useState(false)
+  const [imagePreview, setImagePreview] = useState<string>('')
   const [selectMethod, setSelectMethod] = useState(selectMethods[0])
 
   const { invoiceId, service: { eventType, eventDate, guestsNumber }, total: subTotal, dueAt } = invoice
@@ -39,20 +44,46 @@ const UserInvoice: React.FC<Props> = ({ invoiceUrl, token, billId, invoice, paym
   const dueDate = dateFormatter(new Date(dueAt.split('+')[0]))
   const partyAt = dateFormatter(new Date(eventDate))
 
-  const onSubmit = () => {
-    httpFetch.put('/confirm-payment', {
-      billId,
-      invoiceId: invoiceId.code,
-      paymentMethodId: selectMethod.id
-    }, {
-      headers: {
-        Authorization: `beaer ${token}`
+  useEffect(() => {
+    if (image) {
+      const reader = new FileReader()
+      reader.onloadend = () => {
+        setImagePreview(reader.result as string)
       }
-    }).then(_response => {
-      router.push(`/user/bills/${billId}/${invoiceId.code}?status=COMPLETED`)
-    })
-      .catch(err => console.log(err))
-  }
+      reader.readAsDataURL(image)
+
+      setShowImageError(false)
+    }
+  }, [image])
+
+  const { errors, values, handleChange, handleSubmit } = useFormik({
+    initialValues: {
+      description: ''
+    },
+    validate: (_values) => {
+      if (!image) { return setShowImageError(true) }
+    },
+    validationSchema: validator,
+    onSubmit: (values) => {
+      const formData = new FormData()
+
+      if (image) {
+        formData.append('image', image)
+      }
+
+      formData.append('billId', billId)
+      formData.append('invoiceId', invoiceId.code)
+      formData.append('description', values.description)
+      formData.append('paymentMethodId', selectMethod.id)
+
+      httpFetch.post('/confirm-payment/admin', formData, {
+        headers: { Authorization: `beaer ${token}` }
+      })
+        .then(() => {
+        })
+        .catch(err => console.log(err))
+    }
+  })
 
   return (
     <Layout
@@ -61,11 +92,11 @@ const UserInvoice: React.FC<Props> = ({ invoiceUrl, token, billId, invoice, paym
       description=''
     >
       <div className="flex flex-wrap justify-center mt-4">
-        <div className='w-full h-full max-w-5xl relative bg-white px-5 py-6 rounded-lg divide-y'>
+        <form onSubmit={handleSubmit} className='w-full h-full max-w-5xl relative bg-white px-5 py-6 rounded-lg divide-y'>
           <div className='space-y-7 lg:space-y-0 lg:grid grid-cols-2 gap-4'>
             <div className=''>
-              <h1 className='text-xl md:text-2xl text-red-700 font-medium'>Você tem um pagamento pendente</h1>
-              <p className='text-sm mt-1 lg:mt-0 text-gray-500'>Por favar, selecione a forma de pagamento para pagar</p>
+              <h1 className='text-xl md:text-2xl text-red-700 font-medium'>Está fatura ainda não foi paga</h1>
+              <p className='text-sm mt-1 lg:mt-0 text-gray-500'>Por favar, selecione a forma de pagamento para confirmar o pagamento</p>
             </div>
             <div className='w-full lg:flex justify-end'>
               <div className='max-w-[22rem] w-full'>
@@ -121,10 +152,52 @@ const UserInvoice: React.FC<Props> = ({ invoiceUrl, token, billId, invoice, paym
                 </div>
               </div>
             </div>
+          </div>
 
+          <div className='lg:grid grid-cols-2 gap-4 py-3'>
+            <Textarea
+              label='Descrição do pagamento'
+              id='description'
+              value={values.description}
+              onChange={handleChange}
+              error={errors.description}
+            />
+
+            <div className="w-full flex flex-col justify-center items-center">
+              <label htmlFor="dropzone-image" className="h-24 w-32 flex flex-col justify-center items-center bg-gray-50 border-2 border-gray-300 border-dashed cursor-pointer hover:bg-gray-100">
+                <Image
+                  src={imagePreview}
+                  alt=''
+                  width={300}
+                  height={300}
+                  className="h-full w-full object-cover object-center"
+                />
+                <input
+                  onChange={e => {
+                    const file = e.target.files
+                    if (file && file[0].type.substring(0, 5) === 'image') {
+                      setImage(file[0])
+                    }
+                  }}
+                  accept='image/*'
+                  id="dropzone-image"
+                  type="file"
+                  className="hidden"
+                />
+              </label>
+              {showImageError
+                ? (
+                <span className='h-5 block text-sm text-red-500'>Adicione photo para confirmar o pagamento</span>
+                  )
+                : null
+              }
+            </div>
+          </div>
+
+          <div className='lg:grid grid-cols-2 gap-4 py-3'>
             <div className='lg:grid grid-cols-2 gap-4 py-3 lg:pl-3 space-y-3 lg:space-y-0 mt-3 lg:mt-0'>
               <button
-                onClick={() => onSubmit()}
+                type='submit'
                 className='w-full h-12 flex justify-center items-center font-medium rounded-lg text-white bg-indigo-600 hover:bg-indigo-500'
               >
                 Confirmar Pagamento
@@ -138,7 +211,7 @@ const UserInvoice: React.FC<Props> = ({ invoiceUrl, token, billId, invoice, paym
               </Link>
             </div>
           </div>
-        </div>
+        </form>
       </div>
     </Layout>
   )
@@ -189,7 +262,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     headers: { Authorization: `beaer ${token}` }
   })
 
-  const { data: paymentMethods } = await httpFetch.get('/payment-method', {
+  const { data: paymentMethods }: {data: PaymentMethod[] } = await httpFetch.get('/payment-method', {
     headers: { Authorization: `beaer ${token}` }
   })
 
@@ -201,6 +274,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       }
     }
   }
+
+  const selectMethods = paymentMethods.map(({ id, name }) => ({ id, name }))
 
   const invoice = bill.invoices.find(invoice => invoice.invoiceId.code === invoiceId)
 
@@ -219,7 +294,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       invoiceUrl,
       billId,
       invoice,
-      paymentMethods
+      paymentMethods,
+      selectMethods
     }
   }
 }
