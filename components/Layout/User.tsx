@@ -8,15 +8,16 @@ import React, { ReactNode } from 'react'
 interface Props {
   description: string
   keywords: string
+  robots?: string
   title: string
   avatar?: string
   children: ReactNode
 }
 
-const User: React.FC<Props> = ({ description, keywords, title, children, avatar }) => {
+const User: React.FC<Props> = ({ description, keywords, title, children, avatar, robots }) => {
   return (
     <>
-      <SEO description={description} keywords={keywords} title={title} />
+      <SEO description={description} keywords={keywords} title={title} robots={robots} />
       <Sidebar />
       <div className="relative md:ml-64 bg-blueGray-100">
         <UserNavbar avatar={avatar} />

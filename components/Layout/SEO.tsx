@@ -5,11 +5,18 @@ interface Props {
   description: string
   keywords: string
   title: string
+  robots?: string
 }
 
-const SEO: React.FC<Props> = ({ description, keywords, title }) => (
+const SEO: React.FC<Props> = ({ description, keywords, title, robots }) => (
   <Head>
+    { robots
+      ? (
+    <meta name="robots" content={robots} />
+        )
+      : (
     <meta name="robots" content="index" />
+        )}
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />

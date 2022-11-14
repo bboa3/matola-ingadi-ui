@@ -1,3 +1,4 @@
+import coupleImg from '@assets/img/couple-in-marriage.webp'
 import Layout from '@components/Layout'
 import { CheckIcon } from '@heroicons/react/24/outline'
 import { httpFetch } from '@lib/fetch'
@@ -5,6 +6,7 @@ import { moneyFormatter } from '@utils/money-formatter'
 import { Pricing } from 'ingadi'
 import { GetStaticProps } from 'next'
 import { useSession } from 'next-auth/react'
+import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
@@ -25,8 +27,17 @@ const PricingPage: React.FC<Props> = ({ pricing }) => {
     >
       <div className="w-full min-h-screen py-12 px-4 sm:px-6 lg:px-8 bg-white">
         <div className='w-full bg-gray-50 '>
-          <div className='w-full flex justify-center bg-gray-900 px-3 py-6 sm:px-4 lg:px-6 rounded-t-md text-white'>
-            <div className='w-full max-w-5xl h-4/5 relative'>
+          <div className='w-full relative flex justify-center bg-gradient-to-tr from-indigo-600 to-gray-900 px-3 sm:px-4 lg:px-6 rounded-t-md text-white'>
+            <Image
+              width={500}
+              height={500}
+              className='w-full mix-blend-overlay h-auto absolute'
+              src={coupleImg}
+              alt='Casamento'
+              priority
+            />
+
+            <div className='w-full max-w-5xl h-4/5 mt-6 relative'>
               <div className='absolute w-full'>
                 <div className='text-center py-12 flex flex-col justify-center items-center'>
                   <p className='text-gray-300'>Preços</p>
@@ -80,9 +91,7 @@ const PricingPage: React.FC<Props> = ({ pricing }) => {
               </div>
             </div>
           </div>
-          <div className='w-full h-1/5 mb-36 bg-gray-50'>
-
-          </div>
+          <div className='w-full h-1/5 mb-36 bg-gray-50'></div>
         </div>
       </div>
     </Layout>

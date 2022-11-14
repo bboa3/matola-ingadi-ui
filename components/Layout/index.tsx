@@ -7,14 +7,15 @@ interface Props {
   description: string
   keywords: string
   title: string
+  robots?: string
   children: ReactNode
   avatar?: string
 }
 
-const Layout: React.FC<Props> = ({ description, keywords, title, avatar, children }) => {
+const Layout: React.FC<Props> = ({ description, keywords, title, avatar, children, robots }) => {
   return (
     <>
-      <SEO description={description} keywords={keywords} title={title} />
+      <SEO description={description} keywords={keywords} title={title} robots={robots} />
 
       <Nav avatar={avatar} />
       <main className='w-full min-h-screen h-full overflow-hidden'>
