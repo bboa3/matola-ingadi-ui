@@ -131,7 +131,6 @@ const UserInvoice: React.FC<Props> = ({ invoiceUrl, token, billId, invoice, paym
               </button>
               <Link
                 href={invoiceUrl}
-                attributes-list
                 download
                 className='w-full h-12 flex justify-center items-center font-medium rounded-lg border-2 text-indigo-600 border-indigo-600 hover:bg-indigo-100'
               >
