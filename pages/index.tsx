@@ -175,7 +175,7 @@ export const getStaticProps: GetStaticProps = async () => {
       galleries,
       testimonials
     },
-    revalidate: 3 * 60
+    revalidate: 1 * 60
   }
 }
 

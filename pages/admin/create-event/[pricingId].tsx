@@ -51,7 +51,6 @@ const ReservationInfo: React.FC<Props> = ({ reservedDates }) => {
           eventDate,
           guestsNumber: values.guestsNumber,
           eventType: eventType.id,
-          paymentMethodId: values.paymentMethodId,
           eventPricingId: pricingId as string
         }
       })

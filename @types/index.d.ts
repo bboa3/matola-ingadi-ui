@@ -1,4 +1,9 @@
 declare module 'ingadi' {
+  export interface GalleryMenu {
+    id: string
+    name: string
+  }
+
   export interface Photo {
     alt: string
     url: string

@@ -5,6 +5,7 @@ import React from 'react'
 
 import logoImg from '@assets/img/logo.png'
 import { Bars3Icon, CreditCardIcon, MapIcon, PhoneIcon, XMarkIcon } from '@heroicons/react/24/solid'
+import { galleryMenu } from '@utils/gallery/menu'
 import NotificationDropdown from 'components/Dropdowns/NotificationDropdown'
 import UserDropdown from 'components/Dropdowns/UserDropdown'
 import { signOut } from 'next-auth/react'
@@ -158,10 +159,10 @@ export default function Sidebar () {
 
             <ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
               <li className="items-center">
-                <Link href="/admin/gallery">
+                <Link href={`/admin/gallery/${galleryMenu[0].id}`}>
                     <span
                       className={`
-                      ${router.pathname === '/admin/gallery' ? 'text-indigo-900' : 'text-gray-700 hover:text-gray-500'}
+                      ${router.pathname === `/admin/gallery/${galleryMenu[0].id}` ? 'text-indigo-900' : 'text-gray-700 hover:text-gray-500'}
                       flex items-center text-xs uppercase py-3 font-bold
                       `}
                     >

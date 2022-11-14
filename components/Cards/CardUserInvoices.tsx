@@ -68,7 +68,7 @@ const CardUserInvoices: React.FC<Props> = ({ invoices }) => {
 
                   return (
                     <tr
-                      onClick={() => router.push(`/user/bills/${billId}/${invoiceId.code}`)}
+                      onClick={() => router.push(`/user/bills/${billId}/${invoiceId.code}?status=${status}`)}
                       key={invoiceId.code}
                       className='cursor-pointer'
                     >

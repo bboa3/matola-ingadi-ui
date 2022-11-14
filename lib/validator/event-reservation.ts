@@ -14,8 +14,22 @@ export const eventTypes: ItemSelect[] = [
 ]
 
 export const paymentMethods: ItemSelect[] = [
-  { id: 'mpesa', name: 'M-Pesa' },
-  { id: '24', name: 'Conta Móvel' }
+  {
+    id: 'SIMO/BCI/Mobile24',
+    name: 'Conta Móvel'
+  },
+  {
+    id: 'MBIM/IZI',
+    name: 'IZI'
+  },
+  {
+    id: 'MPESA',
+    name: 'M-Pesa'
+  },
+  {
+    id: 'E-MOLA',
+    name: 'M-Mola'
+  }
 ]
 
 // const paymentMethodIds = paymentMethods.map(({ id }) => id) as string[]

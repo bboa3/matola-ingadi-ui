@@ -37,11 +37,10 @@ declare module 'bill' {
     eventPricingId: string
   }
 
-  export type PaymentMethodId = 'mpesa' | '24' | 'cash' | 'check'
-
   export interface PaymentMethod {
-    id: PaymentMethodId
+    id: string
     name: string
+    onlyAdmin: boolean
     commission: {
       model: 'PERCENTAGE' | 'VALUE'
       value: number
@@ -91,7 +90,6 @@ declare module 'bill' {
     subTotal: number
     discount: number
     total: number
-    defaultPaymentMethodId: PaymentMethodId
     invoices: Invoice[]
     status: BillStatus
     createdAt: string

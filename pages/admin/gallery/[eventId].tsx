@@ -1,6 +1,7 @@
 import SuccessAlert from '@components/Alert/Success'
 import Layout from '@components/Layout/Admin'
 import { httpFetch } from '@lib/fetch'
+import { galleryMenu } from '@utils/gallery/menu'
 import { Gallery, User } from 'ingadi'
 import { GetServerSideProps } from 'next'
 import { getSession } from 'next-auth/react'
@@ -9,12 +10,12 @@ import React, { FormEvent, useEffect, useState } from 'react'
 
 interface Props {
   user: User
-  token: string,
-  galleries: Gallery[]
+  token: string
+  gallery: Gallery
+  eventId: string
 }
 
-const GalleryAdmin: React.FC<Props> = ({ user, token, galleries }) => {
-  const [gallery, setGallery] = useState<Gallery>(galleries[0])
+const GalleryAdmin: React.FC<Props> = ({ user, token, gallery, eventId }) => {
   const [showSuccessAlert, setShowSuccessAlert] = useState(false)
   const { images } = gallery
   const [image0, setImage0] = useState<File>()
@@ -27,7 +28,7 @@ const GalleryAdmin: React.FC<Props> = ({ user, token, galleries }) => {
   const [image2Preview, setImage2Preview] = useState<string>(images[2].url)
 
   const [image3, setImage3] = useState<File>()
-  const [image3Preview, setImage3Preview] = useState<string>(images[2].url)
+  const [image3Preview, setImage3Preview] = useState<string>(images[3].url)
 
   useEffect(() => {
     setShowSuccessAlert(false)
@@ -38,13 +39,7 @@ const GalleryAdmin: React.FC<Props> = ({ user, token, galleries }) => {
         setImage0Preview(reader.result as string)
       }
       reader.readAsDataURL(image0)
-    } else {
-      setImage0Preview(images[0].url)
     }
-  }, [image0, gallery])
-
-  useEffect(() => {
-    setShowSuccessAlert(false)
 
     if (image1) {
       const reader = new FileReader()
@@ -52,13 +47,7 @@ const GalleryAdmin: React.FC<Props> = ({ user, token, galleries }) => {
         setImage1Preview(reader.result as string)
       }
       reader.readAsDataURL(image1)
-    } else {
-      setImage1Preview(images[1].url)
     }
-  }, [image1, gallery])
-
-  useEffect(() => {
-    setShowSuccessAlert(false)
 
     if (image2) {
       const reader = new FileReader()
@@ -66,13 +55,7 @@ const GalleryAdmin: React.FC<Props> = ({ user, token, galleries }) => {
         setImage2Preview(reader.result as string)
       }
       reader.readAsDataURL(image2)
-    } else {
-      setImage2Preview(images[2].url)
     }
-  }, [image2, gallery])
-
-  useEffect(() => {
-    setShowSuccessAlert(false)
 
     if (image3) {
       const reader = new FileReader()
@@ -80,10 +63,8 @@ const GalleryAdmin: React.FC<Props> = ({ user, token, galleries }) => {
         setImage3Preview(reader.result as string)
       }
       reader.readAsDataURL(image3)
-    } else {
-      setImage3Preview(images[3].url)
     }
-  }, [image3, gallery])
+  }, [image0, image1, image2, image3])
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
@@ -93,6 +74,7 @@ const GalleryAdmin: React.FC<Props> = ({ user, token, galleries }) => {
     if (image0) {
       formData.append('image0', image0)
     }
+
     if (image1) {
       formData.append('image1', image1)
     }
@@ -134,19 +116,22 @@ const GalleryAdmin: React.FC<Props> = ({ user, token, galleries }) => {
         <div className='w-full h-full max-w-2xl relative bg-white px-5 rounded-lg'>
           <nav aria-label="Breadcrumb">
             <ol role="list" className="mx-auto flex max-w-2xl items-center space-x-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-              {galleries.map((gallery, index) => {
-                const lastEventIndex = galleries.length - 1
+              {galleryMenu.map((menu, index) => {
+                const lastEventIndex = galleryMenu.length - 1
 
                 if (index !== lastEventIndex) {
                   return (
-                    <li key={gallery.id}>
+                    <li key={menu.id}>
                       <div className="flex items-center">
-                        <button
-                          onClick={() => setGallery(gallery)}
-                          className={`mr-2 text-sm font-medium ${index === 0 ? 'text-gray-900' : 'text-gray-500 hover:text-gray-700'}`}
+                        <a
+                          href={`/admin/gallery/${menu.id}`}
+                          className={`
+                          ${eventId === menu.id ? 'text-gray-900' : 'text-gray-500 hover:text-gray-700'}
+                            mr-2 text-sm font-medium
+                          `}
                         >
-                          {gallery.name}
-                        </button>
+                          {menu.name}
+                        </a>
                         <svg
                           width={16}
                           height={20}
@@ -154,7 +139,7 @@ const GalleryAdmin: React.FC<Props> = ({ user, token, galleries }) => {
                           fill="currentColor"
                           xmlns="http://www.w3.org/2000/svg"
                           aria-hidden="true"
-                          className="h-5 w-4 text-gray-300"
+                          className="h-5 w-4 text-gray-500"
                         >
                           <path d="M5.697 4.34L8.98 16.532h1.327L7.025 4.341H5.697z" />
                         </svg>
@@ -164,13 +149,13 @@ const GalleryAdmin: React.FC<Props> = ({ user, token, galleries }) => {
                 }
 
                 return (
-                  <li key={gallery.id} className="text-sm">
-                    <button
-                      onClick={() => setGallery(gallery)}
-                      className="font-medium text-gray-500 hover:text-gray-700"
+                  <li key={menu.id} className="text-sm">
+                    <a
+                      href={`/admin/gallery/${menu.id}`}
+                      className={`mr-2 text-sm font-medium ${eventId === menu.id ? 'text-gray-900' : 'text-gray-500 hover:text-gray-700'}`}
                     >
-                      {gallery.name}
-                    </button>
+                      {menu.name}
+                    </a>
                   </li>
                 )
               }
@@ -182,19 +167,22 @@ const GalleryAdmin: React.FC<Props> = ({ user, token, galleries }) => {
 
           <form onSubmit={handleSubmit} className="hidden md:block mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">
             <div className="aspect-w-3 aspect-h-4 hidden overflow-hidden rounded-lg lg:block">
-              <label htmlFor="dropzone-1mage0" className="flex flex-col justify-center items-center w-full h-64 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer hover:bg-gray-100">
+              <label htmlFor="dropzone-1mage0" className="flex flex-col justify-center items-center w-full h-64 bg-gray-50 rounded-lg border-2 border-gray-500 border-dashed cursor-pointer hover:bg-gray-100">
                 <Image
                   src={image0Preview}
                   alt={gallery.images[0].alt}
-                  width={300}
-                  height={300}
+                  width={500}
+                  height={500}
                   className="h-full w-full object-cover object-center"
+                  priority
                 />
                 <input
                   onChange={e => {
-                    const file = e.target.files
-                    if (file && file[0].type.substring(0, 5) === 'image') {
-                      setImage0(file[0])
+                    const files = e.target.files
+                    const file = files && files[0]
+
+                    if (file && file.type.substring(0, 5) === 'image') {
+                      setImage0(file)
                     }
                   }}
                   accept='image/*'
@@ -207,19 +195,22 @@ const GalleryAdmin: React.FC<Props> = ({ user, token, galleries }) => {
 
             <div className="hidden lg:grid lg:grid-cols-1 lg:gap-y-8">
               <div className="aspect-w-3 aspect-h-2 overflow-hidden rounded-lg">
-                <label htmlFor="dropzone-1mage1" className="flex flex-col justify-center items-center bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer hover:bg-gray-100">
+                <label htmlFor="dropzone-1mage1" className="flex flex-col justify-center items-center bg-gray-50 rounded-lg border-2 border-gray-500 border-dashed cursor-pointer hover:bg-gray-100">
                   <Image
                     src={image1Preview}
                     alt={gallery.images[1].alt}
-                    width={300}
-                    height={300}
+                    width={500}
+                    height={500}
                     className="h-full w-full object-cover object-center"
+                    priority
                   />
                   <input
                     onChange={e => {
-                      const file = e.target.files
-                      if (file && file[0].type.substring(0, 5) === 'image') {
-                        setImage1(file[0])
+                      const files = e.target.files
+                      const file = files && files[0]
+
+                      if (file && file.type.substring(0, 5) === 'image') {
+                        setImage1(file)
                       }
                     }}
                     accept='image/*'
@@ -230,19 +221,22 @@ const GalleryAdmin: React.FC<Props> = ({ user, token, galleries }) => {
                 </label>
               </div>
               <div className="aspect-w-3 aspect-h-2 overflow-hidden rounded-lg">
-                <label htmlFor="dropzone-1mage2" className="flex flex-col justify-center items-center bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer hover:bg-gray-100">
+                <label htmlFor="dropzone-1mage2" className="flex flex-col justify-center items-center bg-gray-50 rounded-lg border-2 border-gray-500 border-dashed cursor-pointer hover:bg-gray-100">
                   <Image
                     src={image2Preview}
                     alt={gallery.images[2].alt}
-                    width={300}
-                    height={300}
+                    width={500}
+                    height={500}
                     className="h-full w-full object-cover object-center"
+                    priority
                   />
                   <input
                     onChange={e => {
-                      const file = e.target.files
-                      if (file && file[0].type.substring(0, 5) === 'image') {
-                        setImage2(file[0])
+                      const files = e.target.files
+                      const file = files && files[0]
+
+                      if (file && file.type.substring(0, 5) === 'image') {
+                        setImage2(file)
                       }
                     }}
                     accept='image/*'
@@ -255,19 +249,22 @@ const GalleryAdmin: React.FC<Props> = ({ user, token, galleries }) => {
             </div>
 
             <div className="aspect-w-4 relative aspect-h-5 sm:overflow-hidden sm:rounded-lg lg:aspect-w-3 lg:aspect-h-4">
-              <label htmlFor="dropzone-1mage3" className="flex flex-col justify-center items-center w-full h-64 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer hover:bg-gray-100">
+              <label htmlFor="dropzone-1mage3" className="flex flex-col justify-center items-center w-full h-64 bg-gray-50 rounded-lg border-2 border-gray-500 border-dashed cursor-pointer hover:bg-gray-100">
                 <Image
                   src={image3Preview}
                   alt={gallery.images[3].alt}
-                  width={300}
-                  height={300}
+                  width={500}
+                  height={500}
                   className="h-full w-full object-cover object-center"
+                  priority
                 />
                 <input
                   onChange={e => {
-                    const file = e.target.files
-                    if (file && file[0].type.substring(0, 5) === 'image') {
-                      setImage3(file[0])
+                    const files = e.target.files
+                    const file = files && files[0]
+
+                    if (file && file.type.substring(0, 5) === 'image') {
+                      setImage3(file)
                     }
                   }}
                   accept='image/*'
@@ -297,7 +294,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const token = context.req.cookies['next-auth.session-token']
   const session = await getSession(context)
 
-  if (!session || !token) {
+  const { eventId } = context.query
+
+  if (!session || !token || !eventId) {
     return {
       redirect: {
         destination: '/login',
@@ -319,13 +318,25 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     }
   }
 
-  const { data: galleries } = await httpFetch.get('/design/gallery')
+  const { data: galleries }: {data: Gallery[] } = await httpFetch.get('/design/gallery')
+
+  const gallery = galleries.find(({ id }) => id === eventId)
+
+  if (!gallery) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false
+      }
+    }
+  }
 
   return {
     props: {
       user,
       token,
-      galleries
+      gallery,
+      eventId
     }
   }
 }
