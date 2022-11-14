@@ -27,7 +27,7 @@ const UserInvoice: React.FC<Props> = ({ bills }) => {
             <p className='text-sm mt-1 lg:mt-0 text-gray-500'>Click nome do cliente para informação do cliente e estado da fatura para a fatura</p>
           </div>
         {
-          bills.map(({ id, userId, invoices, services: { eventDate, eventType, guestsNumber }, total, subTotal }) => {
+          bills.map(({ id, userId, userName, invoices, services: { eventDate, eventType, guestsNumber }, total, subTotal }) => {
             const invoice1 = invoices[0]
             const invoice2 = invoices[1]
 
@@ -43,7 +43,7 @@ const UserInvoice: React.FC<Props> = ({ bills }) => {
                       href={`/admin/user/${userId}`}
                       className='text-xl font-medium text-gray-900 hover:text-gray-700'
                     >
-                      Arlindo Boa
+                      {userName}
                     </Link>
                   </div>
                   <div>
@@ -163,6 +163,19 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const session = await getSession(context)
 
   if (!session || !token) {
+    return {
+      redirect: {
+        destination: '/login',
+        permanent: false
+      }
+    }
+  }
+
+  const { data: admin } = await httpFetch.get('/user', {
+    headers: { Authorization: `beaer ${token}` }
+  })
+
+  if (!admin.admin) {
     return {
       redirect: {
         destination: '/login',

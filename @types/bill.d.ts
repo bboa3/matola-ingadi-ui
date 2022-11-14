@@ -86,6 +86,7 @@ declare module 'bill' {
   export interface Bill {
     id: string
     userId: string
+    userName: string
     services: EventService
     subTotal: number
     discount: number

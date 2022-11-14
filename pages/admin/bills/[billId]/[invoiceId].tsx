@@ -172,6 +172,19 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     }
   }
 
+  const { data: admin } = await httpFetch.get('/user', {
+    headers: { Authorization: `beaer ${token}` }
+  })
+
+  if (!admin.admin) {
+    return {
+      redirect: {
+        destination: '/login',
+        permanent: false
+      }
+    }
+  }
+
   const { data: bill }: { data: Bill} = await httpFetch.get(`bill/${billId}`, {
     headers: { Authorization: `beaer ${token}` }
   })
