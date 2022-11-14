@@ -90,10 +90,10 @@ export default function Sidebar () {
 
             <ul className="md:flex-col w-full md:min-w-full flex flex-col list-none">
               <li className="w-full items-center">
-                <Link href="/user/bills">
+                <Link href="/admin/bills">
                     <span
                       className={`
-                        ${router.pathname === '/user/bills' ? 'text-indigo-900' : 'text-gray-700 hover:text-gray-500'}
+                        ${router.pathname === '/admin/bills' ? 'text-indigo-900' : 'text-gray-700 hover:text-gray-500'}
                         flex items-center text-xs uppercase py-3 font-bold
                       `}
                     >

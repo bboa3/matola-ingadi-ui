@@ -1,4 +1,4 @@
-import Layout from '@components/Layout/User'
+import Layout from '@components/Layout/Admin'
 import { httpFetch } from '@lib/fetch'
 import { dateFormatter } from '@utils/day'
 import { moneyFormatter } from '@utils/money-formatter'
@@ -13,7 +13,7 @@ interface Props {
   bills: Bill[]
 }
 
-const UserInvoice: React.FC<Props> = ({ token, bills }) => {
+const UserInvoice: React.FC<Props> = ({ bills }) => {
   return (
     <Layout
       title=''
