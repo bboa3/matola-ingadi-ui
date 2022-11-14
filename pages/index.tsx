@@ -1,6 +1,8 @@
 import GalleryComponent from '@components/Gallery'
 import Layout from '@components/Layout'
+import { CheckIcon } from '@heroicons/react/24/outline'
 import { httpFetch } from '@lib/fetch'
+import { moneyFormatter } from '@utils/money-formatter'
 import { Testimonial } from 'design'
 import { Gallery, Pricing } from 'ingadi'
 import { GetStaticProps } from 'next'
@@ -95,7 +97,7 @@ const Home: React.FC<Props> = ({ pricing, galleries, testimonials }) => {
             <div className="mt-4 lg:row-span-3 lg:mt-0">
               <h2 className="sr-only">event information</h2>
               <div className='flex items-end justify-center'>
-                <p className="text-3xl font-bold tracking-tight text-gray-900">{standardPricing.price}</p>
+                <p className="text-3xl font-bold tracking-tight text-gray-900">{moneyFormatter(standardPricing.price)}</p>
                 <p className="text-base font-bold text-gray-500"> /{standardPricing.pricingModel}</p>
               </div>
 
@@ -103,9 +105,10 @@ const Home: React.FC<Props> = ({ pricing, galleries, testimonials }) => {
                 <h3 className="text-sm font-medium text-gray-900">Salão</h3>
 
                 <div className="mt-4">
-                  <ul role="list" className="list-disc space-y-2 pl-4 text-sm">
+                  <ul role="list" className="space-y-2 pl-4 text-sm">
                     {gallery.highlights.map((highlight) => (
-                      <li key={highlight} className="text-gray-400">
+                      <li key={highlight} className="text-gray-400 flex items-center">
+                        <CheckIcon className='text-green-600 w-5 h-6 mr-1' aria-hidden="true" />
                         <span className="text-gray-600">{highlight}</span>
                       </li>
                     ))}
@@ -132,12 +135,13 @@ const Home: React.FC<Props> = ({ pricing, galleries, testimonials }) => {
               </div>
 
               <div className="mt-10">
-                <h3 className="text-sm font-medium text-gray-900">Highlights</h3>
+                <h3 className="text-sm font-medium text-gray-900">Escolha Matola Ingadi</h3>
 
                 <div className="mt-4">
                   <ul role="list" className="list-disc space-y-2 pl-4 text-sm">
                     {gallery.highlights.map((highlight) => (
-                      <li key={highlight} className="text-gray-400">
+                      <li key={highlight} className="text-gray-400 flex items-center">
+                        <CheckIcon className='text-green-600 w-5 h-6 mr-1' aria-hidden="true" />
                         <span className="text-gray-600">{highlight}</span>
                       </li>
                     ))}
@@ -146,7 +150,9 @@ const Home: React.FC<Props> = ({ pricing, galleries, testimonials }) => {
               </div>
 
               <div className="mt-10">
-                <h2 className="text-sm font-medium text-gray-900">Details</h2>
+                <h2 className="text-sm font-medium text-gray-900">
+                  Você e seus convidados são as estrelas dos nossos eventos
+                </h2>
 
                 <div className="mt-4 space-y-6">
                   <p className="text-sm text-gray-600">{gallery.details}</p>
