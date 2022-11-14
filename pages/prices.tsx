@@ -41,7 +41,7 @@ const PricingPage: React.FC<Props> = ({ pricing }) => {
               <div className='absolute w-full'>
                 <div className='text-center py-12 flex flex-col justify-center items-center'>
                   <p className='text-gray-300'>Preços</p>
-                  <h1 className='font-bold text-5xl'>O Melhor Proco para o seu evento,</h1>
+                  <h1 className='font-bold text-5xl'>O Melhor Preço para o seu evento,</h1>
                   <p className='text-gray-300 pt-3'>para começar apenas selecione e faremos reserva da data do seu evento.</p>
                 </div>
               </div>
