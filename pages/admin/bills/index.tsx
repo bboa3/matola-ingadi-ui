@@ -159,7 +159,11 @@ const UserInvoice: React.FC<Props> = ({ bills }) => {
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const token = context.req.cookies['next-auth.session-token']
+  const COOKIES_NAME = process.env.COOKIES_NAME
+  if (!COOKIES_NAME) {
+    throw new Error('COOKIES_NAME is not set')
+  }
+  const token = context.req.cookies[COOKIES_NAME]
   const session = await getSession(context)
 
   if (!session || !token) {
