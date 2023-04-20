@@ -1,50 +1,65 @@
+
 declare module 'bill' {
-  export interface Photo {
-    alt: string
-    url: string
+  export interface Locales {
+    pt: string
+    en: string
   }
 
-  export interface Services {
+  export type Period = 'month' | 'year'
+  export type InvoiceStatus = 'PENDING' | 'PAID' | 'FAILED'
+  export type TransactionStatus = 'PENDING' | 'COMPLETED' | 'FAILED'
+  export type BillStatus = 'ACTIVE' | 'DISABLED'
+  export type ActivityId = 'excel-and-docs-templates' | 'economic-and-financial-information'
+
+  export interface Activity {
+    id: ActivityId
     name: string
+  }
+
+  export interface Service {
+    id: string
     description: string
-    photos: Photo[]
+  }
+
+  export interface Address {
+    cityOrDistrict: string
+    provinceOrState: string
+    country: string
+  }
+
+  export interface Discount {
+    period: {
+      id: Period
+      name: string
+      percentage: number
+    }[],
+    other?: {
+      id: string
+      name: string
+      percentage: number
+    }
   }
 
   export interface Pricing {
     id: string
     name: string
-    pricingModel: string
+    activity: Activity
     price: number
-    services: Services[]
+    baseMaxTeamMembers: number
+    discount: Discount
+    services: Service[]
   }
 
-  export interface EventType {
-    id: string
-    name: string
-  }
-
-  export type InvoiceId = {
-    id: any
-    code: string
-    createdAt: string
-  }
-
-  export interface EventService {
-    guestsNumber: number
-    eventType: string
-    eventDate: string
-    total: number
-    eventPricingId: string
+  export interface Commission {
+    model: 'PERCENTAGE' | 'VALUE'
+    value: number
   }
 
   export interface PaymentMethod {
     id: string
     name: string
-    onlyAdmin: boolean
-    commission: {
-      model: 'PERCENTAGE' | 'VALUE'
-      value: number
-    }
+    image: any
+    commission: Commission
   }
 
   export interface BillPaymentMethod {
@@ -57,49 +72,50 @@ declare module 'bill' {
     totalCommission: number
   }
 
-  export type InvoiceStatus = 'PENDING' | 'COMPLETED' | 'FAILED'
-  export type BillStatus = 'ACTIVE' | 'DISABLED'
-
   export interface Transaction {
-    status: InvoiceStatus
-    reference: string
-    confirmationImage?: Photo
+    id: string
+    status: TransactionStatus
+    paymentMethod: string
+    paymentGatewayFee: number
     confirmedBy?: string
     details?: string
-    startedAt: string
-    completedAt?: string
+    transactionTime?: string
+    updatedAt: string
+    createdAt: string
   }
 
   export interface Invoice {
-    invoiceId: InvoiceId
-    service: EventService
+    invoiceCode: string
+    activity: Activity
+    plan: string
+    pricingId: string
+    maxTeamMembers: number
     subTotal: number
-    discount: number
+    discounted: number
     total: number
-    status: InvoiceStatus
-    paymentMethod: BillPaymentMethod
-    transaction?: Transaction
+    period: Period
+    invoiceStatus: InvoiceStatus
+    transaction: Transaction
+    services: string[]
+    paidAt?: string
     dueAt: string
     createdAt: string
+    updatedAt: string
   }
 
   export interface Bill {
     id: string
     userId: string
-    userName: string
-    services: EventService
-    subTotal: number
-    discount: number
-    total: number
+    name: string
+    email: string
+    phoneNumber: string
+    address: Address
+    activity: Activity
+    maxTeamMembers: number
     invoices: Invoice[]
     status: BillStatus
+    nextInvoiceDate: string
     createdAt: string
-  }
-
-  export interface ReservedEventDate {
-    id: string
-    date: string
-    billId: string
-    createdAt: string
+    updatedAt: string
   }
 }

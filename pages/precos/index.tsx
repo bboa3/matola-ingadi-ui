@@ -1,0 +1,64 @@
+import EconomicFinancialInformation from '@common/Prices/EconomicFinancialInformation'
+import getLanguage from '@common/Prices/lang/page'
+import Templates from '@common/Prices/Templates'
+import { Button } from '@components/Button'
+import SimpleLayout from '@components/Layout/MatolaIngadi/SimpleLayout'
+import { billingHttpFetch } from '@lib/fetch'
+import { Pricing } from 'bill'
+import { GetStaticProps } from 'next'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import React from 'react'
+
+interface Props {
+  pricing: Pricing[]
+}
+
+const PricingPage: React.FC<Props> = ({ pricing }) => {
+  const { locale } = useRouter()
+  const lang = getLanguage(locale!)
+
+  return (
+    <SimpleLayout
+      robots='noindex nofollow'
+      title='Preços | MozEconomia'
+      description='Preço dos serviços da MozEconomia'
+      keywords='moçambique, economia, dados, finança, comércio, mercado, capital, despesas, Hipoteca, dinheiro'
+    >
+      <div className='flex flex-col min-h-full items-center justify-center pb-12 pt-4 md:pt-6 px-4 sm:px-6 lg:px-8'>
+          <EconomicFinancialInformation pricing={pricing} locale={locale!} />
+          <div className='-mt-7 md:mt-44 w-full'>
+            <Templates pricing={pricing} locale={locale!} />
+          </div>
+
+          <section className='w-full flex bg-white flex-col items-center justify-center text-center md:pt-52 lg:pt-48'>
+            <div className='w-full max-w-3xl'>
+              <h1 className='text-3xl lg:text-4xl font-bold py-6'>{lang.contact.title}</h1>
+              <p>Avenida 25 de Setembro, nº 1695, 1º andar, Maputo Cidade, Maputo 1102, Moçambique.</p>
+              <div className='w-full flex flex-col items-center justify-center text-tenter mt-6'>
+                <span className='block mt-1'>+258 87 44 44 689</span>
+                <span className='block mb-3'>contacto@mozeconomia.co.mz</span>
+                <Button solid asChild>
+                  <Link href='https://calendly.com/mozeconomia/30min?month=2022-07' target="_blank" rel="noreferrer">
+                    Agendar Chat
+                  </Link>
+                </Button>
+              </div>
+            </div>
+          </section>
+      </div>
+    </SimpleLayout>
+  )
+}
+
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  const { data } = await billingHttpFetch.get(`/billing/pricing/${locale}`)
+
+  return {
+    props: {
+      pricing: data
+    }
+  }
+}
+
+export default PricingPage

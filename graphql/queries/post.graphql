@@ -1,0 +1,52 @@
+query Post($slug: String!) {
+  post(
+    where: {
+      slug: $slug
+    }
+  ) {
+    title
+    date
+    readTime
+    author {
+      name
+      picture {
+        url(
+          transformation: {
+            image: {
+              resize: {
+                height: 40, 
+                width: 40, 
+                fit: crop
+              }
+            }
+          }
+        )
+      }
+    }
+    seo {
+      title
+      description
+      keywords
+    }
+    content {
+      html
+    },
+    coverImage {
+      url(
+        transformation: {
+          image: {
+            resize: {
+              width: 1400, 
+              height: 600, 
+              fit: crop
+            }
+          }
+        }
+      )
+    }
+    categories {
+      slug
+      name
+    }
+  }
+}

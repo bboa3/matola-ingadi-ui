@@ -21,14 +21,19 @@
     "baseUrl": ".",
     "paths": {
       "@assets/*": ["assets/*"],
+      "@generated/*": ["generated/*"],
+      "@graphql/*": ["graphql/*"],
       "@components/*": ["components/*"],
-      "@pages/*": ["pages/*"],
-      "@lib/*": ["lib/*"],
+      "@common/*": ["common/*"],
+      "@services/*": ["services/*"],
+      "@Context/*": ["Context/*"],
       "@hooks/*": ["hooks/*"],
-      "@context/*": ["context/*"],
-      "@utils/*": ["utils/*"]
+      "@pages/*": ["pages/*"],
+      "@utils/*": ["utils/*"],
+      "@lib/*": ["lib/*"]
+
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/Layout"],
   "exclude": ["node_modules"]
 }

@@ -2,16 +2,25 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
+  i18n: {
+    locales: ['en', 'pt'],
+    defaultLocale: 'pt',
+  },
   images: {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'images.unsplash.com',
+        hostname: 'api.mozeconomia.co.mz',
         pathname: '/**',
       },
       {
         protocol: 'https',
-        hostname: 'tailwindui.com',
+        hostname: 'flagcdn.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cryptologos.cc',
         pathname: '/**',
       },
       {
@@ -21,7 +30,17 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: '**.s3.amazonaws.com',
+        hostname: 'media-exp1.licdn.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'media.graphassets.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'blog.algolia.com',
         pathname: '/**',
       },
     ],

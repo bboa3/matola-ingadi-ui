@@ -1,17 +1,21 @@
-import DataProvider from '@context/data'
+import { client, ssrCache } from '@lib/urql'
 import { SessionProvider } from 'next-auth/react'
-import '../styles/calendar.css'
+import type { AppProps } from 'next/app'
+import { Provider } from 'urql'
 import '../styles/globals.css'
 
-export default function App ({
-  Component,
-  pageProps: { session, ...pageProps }
-}: any) {
+function MyApp ({ Component, pageProps: { session, ...pageProps } }: AppProps) {
+  if (pageProps.urqlState) {
+    ssrCache.restoreData(pageProps.urqlState)
+  }
+
   return (
-    <SessionProvider session={session}>
-      <DataProvider>
+    <Provider value={client}>
+      <SessionProvider session={session}>
         <Component {...pageProps} />
-      </DataProvider>
-    </SessionProvider>
+      </SessionProvider>
+    </Provider>
   )
 }
+
+export default MyApp

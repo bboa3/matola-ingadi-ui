@@ -1,7 +1,7 @@
 import { Skeleton } from '@mui/material'
 import React from 'react'
 
-const Loading: React.FC = () => (
+const LoadingTable: React.FC = () => (
   <div className='w-full flex items-end flex-col'>
     <Skeleton variant="rounded" width='70%' height={25} />
     <Skeleton className='my-2' animation="wave" variant="rounded" width='100%' height={100} />
@@ -10,4 +10,4 @@ const Loading: React.FC = () => (
   </div>
 )
 
-export default Loading
+export default LoadingTable

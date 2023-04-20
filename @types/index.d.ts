@@ -1,70 +1,106 @@
-declare module 'ingadi' {
-  export interface GalleryMenu {
+declare module 'ui-moz' {
+  export interface Indicator {
     id: string
     name: string
   }
 
-  export interface Photo {
-    alt: string
-    url: string
-  }
-
-  export interface Services {
-    name: string
-    description: string
-    photos: Photo[]
-  }
-
-  export interface Pricing {
+  export interface Language {
+    locale: 'pt' | 'en'
     id: string
     name: string
-    pricingModel: string
-    price: number
-    services: Services[]
   }
 
-  export interface Gallery {
-    id: string
+  export interface FilterData {
     name: string
-    images: Photo[]
-    description: string
-    highlights: string[]
-    details: string
-  }
-
-  export interface ReservedEventDate {
     id: string
-    date: string
-    billId: string
-    createdAt: string
+    href: string
   }
 
-  export interface EventReservation {
-    eventDate: string
-    guestsNumber: number,
-    eventType: string,
-    eventPricingId: string
+  export interface Period {
+    label: string,
+    from: string,
+    to: string
   }
 
-  export interface Address {
-    address1: string
-    streetAddress: string
-    cityOrDistrict: string
-    provinceOrState: string
-    postalCode: string
-    country: string
-    updatedAt: string
-  }
-
-  export interface User {
+  export interface ChartType {
     id: string
-    email: string
-    name?: string
-    phoneNumber?: string
-    image?: string
-    emailVerified?: string
-    admin?: boolean
-    address?: Address
-    updatedAt: string
+    label: string
+  }
+
+  export interface Page {
+    name: string
+    id: string
+  }
+
+  export interface Menu {
+    name: string
+    id: string
+    Icon: any
+    open: boolean
+    pages: Page[]
+  }
+
+  export interface SideMenuData {
+    selected: Menu
+    options: Menu[]
+  }
+
+  export interface Axis {
+    y: number
+    x: Date | string | number
+  }
+
+  export interface AxisGroup {
+    name: string
+    color: string
+    axis: Axis[]
+  }
+
+  export interface Table4ColRow {
+    col1: {
+      value: any
+      className?: string
+    }
+    col2: string | number
+    col3: {
+      value: number
+      className?: string
+    }
+    col4: string | number
+  }
+
+  export interface Table6ColRow {
+    col1: {
+      value: any
+      className?: string
+    }
+    col2: string | number
+    col3: {
+      value: number
+      className?: string
+    }
+    col4: {
+      value: number
+      className?: string
+    }
+    col5: string | number
+    col6: string | number
+  }
+
+  export interface Table3ColRow {
+    col1: string | number
+    col2: string | number
+    col3: string | number
+  }
+
+  export interface ChartDropdownMenuItem {
+    id: string | number
+    name: string
+  }
+
+  export interface FileDownload {
+    id: string
+    setIsDownloadingImg: any
+    label: string
   }
 }

@@ -7,36 +7,51 @@
     animation-play-state: paused;
   }
 
-  .custom-h-full {
-    height: calc(100vh - 3.90rem);
+  body {
+    @apply text-slate-700;
   }
 
-  .form-divider::before {
-    content: '';
-    display: block;
-    width: 20rem ;
-    position: absolute;
-    height: 2;
-    background: #000;
-    
+  h1, h2, h3, h4, h5 {
+    @apply text-slate-900;
   }
 
-  .form-divider::after {
-    left: 0;
+  .blog-content h2,
+  .blog-content h3,
+  .blog-content h4 
+  {
+    @apply py-3 font-bold;
   }
 
-  .form-divider::before {
-    right: 0;
+  .blog-content h2 {
+    @apply text-4xl;
   }
 
-  @media (min-width: 768px) {
-    .custom-h-full {
-      height: calc(100vh - 5rem);
-    }
+  .blog-content h3 {
+    @apply text-2xl;
   }
 
-  .hero-pattern {
-    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%239C92AC' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E");
+  .blog-content h4 {
+    @apply text-lg;
   }
-  
+
+  .blog-content p {
+    @apply leading-[2.25];
+
+  }
+
+  .blog-content a {
+    @apply text-emerald-500;
+  }
+
+  .blog-content blockquote {
+    @apply bg-emerald-50 py-1 px-6;
+  }
+
+  .blog-content table {
+    @apply self-center border-collapse py-1 px-6 mt-4;
+  }
+
+  .blog-content table td {
+    @apply align-middle border border-emerald-500 whitespace-nowrap py-3 px-4;
+  }
 }

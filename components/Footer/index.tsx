@@ -1,64 +1,83 @@
-import FacebookIcon from '@mui/icons-material/Facebook'
+import LogoImg from '@assets/icons/icon'
+import LinkedInIcon from '@assets/icons/Linkedin'
+import ChatBotComponent from '@components/Bot'
+import getLanguage from '@components/Footer/lang/footer'
+import NewsletterForm from '@components/Footer/Newsletter'
 import InstagramIcon from '@mui/icons-material/Instagram'
+import TwitterIcon from '@mui/icons-material/Twitter'
+import YouTubeIcon from '@mui/icons-material/YouTube'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
+import React from 'react'
 
-export default function Footer () {
+const Footer: React.FC = () => {
+  const { locale } = useRouter()
+  const lang = getLanguage(locale!)
+
   return (
-    <>
-      <footer className="block py-4">
-        <div className="container mx-auto px-4">
-          <hr className="mb-4 border-b-1 border-gray-200" />
-          <div className="flex flex-wrap items-center md:justify-between justify-center">
-            <div className="w-full md:w-4/12 px-4">
-              <div className="text-sm text-gray-500 font-semibold py-1 text-center md:text-left">
-                Copyright © {new Date().getFullYear()}{' '}
-                <span
-                  className="text-gray-500 text-sm font-semibold py-1"
-                >
-                  Matola Ingadi, LDA
-                </span>
-              </div>
-            </div>
-            <div className="w-full md:w-8/12 px-4">
-              <ul className="flex flex-wrap list-none md:justify-end  justify-center">
-                <li>
-                  <span className='text-gray-600 hover:text-gray-800 text-sm font-semibold block py-1 px-3'>
-                    <Link href='/terms-and-conditions'>Termos e Condições</Link>
-                  </span>
-                </li>
-                <li>
-                  <Link
-                    href="/about-us"
-                    className="text-gray-600 hover:text-gray-800 text-sm font-semibold block py-1 px-3"
-                  >
-                    sobre-nos
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    target="_blank"
-                    rel="noreferrer"
-                    href="https://www.instagram.com/matolaingadi/"
-                    className="text-gray-600 hover:text-gray-800 text-sm font-semibold block py-1 px-3"
-                  >
-                    <InstagramIcon aria-hidden="true" />
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    target="_blank"
-                    rel="noreferrer"
-                    href="https://web.facebook.com/matola.ingadi.1"
-                    className="text-gray-600 hover:text-gray-800 text-sm font-semibold block py-1 px-3"
-                  >
-                    <FacebookIcon aria-hidden="true" />
-                  </Link>
-                </li>
-              </ul>
+    <footer className='w-full px-8 md:px-16 py-8 bg-slate-900 text-slate-100 overflow-hidden relative'>
+      <ChatBotComponent locale={locale!}/>
+      <div className='w-full max-w-7xl h-full min-h-[18rem]'>
+        <div className='w-[4rem] mb-9'><LogoImg /></div>
+
+        <div className='w-full h-full flex flex-col lg:flex-row justify-between'>
+          <div className='w-full h-full flex-1 pb-3 flex gap-x-8 gap-y-9 flex-wrap'>
+            {
+              lang.menu.map(({ name, pages }) => (
+                <div key={name} className='w-full max-w-[9rem] text-sm'>
+                  <legend className='mb-4 text-white'>{name}</legend>
+                  {
+                    pages.map(({ title, href, local }) => (
+                      <div className='mb-2 text-slate-400' key={title}>
+                        {
+                          local
+                            ? (
+                            <Link href={href} className='block rounded-lg hover:bg-slate-800 hover:text-white'>
+                              {title}
+                            </Link>
+                              )
+                            : (
+                            <Link target="_blank" rel="noreferrer" href={href} className='block rounded-lg hover:bg-slate-800 hover:text-white'>
+                              {title}
+                            </Link>
+                              )
+                        }
+                      </div>
+                    ))
+                  }
+                </div>
+              ))
+            }
+            <div className='w-full max-w-[9rem] text-sm flex flex-col space-y-6'>
+              <a className='flex justify-center items-center w-8 h-8 border border-emerald-500 rounded-[100%] p-2' target="_blank" rel="noreferrer" href="https://www.linkedin.com/company/78981378">
+                <LinkedInIcon className='w-full h-full fill-white hover:fill-emerald-700 transform' />
+              </a>
+              <a className='flex justify-center items-center w-8 h-8 border border-emerald-500 rounded-[100%] p-1.5' target="_blank" rel="noreferrer" href="https://www.instagram.com/moz.economia/">
+                <InstagramIcon className='w-full h-full fill-white hover:fill-emerald-700 transform' />
+              </a>
+              <a className='flex justify-center items-center w-8 h-8 border border-emerald-500 rounded-[100%] p-1.5' target="_blank" rel="noreferrer" href="https://www.youtube.com/@mozeconomia">
+                <YouTubeIcon className='w-full h-full fill-white hover:fill-emerald-700 transform' />
+              </a>
+              <a className='flex justify-center items-center w-8 h-8 border border-emerald-500 rounded-[100%] p-1.5' target="_blank" rel="noreferrer" href="https://twitter.com/mozeconomia">
+                <TwitterIcon className='w-full h-full fill-white hover:fill-emerald-700 transform' />
+              </a>
             </div>
           </div>
+          <div className='w-full max-w-md h-full'>
+            <NewsletterForm />
+          </div>
         </div>
-      </footer>
-    </>
+        <div className='w-full pt-2 text-slate-600 border-t border-slate-700 mt-9'>
+          <span>
+            &copy; {new Date().getFullYear()} MozEconomia, S.A - {lang.terms.text}
+          </span>
+          <span className='text-emerald-500 hover:text-emerald-600 ml-2'>
+            <Link href={lang.terms.page.href}>{lang.terms.page.title}</Link>
+          </span>
+        </div>
+      </div>
+    </footer>
   )
 }
+
+export default Footer

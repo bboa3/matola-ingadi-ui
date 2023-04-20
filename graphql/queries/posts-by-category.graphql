@@ -1,0 +1,45 @@
+query PostsByCategory($slug: String!) {
+  posts(
+    where: {
+      categories_every: {
+        slug: $slug
+      }
+    }
+    orderBy: date_DESC
+  ) {
+    title
+    slug
+    excerpt
+    date
+    readTime
+    coverImage {
+      url(
+        transformation: {
+          image: {
+            resize: { width: 500 }
+          }
+        }
+      )
+    }
+    author {
+      name
+      picture {
+        url(
+          transformation: {
+            image: {
+              resize: {
+                height: 200, 
+                width: 200, 
+                fit: crop
+              }
+            }
+          }
+        )
+      }
+    }
+    categories {
+      slug
+      name
+    }
+  }
+}
