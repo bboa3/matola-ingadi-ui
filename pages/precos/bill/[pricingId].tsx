@@ -41,7 +41,7 @@ const countries = countryList.map(c => ({ id: c, name: c }))
 const CreateBillPage: React.FC<Props> = ({ pricing, token, eventDate }) => {
   const { locale, push } = useRouter()
   const lang = getLanguage(locale!)
-  const eventTypes = getEventTypes(locale!)
+  const eventTypes = getEventTypes('pt')
   const [country, setCountry] = useState(countries[150])
   const [eventType, setEventType] = useState(eventTypes[0])
 
@@ -60,9 +60,9 @@ const CreateBillPage: React.FC<Props> = ({ pricing, token, eventDate }) => {
     validationSchema: getValidator(locale!),
     onSubmit: (values) => {
       const data = {
-        eventType,
-        eventDate: values.eventDate,
+        eventType: eventType.name,
         paymentMethod: paymentMethod.name,
+        eventDate: values.eventDate,
         guestsNumber: values.guestsNumber,
         pricingId: pricing.id,
         email: values.email,

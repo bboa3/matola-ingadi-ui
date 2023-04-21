@@ -36,8 +36,7 @@ const CreateBillPage: React.FC<Props> = ({ token, billId, invoice, pricing }) =>
 
   const { subTotal, paymentGatewayFee, total } = totalCalculator({
     pricing,
-    maxTeamMembers: invoice.maxTeamMembers,
-    period: invoice.period,
+    guestsNumber: invoice.guestsNumber,
     commission: paymentMethod.commission
   })
 
