@@ -23,28 +23,13 @@ const getLanguage = (locale: string) => {
           name: 'Solutions',
           pages: [
             {
-              title: 'Pricing',
+              title: 'Booking',
               href: '/precos',
-              local: true
-            },
-            {
-              title: 'Resources',
-              href: '/recursos',
               local: true
             },
             {
               title: 'Blog',
               href: '/blog',
-              local: true
-            },
-            {
-              title: 'API access',
-              href: 'https://mozeconomia.docs.apiary.io/',
-              local: false
-            },
-            {
-              title: 'Documentation',
-              href: '/',
               local: true
             }
           ]
@@ -57,11 +42,11 @@ const getLanguage = (locale: string) => {
               href: '/sobre-nos',
               local: true
             },
-            // {
-            //   title: 'Partners',
-            //   href: '/parceiros',
-            //   local: true
-            // },
+            {
+              title: 'Visit Us',
+              href: '/',
+              local: true
+            },
             {
               title: 'Talk to us',
               href: '/contacto',

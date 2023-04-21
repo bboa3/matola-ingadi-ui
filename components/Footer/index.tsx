@@ -1,5 +1,5 @@
-import LogoImg from '@assets/icons/icon'
 import LinkedInIcon from '@assets/icons/Linkedin'
+import LogoImg from '@assets/img/logo'
 import ChatBotComponent from '@components/Bot'
 import getLanguage from '@components/Footer/lang/footer'
 import NewsletterForm from '@components/Footer/Newsletter'
@@ -15,7 +15,7 @@ const Footer: React.FC = () => {
   const lang = getLanguage(locale!)
 
   return (
-    <footer className='w-full px-8 md:px-16 py-8 bg-slate-900 text-slate-100 overflow-hidden relative'>
+    <footer className='w-full px-8 md:px-16 py-8 bg-green-50 text-gray-600 overflow-hidden relative'>
       <ChatBotComponent locale={locale!}/>
       <div className='w-full max-w-7xl h-full min-h-[18rem]'>
         <div className='w-[4rem] mb-9'><LogoImg /></div>
@@ -25,19 +25,19 @@ const Footer: React.FC = () => {
             {
               lang.menu.map(({ name, pages }) => (
                 <div key={name} className='w-full max-w-[9rem] text-sm'>
-                  <legend className='mb-4 text-white'>{name}</legend>
+                  <legend className='mb-4 text-gray-700'>{name}</legend>
                   {
                     pages.map(({ title, href, local }) => (
-                      <div className='mb-2 text-slate-400' key={title}>
+                      <div className='mb-2 text-gray-500' key={title}>
                         {
                           local
                             ? (
-                            <Link href={href} className='block rounded-lg hover:bg-slate-800 hover:text-white'>
+                            <Link href={href} className='block hover:text-green-500'>
                               {title}
                             </Link>
                               )
                             : (
-                            <Link target="_blank" rel="noreferrer" href={href} className='block rounded-lg hover:bg-slate-800 hover:text-white'>
+                            <Link target="_blank" rel="noreferrer" href={href} className='block hover:text-green-500'>
                               {title}
                             </Link>
                               )
@@ -49,17 +49,17 @@ const Footer: React.FC = () => {
               ))
             }
             <div className='w-full max-w-[9rem] text-sm flex flex-col space-y-6'>
-              <a className='flex justify-center items-center w-8 h-8 border border-emerald-500 rounded-[100%] p-2' target="_blank" rel="noreferrer" href="https://www.linkedin.com/company/78981378">
-                <LinkedInIcon className='w-full h-full fill-white hover:fill-emerald-700 transform' />
+              <a className='flex justify-center items-center w-8 h-8 border border-green-600 rounded-[100%] p-2' target="_blank" rel="noreferrer" href="https://www.linkedin.com/company/78981378">
+                <LinkedInIcon className='w-full h-full fill-green-600 hover:fill-green-500 transform' />
               </a>
-              <a className='flex justify-center items-center w-8 h-8 border border-emerald-500 rounded-[100%] p-1.5' target="_blank" rel="noreferrer" href="https://www.instagram.com/moz.economia/">
-                <InstagramIcon className='w-full h-full fill-white hover:fill-emerald-700 transform' />
+              <a className='flex justify-center items-center w-8 h-8 border border-green-600 rounded-[100%] p-1.5' target="_blank" rel="noreferrer" href="https://www.instagram.com/moz.economia/">
+                <InstagramIcon className='w-full h-full fill-green-600 hover:fill-green-500 transform' />
               </a>
-              <a className='flex justify-center items-center w-8 h-8 border border-emerald-500 rounded-[100%] p-1.5' target="_blank" rel="noreferrer" href="https://www.youtube.com/@mozeconomia">
-                <YouTubeIcon className='w-full h-full fill-white hover:fill-emerald-700 transform' />
+              <a className='flex justify-center items-center w-8 h-8 border border-green-600 rounded-[100%] p-1.5' target="_blank" rel="noreferrer" href="https://www.youtube.com/@mozeconomia">
+                <YouTubeIcon className='w-full h-full fill-green-600 hover:fill-green-500 transform' />
               </a>
-              <a className='flex justify-center items-center w-8 h-8 border border-emerald-500 rounded-[100%] p-1.5' target="_blank" rel="noreferrer" href="https://twitter.com/mozeconomia">
-                <TwitterIcon className='w-full h-full fill-white hover:fill-emerald-700 transform' />
+              <a className='flex justify-center items-center w-8 h-8 border border-green-600 rounded-[100%] p-1.5' target="_blank" rel="noreferrer" href="https://twitter.com/mozeconomia">
+                <TwitterIcon className='w-full h-full fill-green-600 hover:fill-green-500 transform' />
               </a>
             </div>
           </div>
@@ -67,11 +67,11 @@ const Footer: React.FC = () => {
             <NewsletterForm />
           </div>
         </div>
-        <div className='w-full pt-2 text-slate-600 border-t border-slate-700 mt-9'>
+        <div className='w-full pt-2 text-gray-600 border-t border-gray-700 mt-9'>
           <span>
-            &copy; {new Date().getFullYear()} MozEconomia, S.A - {lang.terms.text}
+            &copy; {new Date().getFullYear()} Matola Ingadi, LDA - {lang.terms.text}
           </span>
-          <span className='text-emerald-500 hover:text-emerald-600 ml-2'>
+          <span className='text-green-600 hover:text-green-500 ml-2'>
             <Link href={lang.terms.page.href}>{lang.terms.page.title}</Link>
           </span>
         </div>

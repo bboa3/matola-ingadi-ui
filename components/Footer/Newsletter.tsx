@@ -1,4 +1,3 @@
-import NewsletterIcon from '@assets/icons/Newsletter'
 import { getLanguage } from '@common/Login/lang/page'
 import Input from '@components/Form/Input'
 import { LockClosedIcon } from '@heroicons/react/24/outline'
@@ -28,12 +27,9 @@ const NewsletterForm: React.FC = () => {
 
   return (
     <form onSubmit={handleSubmit} className="w-full h-full">
-      <fieldset className='w-full mt-4 border-slate-500 space-y-5'>
-        <legend className="flex px-3 text-2xl font-bold text-white relative">
+      <fieldset className='w-full mt-4 border-gray-500 space-y-5'>
+        <legend className="flex px-3 text-2xl font-bold text-gray-800 relative">
           Newsletter
-          <span className='block absolute -right-9 top-0 w-9 h-auto'>
-            <NewsletterIcon />
-          </span>
         </legend>
         <Input
           label={lang.emailLabel}
@@ -49,10 +45,10 @@ const NewsletterForm: React.FC = () => {
         <div>
           <button
             type='submit'
-            className="group relative flex w-full justify-center rounded-lg border border-transparent bg-emerald-500 py-2 px-4 text-sm font-medium text-white hover:bg-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:ring-offset-2"
+            className="group relative flex w-full justify-center rounded-lg border border-transparent bg-green-600 py-2 px-4 text-sm font-medium text-white hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
           >
             <span className="absolute inset-y-0 left-0 flex items-center pl-3">
-              <LockClosedIcon className="h-5 w-5 text-emerald-400 group-hover:text-emerald-300" aria-hidden="true" />
+              <LockClosedIcon className="h-5 w-5 text-green-400 group-hover:text-green-300" aria-hidden="true" />
             </span>
             {lang.signUpButton}
           </button>

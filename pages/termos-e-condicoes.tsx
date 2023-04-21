@@ -5,13 +5,13 @@ import React from 'react'
 const TermsAndConditions: React.FC = () => (
   <SimpleLayout
     robots='noindex nofollow'
-    title='Termos e Condições da MozEconomia'
-    description='Termos e Condições de utilização dos serviços oferecidos pela MozEconomia'
+    title='Termos e Condições da Matola Ingadi'
+    description='Termos e Condições de utilização dos serviços oferecidos pela Matola Ingadi'
     keywords='moçambique, economia, dados, finança, comércio, mercado, capital, despesas, Hipoteca, dinheiro'
   >
     <div className='max-w-6xl min-h-screen mx-auto px-4 sm:px-6 py-12 overflow-hidden'>
         <div className='border-b border-slate-300'>
-          <h1 className='text-5xl font-bold py-6'>Termos e Condições da MozEconomia</h1>
+          <h1 className='text-5xl font-bold py-6'>Termos e Condições da Matola Ingadi</h1>
           <p>Última atualização: 16 de Novembro de 2022</p>
           <p className='my-2'>Por favor, leia estes termos e condições com cuidado antes de usar os nossos serviços</p>
         </div>
@@ -43,7 +43,7 @@ parte dos nossos Serviços.</p>
             </li>
             <li className='ml-12'>
               <p className='my-5'><strong>Empresa</strong> Refere-se a uma pessoa jurídica colectiva e no caso em apreço refere a
-MozEconomia, SA, Av. 25 de Setembro, n o 1695, 1 o andar, Maputo, Moçambique.</p>
+Matola Ingadi, LDA, Av. 25 de Setembro, n o 1695, 1 o andar, Maputo, Moçambique.</p>
             </li>
             <li className='ml-12'>
               <p className='my-5'><strong>Dispositivo</strong> Refere-se a qualquer instrumento que pode ser usado para acessar o Serviço, tal
@@ -66,11 +66,11 @@ individuo e a Empresa independentemente do uso do Serviço.</p>
               <p className='my-5'><strong>Serviço de Mídia Social de terceiros</strong> significa quaisquer serviços ou conteúdo (incluindo dados, informações, produtos ou serviços) fornecidos por terceiros que possam ser exibidos, incluídos ou disponibilizados pelo Serviço.</p>
             </li>
             <li className='ml-12'>
-              <p className='my-5'><strong>Website</strong> refere-se a MozEconomia, acessível a partir de <a href="www.mozeconomia.co.mz" rel="external nofollow noopener" target="_blank">www.mozeconomia.co.mz</a></p>
+              <p className='my-5'><strong>Website</strong> refere-se a Matola Ingadi, acessível a partir de <a href="www.Matola Ingadi.co.mz" rel="external nofollow noopener" target="_blank">www.Matola Ingadi.co.mz</a></p>
             </li>
             <li className='ml-12'>
               <p className='my-5'><strong>Individuo</strong> Refere-se as pessoas jurídicas singulares ou colectivas que acessam ou usam o
-Serviço fornecido pela MozEconomia.</p>
+Serviço fornecido pela Matola Ingadi.</p>
             </li>
           </ul>
           <h1 className='text-4xl font-bold py-6'>Reconhecimento</h1>
@@ -344,7 +344,7 @@ Serviço.</p>
           <p className='my-5'>Se você tiver alguma dúvida sobre estes Termos e Condições, você pode entrar em contato conosco:</p>
           <ul>
             <li>
-              <p className='my-5'>Pelo email: contacto@mozeconomia.co.mz</p>
+              <p className='my-5'>Pelo email: contacto@Matola Ingadi.co.mz</p>
             </li>
             <li>
               <p className='my-5'>Pelo telefone: +258 874444689</p>

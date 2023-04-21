@@ -24,10 +24,7 @@ const Home: React.FC<Props> = () => {
       description='Fornecendo informação económica e financeira para negócios e investimentos em Moçambique. Dados da economia Moçambicana para negócios, investimentos em Moçambique. Moz Economia'
       keywords='moçambique, mozeconomia, moz economia, economia moçambicana, negócios em moçambique, empreendedorismo, empreendedor, negócios, economia, informação financeira, investimento, investidor, notícias do mercado'
     >
-      <div className='w-full lg:flex px-0 lg:px-20 mb-16 space-y-6 lg:space-y-0'>
-        <GalleryComponent images={lang.photos} />
-      </div>
-      <div className='w-full flex flex-col items-center px-4 lg:px-20 mb-16'>
+      <div className='w-full flex flex-col items-center pt-16 px-4 lg:px-20 mb-16'>
         <div className='w-full max-w-4xl flex flex-col items-center text-center space-y-6'>
           <h1 className='sr-only'>Salão de Eventos Matola Ingadi</h1>
           <h2 className='font-bold text-5xl'>{lang.h1}</h2>
@@ -41,7 +38,7 @@ const Home: React.FC<Props> = () => {
       </div>
 
       <div
-        className="relative min-h-[calc(100vh-3rem)] overflow-hidden rounded-lg bg-cover bg-center bg-no-repeat p-12 text-center"
+        className="relative min-h-[calc(100vh-3rem)] overflow-hidden mb-16 rounded-lg bg-cover bg-center bg-no-repeat p-12 text-center"
         style={{ backgroundImage: 'url(./img/couple-in-marriage.webp)' }}
       >
         <div className="absolute bottom-0 left-0 bg-green-950/70 right-0 top-0 h-full w-full overflow-hidden bg-fixed">
@@ -85,6 +82,9 @@ const Home: React.FC<Props> = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div className='w-full lg:flex px-0 lg:px-20 mb-16 space-y-6 lg:space-y-0'>
+        <GalleryComponent images={lang.photos} />
       </div>
       <div className='w-full px-4 pt-16 pb-16 sm:px-6'>
         <h2 className='text-center font-bold text-4xl p-3'>{lang.testimonial.title}</h2>
