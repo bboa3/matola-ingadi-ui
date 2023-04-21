@@ -1,19 +1,16 @@
 import { otherDiscountCalculator } from '@common/Prices/invoice/services-total/discount/other-discount'
-import { periodDiscountCalculator } from '@common/Prices/invoice/services-total/discount/period-discount'
-import { Discount, Period } from 'bill'
+import { Discount } from 'bill'
 
 interface Props {
-  totalByPeriod: number
+  totalByGuestsNumber: number
   discount: Discount
-  period: Period
 }
 
-export const discountCalculator = ({ totalByPeriod, discount, period }: Props) => {
-  const periodDiscount = periodDiscountCalculator({ totalByPeriod, discount, period })
-  const otherDiscount = otherDiscountCalculator({ totalByPeriod, discount })
+export const discountCalculator = ({ totalByGuestsNumber, discount }: Props) => {
+  const otherDiscount = otherDiscountCalculator({ totalByGuestsNumber, discount })
 
-  const totalDiscounted = periodDiscount + otherDiscount
-  const total = totalByPeriod - totalDiscounted
+  const totalDiscounted = otherDiscount
+  const total = totalByGuestsNumber - totalDiscounted
 
   return {
     totalDiscounted,

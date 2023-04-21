@@ -7,15 +7,12 @@ interface ActivityFilterProps {
 
 export const activityFilter = ({ activityId, pricing }: ActivityFilterProps): Pricing[] => {
   const Professional = pricing.find(({ name, activity: { id } }) => {
-    return (name === 'Professional' || name === 'Profissional') && (id === activityId)
+    return (name === 'Premium' || name === 'Premium') && (id === activityId)
   })
 
-  const Free = pricing.find(({ name, activity: { id } }) => {
-    return (name === 'Free' || name === 'Grátis') && (id === activityId)
-  })
   const Standard = pricing.find(({ name, activity: { id } }) => {
     return (name === 'Standard' || name === 'Padrão') && (id === activityId)
   })
 
-  return [Free, Standard, Professional].filter((pricing) => !!pricing) as Pricing[]
+  return [Standard, Professional].filter((pricing) => !!pricing) as Pricing[]
 }

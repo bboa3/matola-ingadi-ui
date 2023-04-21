@@ -6,21 +6,16 @@ const getLanguage = (locale: string) => {
   const langOptions = [
     {
       locale: 'en',
-      informationPricing: {
+      eventHall: {
         title: {
-          h1: 'Economic and Financial Information for Business and Investment in Mozambique',
-          p2: 'Select the best plan for you'
-        }
-      },
-      consultancyTemplates: {
-        title: {
-          h1: 'Excel and Docs Templates',
+          h1: 'Event Hall for You and Your Guests',
           p2: 'Select the best plan for you'
         }
       },
       startButton: 'Start',
+      visitButton: 'Come to Visite',
       save: '/Year and save',
-      per: '/Month',
+      per: '/Guest',
       popular: 'Popular',
       pricing,
       contact: {
@@ -29,21 +24,16 @@ const getLanguage = (locale: string) => {
     },
     {
       locale: 'pt',
-      informationPricing: {
+      eventHall: {
         title: {
-          h1: 'Informação Económica e Financeira para Negócios e Investimentos em Moçambique',
+          h1: 'Salão de Eventos para Você e Seus Convidados',
           p2: 'Selecione o melhor plano para você'
         }
       },
-      consultancyTemplates: {
-        title: {
-          h1: 'Modelos de Excel e Docs',
-          p2: 'Select the best plan for you'
-        }
-      },
       startButton: 'Começar',
+      visitButton: 'Venha Visitar-nos',
       save: '/Ano e poupa',
-      per: '/Mês',
+      per: '/Convidado',
       popular: 'Popular',
       pricing,
       contact: {

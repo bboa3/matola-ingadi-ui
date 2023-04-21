@@ -5,11 +5,12 @@ declare module 'bill' {
     en: string
   }
 
-  export type Period = 'month' | 'year'
   export type InvoiceStatus = 'PENDING' | 'PAID' | 'FAILED'
   export type TransactionStatus = 'PENDING' | 'COMPLETED' | 'FAILED'
   export type BillStatus = 'ACTIVE' | 'DISABLED'
-  export type ActivityId = 'excel-and-docs-templates' | 'economic-and-financial-information'
+  export type EventDateStatus = 'PENDING' | 'RESERVED'
+  export type TransactionType = 'date-reservation' | 'remaining-payment'
+  export type ActivityId = 'events-hall'
 
   export interface Activity {
     id: ActivityId
@@ -28,11 +29,6 @@ declare module 'bill' {
   }
 
   export interface Discount {
-    period: {
-      id: Period
-      name: string
-      percentage: number
-    }[],
     other?: {
       id: string
       name: string
@@ -74,12 +70,17 @@ declare module 'bill' {
 
   export interface Transaction {
     id: string
+    transactionType: TransactionType
     status: TransactionStatus
     paymentMethod: string
+    invoicePercentage: number
+    subTotal: number
+    total: number
     paymentGatewayFee: number
     confirmedBy?: string
     details?: string
-    transactionTime?: string
+    transactionDate?: string
+    dueAt: string
     updatedAt: string
     createdAt: string
   }
@@ -87,18 +88,16 @@ declare module 'bill' {
   export interface Invoice {
     invoiceCode: string
     activity: Activity
-    plan: string
+    eventType: string
     pricingId: string
-    maxTeamMembers: number
+    guestsNumber: number
     subTotal: number
     discounted: number
     total: number
-    period: Period
     invoiceStatus: InvoiceStatus
-    transaction: Transaction
+    transactions: Transaction[]
     services: string[]
-    paidAt?: string
-    dueAt: string
+    eventDate: string
     createdAt: string
     updatedAt: string
   }

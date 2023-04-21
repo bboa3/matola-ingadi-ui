@@ -1,21 +1,18 @@
 import { discountCalculator } from '@common/Prices/invoice/services-total/discount'
-import { totalByPeriodCalculator } from '@common/Prices/invoice/services-total/period-total'
-import { totalByTeamCalculator } from '@common/Prices/invoice/services-total/team-total'
-import { Discount, Period } from 'bill'
+import { totalByGuestsCalculator } from '@common/Prices/invoice/services-total/guests-total'
+import { Discount } from 'bill'
 
 interface Props {
   price: number
-  maxTeamMembers: number
-  baseMaxTeamMembers: number
-  period: Period
+  guestsNumber: number
+  baseGuestsNumber: number
   discount: Discount
 }
 
-export const servicesTotalCalculator = ({ price, maxTeamMembers, baseMaxTeamMembers, period, discount }: Props) => {
-  const totalByTeamMembers = totalByTeamCalculator({ price, maxTeamMembers, baseMaxTeamMembers })
-  const totalByPeriod = totalByPeriodCalculator({ totalByTeamMembers, period })
+export const servicesTotalCalculator = ({ price, guestsNumber, baseGuestsNumber, discount }: Props) => {
+  const totalByGuestsNumber = totalByGuestsCalculator({ price, guestsNumber, baseGuestsNumber })
 
-  const totalAfterDiscount = discountCalculator({ totalByPeriod, period, discount })
+  const totalAfterDiscount = discountCalculator({ totalByGuestsNumber, discount })
 
   return totalAfterDiscount
 }

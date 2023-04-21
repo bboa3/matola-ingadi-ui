@@ -28,7 +28,7 @@ const Nav: React.FC = () => {
                 <ul className="hidden lg:ml-4 lg:flex space-x-0">
                   {
                     menu.pages.map(({ name, id }) => {
-                      const path = `/${menu.id}/${id}`
+                      const path = `${menu.id}/${id}`
 
                       return (
                         <li key={id}>
