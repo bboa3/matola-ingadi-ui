@@ -11,7 +11,7 @@ const getLanguage = (locale: string) => {
         name: 'Your name',
         email: 'Your email',
         phoneNumber: 'Phone number',
-        service: 'Select service',
+        service: 'Select event type',
         message: 'Tell us how we can help you',
         submitButton: 'Send'
       }
@@ -24,7 +24,7 @@ const getLanguage = (locale: string) => {
         name: 'Seu nome',
         email: 'Seu email',
         phoneNumber: 'Número de telefone',
-        service: 'Selecione o serviço',
+        service: 'Selecione o typo de evento',
         message: 'Diga-nos como podemos ajudá-lo',
         submitButton: 'Enviar'
       }

@@ -18,7 +18,7 @@ const Footer: React.FC = () => {
     <footer className='w-full px-8 md:px-16 py-8 bg-green-50 text-gray-600 overflow-hidden relative'>
       <ChatBotComponent locale={locale!}/>
       <div className='w-full max-w-7xl h-full min-h-[18rem]'>
-        <div className='w-[4rem] mb-9'><LogoImg /></div>
+        <div className='w-[6rem] mb-9'><LogoImg isFooter /></div>
 
         <div className='w-full h-full flex flex-col lg:flex-row justify-between'>
           <div className='w-full h-full flex-1 pb-3 flex gap-x-8 gap-y-9 flex-wrap'>

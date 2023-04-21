@@ -1,20 +1,43 @@
-import getConsultancyServices from '@common/Consultancy/lang/services'
 
 const langOptions = [
   {
     locale: 'en',
     services: [
       {
-        id: 'informacao-economica-e-financeira',
-        name: 'Economic and Financial Information'
+        id: 'casamento',
+        name: 'Wedding Party'
       },
       {
-        id: 'modelos-de-planilhas-inteligentes',
-        name: 'Smart Spreadsheet Templates'
+        id: 'boda',
+        name: 'Boda'
       },
       {
-        id: 'blog',
-        name: 'Blog'
+        id: 'aniversario',
+        name: 'Birthday Party'
+      },
+      {
+        id: 'graduacao',
+        name: 'Graduation Party'
+      },
+      {
+        id: 'evento-empresarial',
+        name: 'Business Event'
+      },
+      {
+        id: 'evento-corporativo',
+        name: 'Corporate event'
+      },
+      {
+        id: 'evento-cultural',
+        name: 'Cultural Event'
+      },
+      {
+        id: 'festa-religiosa',
+        name: 'Religious Festival'
+      },
+      {
+        id: 'outros',
+        name: 'Others Party'
       }
     ]
   },
@@ -22,29 +45,49 @@ const langOptions = [
     locale: 'pt',
     services: [
       {
-        id: 'informacao-economica-e-financeira',
-        name: 'Informação Económica e Financeira'
+        id: 'casamento',
+        name: 'Festa de Casamento'
       },
       {
-        id: 'modelos-de-planilhas-inteligentes',
-        name: 'Modelos de Planilhas Inteligentes'
+        id: 'boda',
+        name: 'Boda'
       },
       {
-        id: 'blog',
-        name: 'Blog'
+        id: 'aniversario',
+        name: 'Festa de Aniversário'
+      },
+      {
+        id: 'graduacao',
+        name: 'Festa de Graduação'
+      },
+      {
+        id: 'evento-empresarial',
+        name: 'Evento Empresarial'
+      },
+      {
+        id: 'evento-corporativo',
+        name: 'Evento Corporativo'
+      },
+      {
+        id: 'evento-cultural',
+        name: 'Evento Cultural'
+      },
+      {
+        id: 'festa-religiosa',
+        name: 'Festa Religiosa'
+      },
+      {
+        id: 'outros',
+        name: 'Outras Festas'
       }
     ]
   }
 ]
 
 const getLanguage = (locale: string) => {
-  const consultancyServices = getConsultancyServices(locale).map(({ id, name }) => ({ id, name }))
   const services = langOptions.find((page) => page.locale === locale)!.services
 
-  return [
-    ...consultancyServices,
-    ...services
-  ]
+  return services
 }
 
 export default getLanguage

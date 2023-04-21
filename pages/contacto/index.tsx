@@ -24,7 +24,7 @@ const ContactPage: React.FC = () => {
   const { locale, push, query: { serviceId } } = useRouter()
   const lang = getLanguage(locale!)
   const { services } = lang
-  const [service, setService] = useState(services[1])
+  const [service, setService] = useState(services[0])
 
   useEffect(() => {
     const found = services.find(({ id }) => id === serviceId)
@@ -62,32 +62,32 @@ const ContactPage: React.FC = () => {
   return (
     <SimpleLayout
       robots='noindex nofollow'
-      title='Preços | MozEconomia'
-      description='Preço dos serviços da MozEconomia'
+      title='Preços | matolaingadi'
+      description='Preço dos serviços da matolaingadi'
       keywords='moçambique, economia, dados, finança, comércio, mercado, capital, despesas, Hipoteca, dinheiro'
     >
       <div className='flex w-full flex-col md:flex-row min-h-full py-12 md:py-0 px-4 sm:px-6 md:px-0'>
         <section className='w-full md:w-1/2 h-fit md:h-full text-white overflow-hidden'>
           <div className='w-full h-full flex flex-col items-center justify-center'>
-            <div className='w-full h-full md:min-h-screen relative flex justify-center bg-gradient-to-tr from-slate-900 to-emerald-900 px-3 sm:px-4 lg:px-6'>
+            <div className='w-full h-full md:min-h-screen relative flex justify-center bg-gradient-to-tr from-slate-900 to-green-900 px-3 sm:px-4 lg:px-6'>
               <div className='w-full h-full mt-9 py-9 px-6 space-y-6'>
                 <div className='flex items-center gap-3'>
                   <div>
-                    <TfiHeadphoneAlt className='w-9 h-9 block text-emerald-500' aria-hidden="true" />
+                    <TfiHeadphoneAlt className='w-9 h-9 block text-green-500' aria-hidden="true" />
                   </div>
                   <span className='block'>+258 87 44 44 689</span>
                 </div>
                 <div className='flex items-center gap-3'>
                   <div>
-                    <MdOutlineAttachEmail className='w-9 h-9 block text-emerald-500' aria-hidden="true" />
+                    <MdOutlineAttachEmail className='w-9 h-9 block text-green-500' aria-hidden="true" />
                   </div>
-                  <span className='block'>contacto@mozeconomia.co.mz</span>
+                  <span className='block'>contacto@matolaingadi.co.mz</span>
                 </div>
                 <div className='w-full flex items-center gap-3'>
                   <div>
-                    <OfficeLocationIcon className='w-9 h-9 block fill-emerald-500' aria-hidden="true" />
+                    <OfficeLocationIcon className='w-9 h-9 block fill-green-500' aria-hidden="true" />
                   </div>
-                  <span className='block'>Avenida 25 de Setembro, nº 1695, 1º andar, Maputo Cidade, Maputo 1102, Moçambique.</span>
+                  <span className='block'>Matola J, Cidade da Matola, Matola 1114, Moçambique.</span>
                 </div>
               </div>
             </div>
