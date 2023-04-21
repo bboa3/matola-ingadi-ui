@@ -1,4 +1,5 @@
 import { createDate } from '@utils/date'
+import { Dayjs } from 'dayjs'
 
 export const getMonths = (locale: string) => {
   const langOptions = [
@@ -32,9 +33,9 @@ export const getMonths = (locale: string) => {
         'Nov',
         'Dec'
       ],
-      dateLocalizer: (date: string, months?: string[]) => {
-        const inDayJs = createDate(date)
-        return inDayJs.format('MMMM D, YYYY')
+      dateLocalizer: (date: string | Date | Dayjs, months?: string[]) => {
+        const d = createDate(date)
+        return d.format('MMMM D, YYYY')
       }
     },
     {
@@ -67,11 +68,11 @@ export const getMonths = (locale: string) => {
         'Nov',
         'Dez'
       ],
-      dateLocalizer: (date: string, months: string[]) => {
-        const inDayJs = createDate(date)
-        const year = inDayJs.year()
-        const month = inDayJs.month()
-        const day = inDayJs.date()
+      dateLocalizer: (date: string | Date | Dayjs, months: string[]) => {
+        const d = createDate(date)
+        const year = d.year()
+        const month = d.month()
+        const day = d.date()
         return `${day} de ${months[month]} ${year}`
       }
     }

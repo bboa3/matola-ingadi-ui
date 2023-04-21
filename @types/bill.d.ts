@@ -12,6 +12,15 @@ declare module 'bill' {
   export type TransactionType = 'date-reservation' | 'remaining-payment'
   export type ActivityId = 'events-hall'
 
+  export interface EventDate {
+    id: string
+    date: string
+    invoiceCode: string
+    status: EventDateStatus
+    updatedAt: string
+    createdAt: string
+  }
+
   export interface Activity {
     id: ActivityId
     name: string

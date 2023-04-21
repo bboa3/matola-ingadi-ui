@@ -8,14 +8,10 @@ const getLanguage = (locale: string) => {
       },
       total: 'Total:',
       form: {
-        maxTeamMembers: 'Number of you team members',
-        billPeriods: {
-          month: 'Monthly',
-          year: 'Yearly'
-        },
+        guestsNumber: 'Number of your guests',
         save: 'save',
         title: 'Payment information',
-        name: 'Your name or company',
+        name: 'Your name',
         email: 'Email',
         phoneNumber: 'Phone number',
         cityOrDistrict: 'City or District',
@@ -32,14 +28,10 @@ const getLanguage = (locale: string) => {
       },
       total: 'Total:',
       form: {
-        maxTeamMembers: 'Usuários da sua equipe',
-        billPeriods: {
-          month: 'Mensal',
-          year: 'Anual'
-        },
+        guestsNumber: 'Número dos seus convidados',
         save: 'poupa',
         title: 'Informação de pagamento',
-        name: 'Seu nome ou empresa',
+        name: 'Seu nome',
         email: 'email',
         phoneNumber: 'Número de telefone',
         cityOrDistrict: 'Cidade ou Distrito',

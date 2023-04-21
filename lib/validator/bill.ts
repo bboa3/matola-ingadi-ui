@@ -3,9 +3,9 @@ import * as Yup from 'yup'
 const langOptions = [
   {
     locale: 'en',
-    maxTeamMembers: {
-      invalid: 'Invalid Users Number',
-      required: 'How many people from your team will you register?'
+    guestsNumber: {
+      invalid: 'Invalid Guests Number',
+      required: 'How many guests will we have at the event?'
     },
     name: {
       invalid: 'Invalid name',
@@ -30,9 +30,9 @@ const langOptions = [
   },
   {
     locale: 'pt',
-    maxTeamMembers: {
-      invalid: 'Número de usuário inválido',
-      required: 'Quantas pessoas da sua equipe você vai registrar?'
+    guestsNumber: {
+      invalid: 'Número de convidados inválido',
+      required: 'Quantos convidados teremos no evento?'
     },
     name: {
       invalid: 'Nome invalido',
@@ -61,10 +61,10 @@ const getValidator = (locale: string) => {
   const lang = langOptions.find((page) => page.locale === locale)!
 
   const validator = Yup.object({
-    maxTeamMembers: Yup.number()
-      .min(1, lang.maxTeamMembers.invalid)
-      .max(1000, lang.maxTeamMembers.invalid)
-      .required(lang.maxTeamMembers.required),
+    guestsNumber: Yup.number()
+      .min(1, lang.guestsNumber.invalid)
+      .max(1000, lang.guestsNumber.invalid)
+      .required(lang.guestsNumber.required),
     name: Yup.string()
       .min(2, lang.name.invalid)
       .max(40, lang.name.invalid)
