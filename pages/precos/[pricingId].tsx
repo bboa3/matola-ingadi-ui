@@ -1,13 +1,16 @@
 import getLanguage from '@common/Prices/lang/bills/page'
+import { Button } from '@components/Button'
 import SimpleLayout from '@components/Layout/MatolaIngadi/SimpleLayout'
 import { billingHttpFetch } from '@lib/fetch'
 import { authOptions } from '@pages/api/auth/[...nextauth]'
+import { createDateUTC } from '@utils/date'
 import { getMonths } from '@utils/date/months'
 import { cookiesName, nextAuthUrl } from '@utils/env'
 import { EventDate } from 'bill'
 import { GetServerSideProps } from 'next'
 import { getServerSession } from 'next-auth/next'
 import dynamic from 'next/dynamic'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 
@@ -28,6 +31,7 @@ const CreateBillPage: React.FC<Props> = ({ pricingId, token, reservedDates }) =>
   const { months, dateLocalizer } = getMonths(locale!)
 
   const dateLocalized = dateLocalizer(selectedDate, months)
+  const eventDate = createDateUTC(selectedDate).format('YYYY-MM-DD')
 
   console.log(lang)
 
@@ -55,6 +59,12 @@ const CreateBillPage: React.FC<Props> = ({ pricingId, token, reservedDates }) =>
           />
           <span className='h-2 p-1 text-sm text-red-500'>{}</span>
         </div>
+
+        <Button solid>
+          <Link href={`/precos/bill/${pricingId}?eventDate=${eventDate}`} >
+            {lang.form.submitButton}
+          </Link>
+        </Button>
       </div>
     </SimpleLayout>
   )
