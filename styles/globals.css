@@ -8,11 +8,11 @@
   }
 
   body {
-    @apply text-slate-700;
+    @apply text-gray-700;
   }
 
   h1, h2, h3, h4, h5 {
-    @apply text-slate-900;
+    @apply text-gray-900;
   }
 
   .blog-content h2,
@@ -40,11 +40,11 @@
   }
 
   .blog-content a {
-    @apply text-emerald-500;
+    @apply text-green-500;
   }
 
   .blog-content blockquote {
-    @apply bg-emerald-50 py-1 px-6;
+    @apply bg-green-50 py-1 px-6;
   }
 
   .blog-content table {
@@ -52,6 +52,6 @@
   }
 
   .blog-content table td {
-    @apply align-middle border border-emerald-500 whitespace-nowrap py-3 px-4;
+    @apply align-middle border border-green-500 whitespace-nowrap py-3 px-4;
   }
 }

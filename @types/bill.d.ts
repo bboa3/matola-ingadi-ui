@@ -45,7 +45,7 @@ declare module 'bill' {
     name: string
     activity: Activity
     price: number
-    baseMaxTeamMembers: number
+    baseGuestsNumber: number
     discount: Discount
     services: Service[]
   }

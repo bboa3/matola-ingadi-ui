@@ -1,56 +1,61 @@
+import { homePhotos } from '@common/Home/lang/photos'
 
 export const getLanguage = (locale: string) => {
   const langOptions = [
     {
       locale: 'en',
-      indicators: {
-        h1: {
-          text1: 'We provide Economic and Financial Information',
-          text2: ' for Business and Investment in Mozambique'
-        },
-        description: 'We specialize in providing and analyzing data from the national market. We aggregate all economic and financial data. You can download, compare the indicators and use our API.',
-        button: 'Indicators'
+      h1: 'Choose Matola Ingadi',
+      bookingButton: 'Book Now',
+      photos: homePhotos,
+      description: 'Our happiness is in guaranteeing unique and five-star events, provide an experience that goes according to the dreams of our customers. Matola Ingadi is more than an event hall, it is a garden where dreams come true, where our customers, together with their loved ones, hold their events.',
+      highlightsTitle: 'Event Hall Description',
+      highlights: {
+        groupOne: [
+          'Total of 14 000 m² of Area',
+          'Event Hall for 350 Guests',
+          'Parking for over 200 cars',
+          'Space for civil ceremony',
+          'Kitchen ready for use in your events'
+        ],
+        groupTwo: [
+          'Bridal and Groom suites',
+          'Electric generator available throughout the event',
+          'Decorative lighting at your parties',
+          'Toilets for women, men and for people with special needs'
+        ]
       },
-      consultancy: {
-        h1: 'The Right Consultancy For Your Business',
-        description: 'Specialized in national market studies, mergers and acquisitions, asset valuation, productivity maximization, competitive leverage, and business valuation.',
-        button: 'Consultancy'
-      },
-      contactButton: 'Contact Sales',
-      currenciesTitle: 'Metical Exchange rates',
-      currenciesLink: 'More Currencies',
-      cryptoTitle: 'Crypto Real Time Prices',
-      cryptoLink: 'More Cryptocurrencies',
-      certified: {
-        h2: 'We are a Certified Company',
-        description: 'Our Economic and Financial Information provision activities have been tested and certified by the Bank of Mozambique through the BM Regulatory Sandbox incubator.',
-        downloadButton: 'Download Certification'
+      details: 'We cultivate tranquility, authenticity, spontaneity. We organize events that go hand in hand with love, happiness, friendship, affection and companionship.',
+      testimonial: {
+        title: 'Testimonial',
+        eventType: 'Event'
       }
     },
     {
       locale: 'pt',
-      indicators: {
-        h1: {
-          text1: 'Fornecemos Informação Económica e Financeira',
-          text2: ' para Negócios e Investimentos em Moçambique'
-        },
-        description: 'Somos especializados em fornecer e analisar dados do mercado nacional. Agregamos todos os dados econômicos e financeiros. Você pode baixar, comparar os indicadores e usar a nossa API.',
-        button: 'Indicadores'
+      photos: homePhotos,
+      bookingButton: 'Reservar Agora',
+      h1: 'Escolha Matola Ingadi',
+      description: 'A nossa felicidade está em garantir eventos únicos e cinco estrelas, proporcionar uma experiência que vai de acordo com os sonhos dos nossos clientes. Matola Ingadi é mais do que um salão de eventos, é um jardim onde sonhos são realizados, onde nossos clientes na companhia daqueles que mais amam realizam os seus eventos.',
+      highlightsTitle: 'Características do Salão',
+      highlights: {
+        groupOne: [
+          'Total de 14 000 m² de Área',
+          'Salão para 350 Convidados',
+          'Estacionamento para mais de 200 carros',
+          'Espaço para cerimonia civil',
+          'Cozinha pronta para o uso nos seus eventos'
+        ],
+        groupTwo: [
+          'Suíte para os Noivos',
+          'Gerador disponível em todo o evento',
+          'Iluminação Decorativa nas suas festas',
+          'Banheiros Feminino, Masculino e para Pessoas com Necessidades Especiais'
+        ]
       },
-      consultancy: {
-        h1: 'A Consultoria Certa Para o Seu Negócio',
-        description: 'Especializados em estudo do mercado nacional, fusões e aquisições, avaliação de Ativos, maximização da produtividade, alavancagem competitiva, e avaliação de negócios.',
-        button: 'Consultoria'
-      },
-      contactButton: 'Fale conosco',
-      currenciesTitle: 'Taxas de Câmbio do Metical',
-      currenciesLink: 'Mais Moedas',
-      cryptoTitle: 'Preços de Criptomoedas em Tempo Real',
-      cryptoLink: 'Mais Criptomoedas',
-      certified: {
-        h2: 'Somos Uma Empresa Certificada',
-        description: 'As nossas atividades de fornecimento de Informação Económica e Financeira foram testadas e certificadas pelo Banco de Moçambique através da encubadora Sandbox Regulatório',
-        downloadButton: 'Baixar Certificado'
+      details: 'Alimentamos tranquilidade, autenticidade, espontaneidade. Organizamos eventos que caminham de mãos dadas com o amor, felicidade, amizade, carinho e companheirismo.',
+      testimonial: {
+        title: 'Depoimentos',
+        eventType: 'Evento'
       }
     }
   ]

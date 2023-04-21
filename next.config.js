@@ -10,17 +10,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'api.mozeconomia.co.mz',
-        pathname: '/**',
-      },
-      {
-        protocol: 'https',
         hostname: 'flagcdn.com',
-        pathname: '/**',
-      },
-      {
-        protocol: 'https',
-        hostname: 'cryptologos.cc',
         pathname: '/**',
       },
       {
@@ -40,7 +30,7 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'blog.algolia.com',
+        hostname: 'media.licdn.com',
         pathname: '/**',
       },
     ],

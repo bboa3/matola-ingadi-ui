@@ -1,30 +1,23 @@
-declare module 'ui-moz' {
-  export interface Indicator {
+declare module 'ui' {
+  export interface GalleryMenu {
     id: string
     name: string
+  }
+
+  export interface Photo {
+    alt: string
+    url: string
+  }
+
+  export interface LocalPhoto {
+    alt: string
+    url: any
   }
 
   export interface Language {
     locale: 'pt' | 'en'
     id: string
     name: string
-  }
-
-  export interface FilterData {
-    name: string
-    id: string
-    href: string
-  }
-
-  export interface Period {
-    label: string,
-    from: string,
-    to: string
-  }
-
-  export interface ChartType {
-    id: string
-    label: string
   }
 
   export interface Page {
@@ -43,17 +36,6 @@ declare module 'ui-moz' {
   export interface SideMenuData {
     selected: Menu
     options: Menu[]
-  }
-
-  export interface Axis {
-    y: number
-    x: Date | string | number
-  }
-
-  export interface AxisGroup {
-    name: string
-    color: string
-    axis: Axis[]
   }
 
   export interface Table4ColRow {
@@ -93,14 +75,11 @@ declare module 'ui-moz' {
     col3: string | number
   }
 
-  export interface ChartDropdownMenuItem {
-    id: string | number
-    name: string
-  }
-
-  export interface FileDownload {
+  export interface Testimonial {
     id: string
-    setIsDownloadingImg: any
-    label: string
+    name: string
+    image: string
+    description: string
+    eventType: string
   }
 }

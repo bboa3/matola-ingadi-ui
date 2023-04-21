@@ -29,6 +29,7 @@
     "clsx": "^1.2.1",
     "dayjs": "^1.11.7",
     "downloadjs": "^1.4.7",
+    "flowbite-react": "^0.4.3",
     "format-number": "^3.0.0",
     "formik": "^2.2.9",
     "framer-motion": "^8.0.2",
