@@ -25,7 +25,7 @@ export const MainMenu: React.FC<Props> = ({ menu }) => {
             <Link
               className={`
                 ${pathname === activePath ? 'text-green-500' : ''}
-                hover:text-green-500 text-slate-300  lg:text-gray-300 
+                hover:text-green-500 text-gray-400 
               `}
               href={pathname}
             >

@@ -39,7 +39,7 @@ const Nav: React.FC<Props> = ({ Navigation, searchIndexName }) => {
                 <div className='px-3'>
                   <LanguageSelect />
                 </div>
-                <Disclosure.Button className="inline-flex items-center justify-center rounded-full p-2 text-white bg-emerald-500 focus:outline-none focus:ring-0">
+                <Disclosure.Button className="inline-flex items-center justify-center rounded-full p-2 text-white bg-green-500 focus:outline-none focus:ring-0">
                   <span className="sr-only">Open main menu</span>
                   {open
                     ? (

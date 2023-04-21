@@ -24,7 +24,8 @@
     @apply bg-green-500
   }
 
-  .ui-style-calender >.react-calendar__navigation > .react-calendar__navigation__label:hover {
+  .ui-style-calender >.react-calendar__navigation > .react-calendar__navigation__label:hover,
+  .ui-style-calender >.react-calendar__navigation > .react-calendar__navigation__label:focus {
     @apply bg-green-500
   }
 
@@ -53,7 +54,7 @@
   }
 
   .ui-style-calender .react-calendar__tile {
-    @apply rounded-md
+    @apply rounded
   }
 
   .ui-style-calender .react-calendar__tile--active,

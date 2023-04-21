@@ -84,10 +84,10 @@ const langOptions = [
   }
 ]
 
-const getLanguage = (locale: string) => {
-  const services = langOptions.find((page) => page.locale === locale)!.services
+const getEventTypes = (locale: string) => {
+  const eventTypes = langOptions.find((page) => page.locale === locale)!.services
 
-  return services
+  return eventTypes
 }
 
-export default getLanguage
+export default getEventTypes

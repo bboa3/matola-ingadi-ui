@@ -9,6 +9,7 @@ const getLanguage = (locale: string) => {
       total: 'Total:',
       form: {
         guestsNumber: 'Number of your guests',
+        eventType: 'Select event type',
         save: 'save',
         title: 'Payment information',
         name: 'Your name',
@@ -29,6 +30,7 @@ const getLanguage = (locale: string) => {
       total: 'Total:',
       form: {
         guestsNumber: 'Número dos seus convidados',
+        eventType: 'Selecione o typo de evento',
         save: 'poupa',
         title: 'Informação de pagamento',
         name: 'Seu nome',

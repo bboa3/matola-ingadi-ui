@@ -7,6 +7,10 @@ const langOptions = [
       invalid: 'Invalid Guests Number',
       required: 'How many guests will we have at the event?'
     },
+    eventDate: {
+      invalid: 'Data do evento inválido',
+      required: 'When will we have your event?'
+    },
     name: {
       invalid: 'Invalid name',
       required: 'Fill in your name'
@@ -33,6 +37,10 @@ const langOptions = [
     guestsNumber: {
       invalid: 'Número de convidados inválido',
       required: 'Quantos convidados teremos no evento?'
+    },
+    eventDate: {
+      invalid: 'Data do evento inválido',
+      required: 'Quando teremos o seu evento?'
     },
     name: {
       invalid: 'Nome invalido',
@@ -65,6 +73,9 @@ const getValidator = (locale: string) => {
       .min(1, lang.guestsNumber.invalid)
       .max(1000, lang.guestsNumber.invalid)
       .required(lang.guestsNumber.required),
+    eventDate: Yup.string()
+      .required(lang.eventDate.required)
+      .matches(/\d{4}-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])*/g, lang.eventDate.invalid),
     name: Yup.string()
       .min(2, lang.name.invalid)
       .max(40, lang.name.invalid)

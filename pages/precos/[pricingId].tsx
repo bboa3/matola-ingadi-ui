@@ -57,12 +57,14 @@ const CreateBillPage: React.FC<Props> = ({ pricingId, token, reservedDates }) =>
             onChange={setSelectedDate}
             reservedDates={reservedDates}
           />
-          <span className='h-2 p-1 text-sm text-red-500'>{}</span>
         </div>
 
         <Button solid>
           <Link href={`/precos/bill/${pricingId}?eventDate=${eventDate}`} >
-            {lang.form.submitButton}
+            <span className='w-36 lg:w-40 block'>
+              {lang.form.submitButton}
+              <span className='text-2xl' aria-hidden="true">&rarr;</span>
+            </span>
           </Link>
         </Button>
       </div>

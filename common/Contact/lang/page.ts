@@ -1,4 +1,4 @@
-import getServices from '@common/Contact/lang/servicesList'
+import getServices from '@utils/event-types'
 
 const getLanguage = (locale: string) => {
   const services = getServices(locale)
