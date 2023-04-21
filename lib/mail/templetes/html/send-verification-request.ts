@@ -115,7 +115,7 @@ export const templete = `
                           <table border="0" cellpadding="0" cellspacing="0" class="heading_block block-2" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
                             <tr>
                               <td class="pad" style="padding-bottom:20px;padding-top:20px;text-align:center;width:100%;">
-                                <img align="center" alt="Logo" src="cid:logo@mozeconomia.co.mz" style="display: block; height: auto; margin: 0 auto; border: 0;" width="170"/>
+                                <img align="center" alt="Logo" src="cid:logo@matolaingadi.co.mz" style="display: block; height: auto; margin: 0 auto; border: 0;" width="170"/>
                               </td>
                             </tr>
                             <tr>
@@ -186,7 +186,7 @@ export const templete = `
                           <table border="0" cellpadding="0" cellspacing="0" class="heading_block block-1" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
                             <tr>
                               <td class="pad" style="padding-bottom:20px;padding-top:20px;text-align:center;width:100%;">
-                                <img align="center" class="icon" alt="Logo" src="cid:logo@mozeconomia.co.mz" style="display: block; height: auto; margin: 0 auto; border: 0;" width="230"/>
+                                <img align="center" class="icon" alt="Logo" src="cid:logo@matolaingadi.co.mz" style="display: block; height: auto; margin: 0 auto; border: 0;" width="230"/>
                               </td>
                             </tr>
                           </table>
@@ -211,8 +211,8 @@ export const templete = `
                               <td class="pad">
                                 <div style="font-family: sans-serif">
                                   <div class="" style="font-size: 12px; font-family: Poppins, Arial, Helvetica, sans-serif; mso-line-height-alt: 18px; color: #64748b; line-height: 1.5;">
-                                    <p style="margin: 0; font-size: 14px; text-align: center; mso-line-height-alt: 15px;"><span>© 2022 MozEconomia, S.A - Todos os direitos reservados.</span></p>
-                                    <p style="margin: 0; font-size: 14px; text-align: center; mso-line-height-alt: 15px;"><a href="https://mozeconomia.co.mz/termos-e-condicoes" style="color: #64748b; text-decoration: none;">Termos e condições </a></p>
+                                    <p style="margin: 0; font-size: 14px; text-align: center; mso-line-height-alt: 15px;"><span>© 2022 Matola Ingadi, LDA - Todos os direitos reservados.</span></p>
+                                    <p style="margin: 0; font-size: 14px; text-align: center; mso-line-height-alt: 15px;"><a href="https://matolaingadi.co.mz/termos-e-condicoes" style="color: #64748b; text-decoration: none;">Termos e condições </a></p>
                                   </div>
                                 </div>
                               </td>

@@ -12,15 +12,15 @@ export async function sendVerificationRequest (params: SendVerificationRequestPa
 
   const result = await transport.sendMail({
     to: email,
-    from: `"MozEconomia" <${from}>`,
+    from: `"Matola Ingadi" <${from}>`,
     subject: `Sign in to ${host}`,
     text: createText({ url, host }),
     html: createHtml({ url, host }),
     attachments: [
       {
-        filename: 'mozeconomia-logo.png',
+        filename: 'matola-ingadi-logo.png',
         content: logo,
-        cid: 'logo@mozeconomia.co.mz'
+        cid: 'logo@matolaingadi.co.mz'
       }
     ]
   })

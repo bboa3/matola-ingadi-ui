@@ -67,7 +67,7 @@ const Footer: React.FC = () => {
             <NewsletterForm />
           </div>
         </div>
-        <div className='w-full pt-2 text-gray-600 border-t border-gray-700 mt-9'>
+        <div className='w-full pt-2 text-gray-600 border-t border-gray-300 mt-9'>
           <span>
             &copy; {new Date().getFullYear()} Matola Ingadi, LDA - {lang.terms.text}
           </span>

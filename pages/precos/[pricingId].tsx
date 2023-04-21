@@ -1,6 +1,5 @@
 import { totalCalculator } from '@common/Prices/invoice/total'
 import getLanguage from '@common/Prices/lang/bills/page'
-import PeriodSelect from '@common/Prices/PeriodSelect'
 import { Button } from '@components/Button'
 import Input from '@components/Form/Input'
 import SelectMenu from '@components/Form/Select'
@@ -13,7 +12,7 @@ import { authOptions } from '@pages/api/auth/[...nextauth]'
 import { countryList } from '@utils/address/countryList'
 import { cookiesName, nextAuthUrl } from '@utils/env'
 import { moneyFormatter } from '@utils/number-formatter'
-import { Bill, Period, Pricing } from 'bill'
+import { Bill, Pricing } from 'bill'
 import { useFormik } from 'formik'
 import { GetServerSideProps } from 'next'
 import { User } from 'next-auth'
@@ -28,7 +27,7 @@ interface Props {
 }
 
 interface UseFormikData {
-  maxTeamMembers: number
+  guestsNumber: number
   name: string
   email: string
   phoneNumber: string
@@ -42,14 +41,13 @@ const countries = countryList.map(c => ({ id: c, name: c }))
 const CreateBillPage: React.FC<Props> = ({ pricing, token, user }) => {
   const { locale, push } = useRouter()
   const lang = getLanguage(locale!)
-  const [period, setPeriod] = useState<Period>('month')
   const [country, setCountry] = useState(countries[150])
 
-  const { baseMaxTeamMembers } = pricing
+  const { baseGuestsNumber } = pricing
 
   const { errors, values, handleChange, handleSubmit } = useFormik<UseFormikData>({
     initialValues: {
-      maxTeamMembers: baseMaxTeamMembers,
+      guestsNumber: baseGuestsNumber,
       name: '',
       email: '',
       phoneNumber: '',
@@ -61,8 +59,7 @@ const CreateBillPage: React.FC<Props> = ({ pricing, token, user }) => {
       const data = {
         paymentMethod: paymentMethod.name,
         paymentGatewayFee,
-        period,
-        maxTeamMembers: values.maxTeamMembers,
+        guestsNumber: values.guestsNumber,
         pricingId: pricing.id,
         email: values.email,
         phoneNumber: values.phoneNumber,
@@ -88,8 +85,7 @@ const CreateBillPage: React.FC<Props> = ({ pricing, token, user }) => {
 
   const { subTotal, paymentGatewayFee } = totalCalculator({
     pricing,
-    maxTeamMembers: values.maxTeamMembers,
-    period,
+    guestsNumber: values.guestsNumber,
     commission: paymentMethod.commission
   })
 
@@ -130,13 +126,6 @@ const CreateBillPage: React.FC<Props> = ({ pricing, token, user }) => {
         <section className='w-full md:w-1/2'>
           <form onSubmit={handleSubmit} className="w-full mt-3 max-w-2xl space-y-5 rounded-md p-3 md:p-12">
             <div>
-              <PeriodSelect
-                locale={locale!}
-                pricing={pricing}
-                period={period}
-                setPeriod={setPeriod}
-              />
-
               <div className='mt-6'>
                 <span>{lang.total}</span>
                 <span className='font-bold text-4xl ml-1'>{moneyFormatter(subTotal)}</span>
@@ -147,11 +136,11 @@ const CreateBillPage: React.FC<Props> = ({ pricing, token, user }) => {
                   label={lang.form.maxTeamMembers}
                   id='maxTeamMembers'
                   type='number'
-                  min={baseMaxTeamMembers}
+                  min={baseGuestsNumber}
                   max="100"
-                  value={values.maxTeamMembers}
+                  value={values.guestsNumber}
                   onChange={handleChange}
-                  error={errors.maxTeamMembers}
+                  error={errors.guestsNumber}
                 />
               </div>
             </div>
