@@ -2,7 +2,7 @@ import { Menu } from 'blog'
 
 export const getMenu = (locale: string): Menu => {
   return {
-    id: 'blog',
+    id: '',
     pages: [
       {
         name: locale === 'pt' ? 'Reservar' : 'Booking',
