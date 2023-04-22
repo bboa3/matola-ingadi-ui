@@ -1,8 +1,8 @@
-import { billingAPIBaseUrl, userAPIBaseUrl } from '@utils/env'
+import { APIBaseUrl, billingAPIBaseUrl } from '@utils/env'
 import axios from 'axios'
 
-export const userHttpFetch = axios.create({
-  baseURL: userAPIBaseUrl
+export const httpFetch = axios.create({
+  baseURL: APIBaseUrl
 })
 
 export const billingHttpFetch = axios.create({

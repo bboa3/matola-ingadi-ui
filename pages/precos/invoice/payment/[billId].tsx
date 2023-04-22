@@ -152,6 +152,15 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   const transaction = transactions.find(({ id }) => id === transactionId)
 
+  if (!transaction) {
+    return {
+      redirect: {
+        destination: `/precos/invoice/${billId}?invoiceCode=${invoiceCode}`,
+        permanent: false
+      }
+    }
+  }
+
   return {
     props: {
       token,

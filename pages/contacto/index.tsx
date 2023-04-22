@@ -4,7 +4,7 @@ import Input from '@components/Form/Input'
 import SelectMenu from '@components/Form/Select'
 import Textarea from '@components/Form/Textarea'
 import SimpleLayout from '@components/Layout/MatolaIngadi/SimpleLayout'
-import { userHttpFetch } from '@lib/fetch'
+import { httpFetch } from '@lib/fetch'
 import getValidator from '@lib/validator/contact'
 import getLanguage from 'common/Contact/lang/page'
 import { useFormik } from 'formik'
@@ -51,7 +51,9 @@ const ContactPage: React.FC = () => {
         service: service.name
       }
 
-      userHttpFetch.post('/mail/support', data)
+      console.log(data)
+
+      httpFetch.post('/mail/support', data)
         .then(() => {
           push('/contacto/enviado')
         })

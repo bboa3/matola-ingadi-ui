@@ -4,7 +4,7 @@ export const isProd = process.env.NODE_ENV === 'production'
 export const isTest = process.env.NODE_ENV === 'test'
 
 // API URLs
-export const userAPIBaseUrl = process.env.NEXT_PUBLIC_USER_API_URL!
+export const APIBaseUrl = process.env.NEXT_PUBLIC_API_URL!
 export const billingAPIBaseUrl = process.env.NEXT_PUBLIC_BILLING_API_URL!
 export const blogCmsApiURL = process.env.NEXT_PUBLIC_BLOG_CMS_API_URL!
 
@@ -32,7 +32,7 @@ export const emailFrom = process.env.EMAIL_FROM!
 if (
   !appId ||
   !searchApiKey ||
-  !userAPIBaseUrl ||
+  !APIBaseUrl ||
   !blogCmsApiURL ||
   !cookiesName
 ) {
