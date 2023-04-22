@@ -94,7 +94,7 @@ export const templete = `
       }
 
       .icon {
-        width: 170px !important;
+        width: 50px !important;
       }
     }
     </style>
@@ -115,7 +115,7 @@ export const templete = `
                           <table border="0" cellpadding="0" cellspacing="0" class="heading_block block-2" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
                             <tr>
                               <td class="pad" style="padding-bottom:20px;padding-top:20px;text-align:center;width:100%;">
-                                <img align="center" alt="Logo" src="cid:logo@matolaingadi.co.mz" style="display: block; height: auto; margin: 0 auto; border: 0;" width="170"/>
+                                <img align="center" alt="Logo" src="cid:logo@matolaingadi.co.mz" style="display: block; height: auto; margin: 0 auto; border: 0;" width="130"/>
                               </td>
                             </tr>
                             <tr>
@@ -186,7 +186,7 @@ export const templete = `
                           <table border="0" cellpadding="0" cellspacing="0" class="heading_block block-1" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
                             <tr>
                               <td class="pad" style="padding-bottom:20px;padding-top:20px;text-align:center;width:100%;">
-                                <img align="center" class="icon" alt="Logo" src="cid:logo@matolaingadi.co.mz" style="display: block; height: auto; margin: 0 auto; border: 0;" width="230"/>
+                                <img align="center" class="icon" alt="Logo" src="cid:logo@matolaingadi.co.mz" style="display: block; height: auto; margin: 0 auto; border: 0;" width="70"/>
                               </td>
                             </tr>
                           </table>
