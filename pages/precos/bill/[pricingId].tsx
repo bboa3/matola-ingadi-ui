@@ -81,7 +81,7 @@ const CreateBillPage: React.FC<Props> = ({ pricing, token, eventDate }) => {
         .then(({ data }) => {
           const { id, invoices }: Bill = data
 
-          push(`/precos/payment/${id}?invoiceCode=${invoices[0].invoiceCode}`)
+          push(`/precos/invoice/${id}?invoiceCode=${invoices[0].invoiceCode}`)
         })
         .catch(err => console.log(err))
     }

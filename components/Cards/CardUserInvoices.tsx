@@ -26,19 +26,19 @@ const CardUserInvoices: React.FC<Props> = ({ transactions, invoiceCode, billId, 
           <table className="items-center w-full bg-transparent border-collapse">
             <thead>
               <tr>
-                <th className="px-4 bg-green-50 text-gray-500 align-middle border border-solid border-gray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                <th className="px-4 bg-green-50 text-gray-500 align-middle border border-solid border-gray-100 py-3 text-sm uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                   {header.col5}
                 </th>
-                <th className="px-4 bg-green-50 text-gray-500 align-middle border border-solid border-gray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                <th className="px-4 bg-green-50 text-gray-500 align-middle border border-solid border-gray-100 py-3 text-sm uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                   {header.col1}
                 </th>
-                <th className="px-3 bg-green-50 text-gray-500 align-middle border border-solid border-gray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                <th className="px-3 bg-green-50 text-gray-500 align-middle border border-solid border-gray-100 py-3 text-sm uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                   {header.col2}
                 </th>
-                <th className="px-3 bg-green-50 text-gray-500 align-middle border border-solid border-gray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                <th className="px-3 bg-green-50 text-gray-500 align-middle border border-solid border-gray-100 py-3 text-sm uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                   {header.col3}
                 </th>
-                <th className="px-3 bg-green-50 text-gray-500 align-middle border border-solid border-gray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                <th className="px-3 bg-green-50 text-gray-500 align-middle border border-solid border-gray-100 py-3 text-sm uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                   {header.col4}
                 </th>
               </tr>
@@ -55,7 +55,7 @@ const CardUserInvoices: React.FC<Props> = ({ transactions, invoiceCode, billId, 
                       key={id}
                       className='cursor-pointer hover:bg-green-200'
                     >
-                      <td className="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                      <td className="border-t-0 px-4 align-middle border-l-0 border-r-0 text-sm whitespace-nowrap p-4">
                         {
                               status === 'COMPLETED'
                                 ? (
@@ -84,17 +84,17 @@ const CardUserInvoices: React.FC<Props> = ({ transactions, invoiceCode, billId, 
                                 : null
                             }
                       </td>
-                      <td className="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap font-semibold p-4 text-left">
+                      <td className="border-t-0 px-4 align-middle border-l-0 border-r-0 text-sm whitespace-nowrap font-semibold p-4 text-left">
                         {transactionType === 'date-reservation' ? type.dateReservation : ''}
                         {transactionType === 'remaining-payment' ? type.remainingPayment : ''}
                       </td>
-                      <td className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                      <td className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-sm whitespace-nowrap p-4">
                         { dueAtFormatted }
                       </td>
-                      <td className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                      <td className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-sm whitespace-nowrap p-4">
                         { moneyFormatter(total) }
                       </td>
-                      <td className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                      <td className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-sm whitespace-nowrap p-4">
                         { invoicePercentage }%
                       </td>
                     </tr>
