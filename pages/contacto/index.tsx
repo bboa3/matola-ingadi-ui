@@ -51,8 +51,6 @@ const ContactPage: React.FC = () => {
         service: service.name
       }
 
-      console.log(data)
-
       httpFetch.post('/mail/support', data)
         .then(() => {
           push('/contacto/enviado')

@@ -1,7 +1,6 @@
 import LogoImg from '@assets/img/logo'
 import getLanguage from '@components/Nav/lang/manu'
 import LanguageSelect from '@components/Nav/Main/languageSelect'
-import MainMenu from '@components/Nav/Main/Menu'
 import ProfileButton from '@components/Nav/Main/Profile'
 import SearchProvider from '@components/Search'
 import SearchButton from '@components/Search/SearchButton'
@@ -65,9 +64,6 @@ const Nav: React.FC<Props> = ({ Navigation, searchIndexName }) => {
                 <div className="px-2 pt-3 pb-3 border-t-2 border-slate-200">
                   {Navigation}
                 </div>
-                <div className="px-2 pt-3 pb-3 border-t-2 border-slate-200">
-                  <MainMenu menu={lang.menu} />
-                </div>
               </Disclosure.Panel>
             </>
           )}
@@ -75,7 +71,6 @@ const Nav: React.FC<Props> = ({ Navigation, searchIndexName }) => {
 
         {/* medium Screen  =< */}
         <ul className='hidden lg:inline-flex items-center justify-end w-full h-full max-w-7xl'>
-          <MainMenu menu={lang.menu} />
           <li className='h-4/5 flex items-center px-3'>
             <SearchButton isOpen={isOpen} setIsOpen={setIsOpen} />
             <SearchProvider isOpen={isOpen} setIsOpen={setIsOpen} indexName={searchIndexName} />

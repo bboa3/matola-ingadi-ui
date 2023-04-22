@@ -13,6 +13,14 @@ export const getMenu = (locale: string): Menu => {
         id: 'sobre-nos'
       },
       {
+        name: locale === 'pt' ? 'Galeria' : 'Gallery',
+        id: 'galeria'
+      },
+      {
+        name: locale === 'pt' ? 'Blog' : 'Blog',
+        id: 'blog'
+      },
+      {
         name: locale === 'pt' ? 'Sobre nós' : 'About us',
         id: 'sobre-nos'
       }

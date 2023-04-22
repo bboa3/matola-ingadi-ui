@@ -2,7 +2,7 @@ import { Listbox, Transition } from '@headlessui/react'
 import { GlobeAltIcon } from '@heroicons/react/24/outline'
 import { useRouter } from 'next/router'
 import React, { Fragment } from 'react'
-import { Language } from 'ui-moz'
+import { Language } from 'ui'
 
 export const languages: Language[] = [
   {

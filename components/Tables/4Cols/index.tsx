@@ -1,6 +1,6 @@
 import { textHighlighter } from '@components/Tables/utils/textHighlighter'
 import React, { ReactNode } from 'react'
-import { Table4ColRow } from 'ui-moz'
+import { Table4ColRow } from 'ui'
 
 interface Header {
   col1: string

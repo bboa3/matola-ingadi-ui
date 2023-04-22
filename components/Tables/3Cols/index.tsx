@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react'
-import { Table3ColRow } from 'ui-moz'
+import { Table3ColRow } from 'ui'
 
 interface Header {
   col1: string
