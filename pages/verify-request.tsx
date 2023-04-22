@@ -20,9 +20,9 @@ const VerifyRequest: React.FC<Props> = ({ URL }) => {
       description=''
     >
       <div className='flex min-h-full items-center justify-center py-24 px-4 sm:px-6 lg:px-8'>
-        <div className='max-w-3xl border border-slate-600 rounded-md text-center p-9'>
+        <div className='max-w-3xl border border-gray-600 rounded-md text-center p-9'>
           <h1 className='text-3xl'>{lang.h1}</h1>
-          <p className=' py-7'>{lang.p}</p>
+          <p className='py-7'>{lang.p}</p>
           <p className=''><Link href={URL}>matolaingadi.co.mz</Link></p>
         </div>
       </div>

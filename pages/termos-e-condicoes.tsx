@@ -10,7 +10,7 @@ const TermsAndConditions: React.FC = () => (
     keywords='moçambique, economia, dados, finança, comércio, mercado, capital, despesas, Hipoteca, dinheiro'
   >
     <div className='max-w-6xl min-h-screen mx-auto px-4 sm:px-6 py-12 overflow-hidden'>
-        <div className='border-b border-slate-300'>
+        <div className='border-b border-gray-300'>
           <h1 className='text-5xl font-bold py-6'>Termos e Condições da Matola Ingadi</h1>
           <p>Última atualização: 16 de Novembro de 2022</p>
           <p className='my-2'>Por favor, leia estes termos e condições com cuidado antes de usar os nossos serviços</p>

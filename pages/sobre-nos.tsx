@@ -29,22 +29,22 @@ const AboutUs: React.FC<Props> = ({ age }) => {
           <div className='w-full h-48 max-w-4xl flex justify-between items-center'>
             <div className='w-[32%] lg:w-[31%] h-full flex justify-center items-center rounded-xl shadow-xl border border-slate-50'>
               <p className='w-full flex justify-center flex-col items-center text-center'>
-                <span className='text-emerald-500 text-5xl'>3</span>
-                <span className='w-2 h-2 my-1.5 bg-emerald-500 rounded-[50%]'></span>
+                <span className='text-green-500 text-5xl'>3</span>
+                <span className='w-2 h-2 my-1.5 bg-green-500 rounded-[50%]'></span>
                 <span className='w-full break-words'>{lang.partners}</span>
               </p>
             </div>
             <div className='w-[32%] lg:w-[31%] h-full flex justify-center items-center rounded-xl shadow-xl border border-slate-50'>
               <p className='w-full flex justify-center flex-col items-center text-center'>
-                <span className='text-emerald-500 text-5xl'>+100</span>
-                <span className='w-2 h-2 my-1.5 bg-emerald-500 rounded-[50%]'></span>
+                <span className='text-green-500 text-5xl'>+100</span>
+                <span className='w-2 h-2 my-1.5 bg-green-500 rounded-[50%]'></span>
                 <span className='w-full break-words'>{lang.indicators}</span>
               </p>
             </div>
             <div className='w-[32%] lg:w-[31%] h-full flex justify-center items-center rounded-xl shadow-xl border border-slate-50'>
               <p className='w-full flex justify-center flex-col items-center text-center'>
-                <span className='text-emerald-500 text-5xl'>{age}</span>
-                <span className='w-2 h-2 my-1.5 bg-emerald-500 rounded-[50%]'></span>
+                <span className='text-green-500 text-5xl'>{age}</span>
+                <span className='w-2 h-2 my-1.5 bg-green-500 rounded-[50%]'></span>
                 <span className='w-full break-words'>{lang.age}</span>
               </p>
             </div>
@@ -93,7 +93,7 @@ const AboutUs: React.FC<Props> = ({ age }) => {
             </div>
           </div>
           <span className='hidden lg:block w-2/12 h-full relative'>
-            <RectangleIcon className='w-[40vw] h-[40vw] stroke-emerald-900/50 stroke-[0.20] fill-none rotate-[189deg] absolute -left-[30%] top-0' />
+            <RectangleIcon className='w-[40vw] h-[40vw] stroke-green-900/50 stroke-[0.20] fill-none rotate-[189deg] absolute -left-[30%] top-0' />
           </span>
         </section>
 

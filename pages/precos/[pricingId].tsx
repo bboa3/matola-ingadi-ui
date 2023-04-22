@@ -3,7 +3,7 @@ import { Button } from '@components/Button'
 import SimpleLayout from '@components/Layout/MatolaIngadi/SimpleLayout'
 import { billingHttpFetch } from '@lib/fetch'
 import { authOptions } from '@pages/api/auth/[...nextauth]'
-import { createDateUTC } from '@utils/date'
+import { createDate } from '@utils/date'
 import { getMonths } from '@utils/date/months'
 import { cookiesName, nextAuthUrl } from '@utils/env'
 import { EventDate } from 'bill'
@@ -30,8 +30,7 @@ const CreateBillPage: React.FC<Props> = ({ pricingId, reservedDates }) => {
   const [selectedDate, setSelectedDate] = useState(new Date())
   const { months, dateLocalizer } = getMonths(locale!)
 
-  const dateLocalized = dateLocalizer(selectedDate, months)
-  const eventDate = createDateUTC(selectedDate).format('YYYY-MM-DD')
+  const eventDate = createDate(selectedDate).format('YYYY-MM-DD')
 
   return (
     <SimpleLayout
@@ -48,7 +47,7 @@ const CreateBillPage: React.FC<Props> = ({ pricingId, reservedDates }) => {
         </div>
         <div className='w-full max-w-6xl h-full bg-gray-50 space-y-3 rounded-lg'>
           <p className='p-5 mt-3 text-3xl font-semibold text-center'>
-            {dateLocalized}
+            {dateLocalizer(selectedDate, months)}
           </p>
           <CalendarComponent
             value={selectedDate}
