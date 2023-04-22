@@ -1,6 +1,6 @@
-import LogoImg from '@assets/icons/icon'
 import GoogleLogo from '@assets/img/GoogleLogo'
 import LinkedinLogo from '@assets/img/LinkedinLogo'
+import LogoImg from '@assets/img/logo'
 import { getLanguage } from '@common/Login/lang/page'
 import Input from '@components/Form/Input'
 import Layout from '@components/Layout/MatolaIngadi/SimpleLayout'
@@ -44,14 +44,14 @@ const LogIn: React.FC<Props> = ({ callbackUrl }) => {
     >
       <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-md space-y-8">
-          <div className="mx-auto h-14 w-auto">
-            <LogoImg />
+          <div className="mx-auto h-auto w-20">
+            <LogoImg isFooter />
           </div>
           <form onSubmit={handleSubmit} className="w-full">
             <fieldset className="space-y-5">
               <button
                 onClick={() => signIn('linkedin', { callbackUrl })}
-                className="group flex w-full justify-center rounded-lg border-2 border-transparent hover:border-emerald-500 bg-emerald-100 py-2 px-4 text-base font-bold text-slate-800 focus:outline-none ring-0"
+                className="group flex w-full justify-center rounded-lg border-2 border-transparent hover:border-green-500 bg-green-100 py-2 px-4 text-base font-bold text-gray-800 focus:outline-none ring-0"
               >
                 <span className="inset-y-0 left-0 flex items-center pl-3 pr-2">
                   <span className='h-6 w-6'><LinkedinLogo /></span>
@@ -60,7 +60,7 @@ const LogIn: React.FC<Props> = ({ callbackUrl }) => {
               </button>
               <button
                 onClick={() => signIn('google', { callbackUrl })}
-                className="group flex w-full justify-center rounded-lg border-2 border-transparent hover:border-emerald-500 bg-emerald-100 py-2 px-4 text-base font-bold text-slate-800 focus:outline-none ring-0"
+                className="group flex w-full justify-center rounded-lg border-2 border-transparent hover:border-green-500 bg-green-100 py-2 px-4 text-base font-bold text-gray-800 focus:outline-none ring-0"
               >
                 <span className="inset-y-0 left-0 flex items-center pl-3 pr-2">
                   <span className='h-6 w-6'><GoogleLogo /></span>
@@ -69,8 +69,8 @@ const LogIn: React.FC<Props> = ({ callbackUrl }) => {
               </button>
             </fieldset>
 
-            <fieldset className='w-full border-t mt-4 border-slate-500 space-y-5'>
-              <legend className="mx-auto px-3 text-slate-500">{lang.or}</legend>
+            <fieldset className='w-full border-t mt-4 border-gray-500 space-y-5'>
+              <legend className="mx-auto px-3 text-gray-500">{lang.or}</legend>
               <input type="hidden" name="remember" defaultValue="true" />
 
               <Input
@@ -90,7 +90,7 @@ const LogIn: React.FC<Props> = ({ callbackUrl }) => {
                     id="remember-me"
                     name="remember-me"
                     type="checkbox"
-                    className="h-4 w-4 rounded border-gray-300 text-emerald-500 focus:ring-emerald-500"
+                    className="h-4 w-4 rounded border-gray-300 text-green-500 focus:ring-green-500"
                   />
                   <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900">
                     {lang.rememberLabel}
@@ -101,10 +101,10 @@ const LogIn: React.FC<Props> = ({ callbackUrl }) => {
               <div>
                 <button
                   type='submit'
-                  className="group relative flex w-full justify-center rounded-lg border border-transparent bg-emerald-500 py-2 px-4 text-sm font-medium text-white hover:bg-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
+                  className="group relative flex w-full justify-center rounded-lg border border-transparent bg-green-500 py-2 px-4 text-sm font-medium text-white hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
                 >
                   <span className="absolute inset-y-0 left-0 flex items-center pl-3">
-                    <LockClosedIcon className="h-5 w-5 text-emerald-400 group-hover:text-emerald-500" aria-hidden="true" />
+                    <LockClosedIcon className="h-5 w-5 text-green-400 group-hover:text-green-500" aria-hidden="true" />
                   </span>
                   {lang.signInButton}
                 </button>

@@ -24,6 +24,7 @@
     @apply bg-green-500
   }
 
+  .ui-style-calender >.react-calendar__navigation > .react-calendar__navigation__label,
   .ui-style-calender >.react-calendar__navigation > .react-calendar__navigation__label:hover,
   .ui-style-calender >.react-calendar__navigation > .react-calendar__navigation__label:focus {
     @apply bg-green-500

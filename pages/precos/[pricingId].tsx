@@ -24,7 +24,7 @@ interface Props {
   reservedDates: EventDate[]
 }
 
-const CreateBillPage: React.FC<Props> = ({ pricingId, token, reservedDates }) => {
+const CreateBillPage: React.FC<Props> = ({ pricingId, reservedDates }) => {
   const { locale } = useRouter()
   const lang = getLanguage(locale!)
   const [selectedDate, setSelectedDate] = useState(new Date())
@@ -32,8 +32,6 @@ const CreateBillPage: React.FC<Props> = ({ pricingId, token, reservedDates }) =>
 
   const dateLocalized = dateLocalizer(selectedDate, months)
   const eventDate = createDateUTC(selectedDate).format('YYYY-MM-DD')
-
-  console.log(lang)
 
   return (
     <SimpleLayout
@@ -45,7 +43,7 @@ const CreateBillPage: React.FC<Props> = ({ pricingId, token, reservedDates }) =>
       <div className='flex flex-col min-h-full items-center justify-center pb-12 pt-12 px-4 sm:px-6 lg:px-8'>
         <div className='w-full max-w-6xl p-3'>
           <span className='text-2xl block text-left text-gray-900'>
-            Selecione a data do evento no calendário abaixo.
+            {lang.h1}
           </span>
         </div>
         <div className='w-full max-w-6xl h-full bg-gray-50 space-y-3 rounded-lg'>

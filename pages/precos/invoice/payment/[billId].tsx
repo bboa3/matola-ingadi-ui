@@ -1,4 +1,3 @@
-import { totalCalculator } from '@common/Prices/invoice/total'
 import getLanguage from '@common/Prices/lang/payment/page'
 import { Button } from '@components/Button'
 import Radio from '@components/Form/Radio'
@@ -11,7 +10,7 @@ import { authOptions } from '@pages/api/auth/[...nextauth]'
 import { getMonths } from '@utils/date/months'
 import { cookiesName, nextAuthUrl } from '@utils/env'
 import { moneyFormatter } from '@utils/number-formatter'
-import { Invoice, Pricing } from 'bill'
+import { Invoice, Transaction } from 'bill'
 import { GetServerSideProps } from 'next'
 import { getServerSession } from 'next-auth/next'
 import Image from 'next/image'
@@ -20,25 +19,20 @@ import React, { useState } from 'react'
 
 interface Props {
   token: string
-  billId: string
+  transaction: Transaction
   invoice: Invoice
-  pricing: Pricing
+  billId: string
 }
 
 type SetPaymentMethod = React.Dispatch<React.SetStateAction<ItemSelect>>
 
-const CreateBillPage: React.FC<Props> = ({ token, billId, invoice, pricing }) => {
+const CreateBillPage: React.FC<Props> = ({ token, invoice, billId, transaction }) => {
   const { locale, push } = useRouter()
   const lang = getLanguage(locale!)
   const { months, dateLocalizer } = getMonths(locale!)
-
   const [paymentMethod, setPaymentMethod] = useState(paymentMethods[0])
 
-  const { subTotal, paymentGatewayFee, total } = totalCalculator({
-    pricing,
-    guestsNumber: invoice.guestsNumber,
-    commission: paymentMethod.commission
-  })
+  const { subTotal, paymentGatewayFee, total } = transaction
 
   const tableData = [
     {
@@ -73,7 +67,7 @@ const CreateBillPage: React.FC<Props> = ({ token, billId, invoice, pricing }) =>
       description='Preço dos serviços da MozEconomia'
       keywords='moçambique, economia, dados, finança, comércio, mercado, capital, despesas, Hipoteca, dinheiro'
     >
-      <div className='flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8'>
+      <div className='flex min-h-full items-center justify-center pt-9 lg:pt-10 pb-12 px-4 sm:px-6 lg:px-8'>
         <section className='w-full md:grid grid-cols-3 border border-gray-200 rounded-lg divide-y md:divide-x divide-slate-100'>
           <div className='col-span-1 flex flex-col justify-center items-center p-6 text-center space-y-5'>
             <div
@@ -111,7 +105,7 @@ const CreateBillPage: React.FC<Props> = ({ token, billId, invoice, pricing }) =>
               <div className='text-sm w-full flex justify-end'>
                 <div className='w-full max-w-[14rem]'>
                   <span className='block font-bold'>Total</span>
-                  <span className='block'>{lang.dueAt} {dateLocalizer(invoice.dueAt, months)}</span>
+                  <span className='block'>{lang.dueAt} {dateLocalizer(transaction.dueAt, months)}</span>
                 </div>
               </div>
               <div className='w-full text-right'>
@@ -136,7 +130,7 @@ const CreateBillPage: React.FC<Props> = ({ token, billId, invoice, pricing }) =>
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { req, locale, query } = context
-  const { billId, invoiceCode, resolvedUrl } = query
+  const { billId, invoiceCode, transactionId, resolvedUrl } = query
 
   const token = req.cookies[cookiesName]
   const session = await getServerSession(context.req, context.res, authOptions)
@@ -154,16 +148,16 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     headers: { Authorization: `beaer ${token}` }
   })
 
-  const { pricingId }: Invoice = invoice
+  const { transactions }: Invoice = invoice
 
-  const { data: pricing } = await billingHttpFetch.get(`/billing/pricing/${pricingId}/${locale}`)
+  const transaction = transactions.find(({ id }) => id === transactionId)
 
   return {
     props: {
       token,
       billId,
-      invoice,
-      pricing
+      transaction,
+      invoice
     }
   }
 }
