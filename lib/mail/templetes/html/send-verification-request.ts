@@ -130,7 +130,7 @@ export const templete = `
                               </td>
                             </tr>
                             <tr>
-                              <td align="center" style="border-radius: 5px;" bgcolor="#10b981">
+                              <td align="center" style="border-radius: 5px;" bgcolor="#50bb27">
                                 <a href="{{url}}" target="_blank" style="font-size: 18px; font-family: Poppins, Arial, Helvetica, sans-serif; color: white; text-decoration: none; border-radius: 5px; padding: 10px 20px; display: inline-block; font-weight: 700;">
                                   Verificar endereço de e-mail
                                 </a>
