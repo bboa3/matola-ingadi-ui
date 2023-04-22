@@ -44,7 +44,7 @@ const getLanguage = (locale: string) => {
             },
             {
               title: 'Visit Us',
-              href: '/',
+              href: '/sobre-nos',
               local: true
             },
             {
@@ -75,45 +75,30 @@ const getLanguage = (locale: string) => {
           name: 'Soluções',
           pages: [
             {
-              title: 'Preços',
+              title: 'Reserva',
               href: '/precos',
-              local: true
-            },
-            {
-              title: 'Recursos',
-              href: '/recursos',
               local: true
             },
             {
               title: 'Blog',
               href: '/blog',
               local: true
-            },
-            {
-              title: 'Acesso à API',
-              href: 'https://mozeconomia.docs.apiary.io/',
-              local: false
-            },
-            {
-              title: 'Documentação',
-              href: '/',
-              local: true
             }
           ]
         },
         {
-          name: 'Empresa',
+          name: 'Company',
           pages: [
             {
               title: 'Sobre nós',
               href: '/sobre-nos',
               local: true
             },
-            // {
-            //   title: 'Parceiros',
-            //   href: '/parceiros',
-            //   local: true
-            // },
+            {
+              title: 'Visite Matola Ingadi',
+              href: '/sobre-nos',
+              local: true
+            },
             {
               title: 'Fale connosco',
               href: '/contacto',

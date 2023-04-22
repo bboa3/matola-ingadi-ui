@@ -10,7 +10,7 @@ export const getMenu = (locale: string): Menu => {
       },
       {
         name: locale === 'pt' ? 'Visite-nos' : 'Visit us',
-        id: 'visite-nos'
+        id: 'sobre-nos'
       },
       {
         name: locale === 'pt' ? 'Sobre nós' : 'About us',
