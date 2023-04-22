@@ -1,8 +1,11 @@
+import marriageCoupleImg from '@assets/img/about/couple-in-marriage.webp'
+import ingadiImg from '@assets/img/about/matola-ingadi.webp'
 import { getLanguage } from '@common/aboutUs/lang/page'
 import { Button } from '@components/Button'
 import SimpleLayout from '@components/Layout/MatolaIngadi/SimpleLayout'
 import { createDate } from '@utils/date'
 import { GetStaticProps } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
@@ -23,19 +26,18 @@ const AboutUs: React.FC<Props> = () => {
   >
     <div className='w-full flex flex-col items-center min-h-screen mx-auto py-14 overflow-hidden'>
       <section className='w-full max-w-5xl px-6 lg:px-12 mb-24 space-y-6 lg:space-y-8'>
-        <h1 className='text-4xl font-bold text-center'>Bem vindo a Matola Ingadi</h1>
+        <h1 className='text-4xl font-bold text-center'>{lang.h1}</h1>
 
         <div className='flex w-full'>
           <div className='hidden md:block w-80 mr-12 italic text-lg'>
-            <h2>Sobre nós. Nossa casa.</h2>
+            <h2>{lang.h2}</h2>
           </div>
           <div className='w-auto space-y-4'>
             <p>
-              Salão de eventos Matola Ingadi, nascido em 2015, localiza-se na Matola depois do Externato Cantinho do Céu e Condomínio Niketche vindo pelo lado da Shopripe da Matola para Malhapsene. Estamos cercado pelo verde do rio Matola, de onde é possível ver a paisagem verde junto com o cair do sol estando no nosso salão.
+              {lang.description.location}
             </p>
             <p>
-              A palavra Ingadi provem do Zulu que significa jardim, Matola Ingadi é mais do que um salão de eventos é um jardim onde sonhos são realizados, onde os nossos clientes na companhia daqueles que mais amam realizam os seus eventos e ficam com a memória do verde do nosso jardim para sempre marcada nas suas mentes.
-              Matola Ingadi inspira tranquilidade, traz uma fusão entre a natureza e o modernismo.
+              {lang.description.why}
             </p>
           </div>
         </div>
@@ -43,22 +45,30 @@ const AboutUs: React.FC<Props> = () => {
 
       <section className='w-full px-6 lg:px-14 mb-14 space-y-6 lg:space-y-8'>
         <div
-          className="relative w-full min-h-[60vh] md:min-h-[80vh] overflow-hidden mb-16 bg-cover bg-center bg-no-repeat p-12 text-center"
-          style={{ backgroundImage: 'url(./img/matola-ingadi.webp)' }}
+          className="w-full h-[60vh] md:h-[80vh] overflow-hidden text-center"
         >
+          <Image
+            src={ingadiImg}
+            alt='Salão de eventos Matola Ingadi'
+            className="h-full w-full object-cover object-center"
+          />
         </div>
       </section>
 
       <section className='w-full md:grid grid-cols-2 gap-x-5 px-6 lg:px-14 mb-24 space-y-6 lg:space-y-0'>
         <div className='flex justify-center items-center text-center'>
             <p className='p-3 text-2xl font-medium italic'>
-              Todo o nosso esforço é para garantir que o cliente saia feliz do nosso estabelecimento e que venha mais vezes.
+              {lang.description.team}
             </p>
         </div>
         <div
-          className=" min-h-[60vh] md:min-h-[80vh] overflow-hidden bg-cover bg-center bg-no-repeat p-12 text-center"
-          style={{ backgroundImage: 'url(./img/couple-in-marriage.webp)' }}
+          className="w-full h-[60vh] md:h-[80vh] overflow-hidden text-center"
         >
+          <Image
+            src={marriageCoupleImg}
+            alt='Equipe Matola Ingadi'
+            className="h-full w-full object-cover object-center"
+          />
         </div>
       </section>
 

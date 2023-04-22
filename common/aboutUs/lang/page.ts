@@ -2,24 +2,13 @@ export const getLanguage = (locale: string) => {
   const langOptions = [
     {
       locale: 'en',
-      h1: 'Economic and Financial Information for business and investments in Mozambique',
-      description: 'We provide economic and financial information for businesses and investments in Mozambique.',
-      partners: 'Partners',
-      indicators: 'Economic and Financial Indicators',
-      age: 'Months online',
-      whyTitle: 'Why?',
-      whyDescription: [
-        'Imagine if you could have all the economic and financial information of Mozambique, the Money Market, the Credit Market, the Capital Market, the Foreign Exchange Market, the Real Estate Market, GDP, Inflation, etc., you would make wiser decisions about your investments, right? You would know exactly where to invest and the return on investments.',
-        'Yes, it is for this reason that MozEconomia was born, a platform that aggregates all Mozambican financial and economic information.'
-      ],
-      sandBoxTitle: [
-        'Regulatory Sandbox',
-        'of the Bank of Mozambique'
-      ],
-      sandBoxDescription: [
-        'MozEconomia is a participant in the Regulatory Sandbox of the Bank of Mozambique, which is a regulatory environment with the aim of monitoring and analyzing products, services and financial solutions so that they are the most suitable to the public.'
-      ],
-      sandBoxLink: 'More information',
+      h1: 'Welcome to Matola Ingadi',
+      h2: 'About Us. Our home.',
+      description: {
+        location: 'Event hall Matola Ingadi, born in 2015, is located in Matola after Externato Cantinho do Céu and Condomínio Niketche, coming from Matola Shoprite side to Malhampsene. We are surrounded by the green of the Matola River, from where it is possible to see the green landscape along with the sunset from our lounge.',
+        why: 'The word Ingadi comes from Zulu, which means garden, Matola Ingadi is more than an event hall, it is a garden where dreams come true, where our customers, in the company of those they love most, hold their events and are left with the memory of the green of our garden forever etched in their minds. Matola Ingadi inspires tranquility and brings a fusion between nature and modernism.',
+        team: 'All our effort is for the customer to leave our house satisfied and come back more often.'
+      },
       chatTitle: 'Talk to us',
       chatButton: 'Schedule chat',
       certified: {
@@ -30,24 +19,13 @@ export const getLanguage = (locale: string) => {
     },
     {
       locale: 'pt',
-      h1: 'Informação Económica e Financeira para negócios e investimentos em Moçambique',
-      description: 'Fornecendo informação económica e financeira para negócios e investimentos em Moçambique.',
-      partners: 'Parceiros',
-      indicators: 'Indicadores Econômicos e Financeiros',
-      age: 'Meses online',
-      whyTitle: 'Porquê?',
-      whyDescription: [
-        'Imagine se você pudesse ter toda a informação económica e financeira de Moçambique, Mercado Monetário, Mercado de Crédito, Mercado de Capitais, Mercado Cambial, Mercado Imobiliário, PIB, Inflação, etc., tomaria decisões mais sábias sobre o seu investimentos, certo? Você saberia exatamente onde investir e o retorno sobre os investimentos.',
-        'Sim, é por este motivo que nasce a MozEconomia, uma plataforma que agrega toda a informação financeira e económica moçambicana.'
-      ],
-      sandBoxTitle: [
-        'Sandbox Regulatório',
-        'do Banco de Moçambique'
-      ],
-      sandBoxDescription: [
-        'A MozEconomia é participante do Sandbox Regulatório do Banco de Moçambique, que é um ambiente regulamentar com o objectivo de acompanhar e analisar produtos, serviços e soluções financeiras para que sejam os mais adequados ao público.'
-      ],
-      sandBoxLink: 'Saber Mais',
+      h1: 'Bem vindo a Matola Ingadi',
+      h2: 'Sobre nós. Nossa casa.',
+      description: {
+        location: 'Salão de eventos Matola Ingadi, nascido em 2015, localiza-se na Matola depois do Externato Cantinho do Céu e Condomínio Niketche vindo pelo lado da Shopripe da Matola para Malhapsene. Estamos cercado pelo verde do rio Matola, de onde é possível ver a paisagem verde junto com o cair do sol estando no nosso salão.',
+        why: 'A palavra Ingadi provem do Zulu que significa jardim, Matola Ingadi é mais do que um salão de eventos é um jardim onde sonhos são realizados, onde os nossos clientes na companhia daqueles que mais amam realizam os seus eventos e ficam com a memória do verde do nosso jardim para sempre marcada nas suas mentes. Matola Ingadi inspira tranquilidade, traz uma fusão entre a natureza e o modernismo.',
+        team: 'Todo o nosso esforço é para garantir que o cliente saia feliz do nosso estabelecimento e que venha mais vezes.'
+      },
       chatTitle: 'Fale connosco',
       chatButton: 'Agendar Chat',
       certified: {
