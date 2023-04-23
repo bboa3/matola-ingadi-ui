@@ -18,7 +18,6 @@ interface Props {
 const InvoicesPage: React.FC<Props> = ({ bills }) => {
   const { locale } = useRouter()
   const lang = getLanguage(locale!)
-  console.log(lang)
 
   return (
     <SimpleLayout
@@ -31,7 +30,7 @@ const InvoicesPage: React.FC<Props> = ({ bills }) => {
         <div className='w-full max-w-5xl'>
           <div className=''>
             <div className='my-6'>
-              <h1 className='text-2xl font-semibold'></h1>
+              <h1 className='text-2xl font-semibold'>{lang.h1}</h1>
               <p className='text-sm my-1 max-w-4xl text-gray-600'>
                 {lang.splitInvoiceDescription.text1}
                 <span className='font-bold'> 25% </span>

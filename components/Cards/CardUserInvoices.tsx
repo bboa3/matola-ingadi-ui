@@ -1,4 +1,4 @@
-import getLanguage from '@common/Prices/lang/invoices-page'
+import getLanguage from '@common/Prices/lang/invoices/page'
 import { getMonths } from '@utils/date/months'
 import { moneyFormatter } from '@utils/number-formatter'
 import { Bill } from 'bill'
@@ -81,7 +81,7 @@ const CardUserInvoices: React.FC<Props> = ({ bills, locale }) => {
                               invoiceStatus === 'PAID'
                                 ? (
                                 <span className='py-1 px-1.5 text-white font-medium bg-green-600 rounded-lg'>
-                                  Pago
+                                  {lang.invoice.status.paid}
                                 </span>
                                   )
                                 : null
@@ -90,7 +90,7 @@ const CardUserInvoices: React.FC<Props> = ({ bills, locale }) => {
                               invoiceStatus === 'PENDING'
                                 ? (
                                 <span className='py-1 px-1.5 text-white font-medium bg-red-600 rounded-lg'>
-                                  Pendente
+                                  {lang.invoice.status.padding}
                                 </span>
                                   )
                                 : null
@@ -99,7 +99,7 @@ const CardUserInvoices: React.FC<Props> = ({ bills, locale }) => {
                               invoiceStatus === 'FAILED'
                                 ? (
                                 <span className='py-1 px-1.5 text-white font-medium bg-red-600 rounded-lg'>
-                                  Fracassada
+                                  {lang.invoice.status.failed}
                                 </span>
                                   )
                                 : null

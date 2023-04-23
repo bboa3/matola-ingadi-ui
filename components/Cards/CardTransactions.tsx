@@ -60,7 +60,7 @@ const CardTransactions: React.FC<Props> = ({ transactions, invoiceCode, billId, 
                               status === 'COMPLETED'
                                 ? (
                                 <span className='py-1 px-1.5 text-white font-medium bg-green-600 rounded-lg'>
-                                  Pago
+                                  {lang.transaction.status.completed}
                                 </span>
                                   )
                                 : null
@@ -69,7 +69,7 @@ const CardTransactions: React.FC<Props> = ({ transactions, invoiceCode, billId, 
                               status === 'PENDING'
                                 ? (
                                 <span className='py-1 px-1.5 text-white font-medium bg-red-600 rounded-lg'>
-                                  Pendente
+                                  {lang.transaction.status.padding}
                                 </span>
                                   )
                                 : null
@@ -78,7 +78,7 @@ const CardTransactions: React.FC<Props> = ({ transactions, invoiceCode, billId, 
                               status === 'FAILED'
                                 ? (
                                 <span className='py-1 px-1.5 text-white font-medium bg-red-600 rounded-lg'>
-                                  Fracassada
+                                  {lang.transaction.status.failed}
                                 </span>
                                   )
                                 : null

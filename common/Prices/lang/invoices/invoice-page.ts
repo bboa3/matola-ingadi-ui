@@ -13,12 +13,17 @@ const getLanguage = (locale: string) => {
         total: 'Invoice total amount'
       },
       transaction: {
-        title: 'Transaction',
+        title: 'Transactions',
         type: {
           dateReservation: 'Date Reservation',
           remainingPayment: 'Remaining Payment'
         },
-        header: { col1: 'Status', col2: 'Transaction for', col3: 'Expiry', col4: 'Total', col5: '% of Invoice' }
+        header: { col1: 'Status', col2: 'Transaction for', col3: 'Expiry', col4: 'Total', col5: '% of Invoice' },
+        status: {
+          padding: 'Padding',
+          completed: 'Completed',
+          failed: 'Failed'
+        }
       },
       splitInvoiceDescription: {
         text1: 'Your invoice was splitted into two transactions,',
@@ -43,7 +48,12 @@ const getLanguage = (locale: string) => {
           dateReservation: 'Reserva da Data',
           remainingPayment: 'Restante do Pagamento'
         },
-        header: { col1: 'Status', col2: 'Transação para', col3: 'Vencimento', col4: 'Total', col5: '% da Fatura' }
+        header: { col1: 'Status', col2: 'Transação para', col3: 'Vencimento', col4: 'Total', col5: '% da Fatura' },
+        status: {
+          padding: 'Pedente',
+          completed: 'Concluído',
+          failed: 'Fracassada'
+        }
       },
       splitInvoiceDescription: {
         text1: 'A sua fatura for dividida em dua transações,',
