@@ -14,7 +14,7 @@ const Nav: React.FC = () => {
 
   return (
     <MainNavigation
-      searchIndexName='blog'
+      searchIndexName='matola_ingadi'
       Navigation={
         <div className="w-full bg-white lg:shadow-lg">
           <div className="hidden lg:block mx-auto w-full max-w-7xl px-3 lg:px-10">
