@@ -39,7 +39,7 @@ const Home: React.FC<Props> = () => {
 
       <div
         className="relative min-h-[calc(100vh-3rem)] overflow-hidden mb-16 rounded-lg bg-cover bg-center bg-no-repeat p-12 text-center"
-        style={{ backgroundImage: 'url(./img/couple-in-marriage.webp)' }}
+        style={{ backgroundImage: 'url(./img/matola-ingadi.webp)' }}
       >
         <div className="absolute bottom-0 left-0 bg-green-950/70 right-0 top-0 h-full w-full overflow-hidden bg-fixed">
           <div className="flex h-full items-center justify-center">
