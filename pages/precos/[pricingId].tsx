@@ -85,7 +85,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     }
   }
 
-  const { data: reservedDates } = await billingHttpFetch.get('/billing/dates/10', {
+  const { data: reservedDates } = await billingHttpFetch.get('/billing/dates/40', {
     headers: { Authorization: `beaer ${token}` }
   })
 

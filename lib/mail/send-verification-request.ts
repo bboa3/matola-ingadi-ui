@@ -1,3 +1,4 @@
+import { iconFile } from '@lib/mail/icon'
 import { logoFile } from '@lib/mail/logo'
 import { createHtml, createText } from '@lib/mail/templetes/send-verification-request'
 import { SendVerificationRequestParams } from 'next-auth/providers'
@@ -9,6 +10,7 @@ export async function sendVerificationRequest (params: SendVerificationRequestPa
 
   const transport = nodemailer.createTransport(server)
   const logo = Buffer.from(logoFile.data)
+  const icon = Buffer.from(iconFile.data)
 
   const result = await transport.sendMail({
     to: email,
@@ -21,6 +23,11 @@ export async function sendVerificationRequest (params: SendVerificationRequestPa
         filename: 'matola-ingadi-logo.png',
         content: logo,
         cid: 'logo@matolaingadi.co.mz'
+      },
+      {
+        filename: 'matolaingadi-icon.png',
+        content: icon,
+        cid: 'icon@matolaingadi.co.mz'
       }
     ]
   })
