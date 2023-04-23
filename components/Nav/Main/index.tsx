@@ -58,7 +58,7 @@ const Nav: React.FC<Props> = ({ Navigation, searchIndexName }) => {
                     <SearchProvider isOpen={isOpen} setIsOpen={setIsOpen} indexName={searchIndexName} />
                   </div>
                   <div className='h-4/5 flex items-center px-3'>
-                  <ProfileButton signInTitle={lang.signIn} signOutTitle={lang.signOut} />
+                  <ProfileButton signInTitle={lang.signIn} signOutTitle={lang.signOut} billTitle={lang.billTitle} />
                 </div>
                 </div>
                 <div className="px-2 pt-3 pb-3 border-t-2 border-slate-200">
@@ -79,7 +79,7 @@ const Nav: React.FC<Props> = ({ Navigation, searchIndexName }) => {
             <LanguageSelect />
           </li>
           <li className='h-4/5 flex items-center px-3 border-l border-dotted border-slate-600'>
-            <ProfileButton signInTitle={lang.signIn} signOutTitle={lang.signOut} />
+            <ProfileButton signInTitle={lang.signIn} signOutTitle={lang.signOut} billTitle={lang.billTitle} />
           </li>
         </ul>
       </div>

@@ -1,43 +1,22 @@
-import getLanguage from '@common/Prices/lang/invoices-page'
+import getLanguage from '@common/Prices/lang/invoices/invoice-page'
 import { getMonths } from '@utils/date/months'
 import { moneyFormatter } from '@utils/number-formatter'
-import { Bill } from 'bill'
+import { Transaction } from 'bill'
 import { useRouter } from 'next/router'
-import React, { useCallback } from 'react'
+import React from 'react'
 
 interface Props {
-  bills: Bill[]
+  transactions: Transaction[]
   locale: string
+  invoiceCode: string
+  billId: string
 }
 
-const CardUserInvoices: React.FC<Props> = ({ bills, locale }) => {
+const CardTransactions: React.FC<Props> = ({ transactions, invoiceCode, billId, locale }) => {
   const lang = getLanguage(locale)
   const { push } = useRouter()
-  const { header } = lang.invoice
+  const { header, type } = lang.transaction
   const { months, dateLocalizer } = getMonths(locale!)
-
-  const getInvoices = useCallback(() => {
-    const newInvoices = []
-    for (const bill of bills) {
-      const { id, invoices } = bill
-      for (const invoice of invoices) {
-        if (invoice.invoiceStatus === 'PENDING') {
-          newInvoices.unshift({
-            ...invoice,
-            billId: id
-          })
-        } else {
-          newInvoices.push({
-            ...invoice,
-            billId: id
-          })
-        }
-      }
-    }
-    return newInvoices
-  }, [bills])
-
-  const newInvoices = getInvoices()
 
   return (
     <>
@@ -66,19 +45,19 @@ const CardUserInvoices: React.FC<Props> = ({ bills, locale }) => {
             </thead>
             <tbody>
               {
-                newInvoices.map(({ billId, invoiceCode, eventType, eventDate, createdAt, invoiceStatus, total }) => {
-                  const createdAtFormatted = dateLocalizer(createdAt, months)
-                  const eventDateFormatted = dateLocalizer(eventDate, months)
+                transactions.map(transaction => {
+                  const { id, transactionType, dueAt, total, invoicePercentage, status } = transaction
+                  const dueAtFormatted = dateLocalizer(dueAt, months)
 
                   return (
                     <tr
-                      onClick={() => push(`/precos/invoice/${billId}?invoiceCode=${invoiceCode}`)}
-                      key={invoiceCode}
+                      onClick={() => push(`/precos/invoice/payment/${billId}?invoiceCode=${invoiceCode}&transactionId=${id}`)}
+                      key={id}
                       className='cursor-pointer hover:bg-green-200'
                     >
                       <td className="border-t-0 px-4 align-middle border-l-0 border-r-0 text-sm whitespace-nowrap p-4">
                         {
-                              invoiceStatus === 'PAID'
+                              status === 'COMPLETED'
                                 ? (
                                 <span className='py-1 px-1.5 text-white font-medium bg-green-600 rounded-lg'>
                                   Pago
@@ -87,7 +66,7 @@ const CardUserInvoices: React.FC<Props> = ({ bills, locale }) => {
                                 : null
                             }
                             {
-                              invoiceStatus === 'PENDING'
+                              status === 'PENDING'
                                 ? (
                                 <span className='py-1 px-1.5 text-white font-medium bg-red-600 rounded-lg'>
                                   Pendente
@@ -96,7 +75,7 @@ const CardUserInvoices: React.FC<Props> = ({ bills, locale }) => {
                                 : null
                             }
                             {
-                              invoiceStatus === 'FAILED'
+                              status === 'FAILED'
                                 ? (
                                 <span className='py-1 px-1.5 text-white font-medium bg-red-600 rounded-lg'>
                                   Fracassada
@@ -106,16 +85,17 @@ const CardUserInvoices: React.FC<Props> = ({ bills, locale }) => {
                             }
                       </td>
                       <td className="border-t-0 px-4 align-middle border-l-0 border-r-0 text-sm whitespace-nowrap font-semibold p-4 text-left">
-                        {eventType}
+                        {transactionType === 'date-reservation' ? type.dateReservation : ''}
+                        {transactionType === 'remaining-payment' ? type.remainingPayment : ''}
                       </td>
                       <td className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-sm whitespace-nowrap p-4">
-                        { eventDateFormatted }
-                      </td>
-                      <td className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-sm whitespace-nowrap p-4">
-                        { createdAtFormatted }
+                        { dueAtFormatted }
                       </td>
                       <td className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-sm whitespace-nowrap p-4">
                         { moneyFormatter(total) }
+                      </td>
+                      <td className="border-t-0 px-3 align-middle border-l-0 border-r-0 text-sm whitespace-nowrap p-4">
+                        { invoicePercentage }%
                       </td>
                     </tr>
                   )
@@ -129,4 +109,4 @@ const CardUserInvoices: React.FC<Props> = ({ bills, locale }) => {
   )
 }
 
-export default CardUserInvoices
+export default CardTransactions

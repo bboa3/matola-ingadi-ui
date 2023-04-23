@@ -1,5 +1,5 @@
-import getLanguage from '@common/Prices/lang/payment/page'
-import CardUserInvoices from '@components/Cards/CardUserInvoices'
+import getLanguage from '@common/Prices/lang/invoices/invoice-page'
+import CardTransactions from '@components/Cards/CardTransactions'
 import SimpleLayout from '@components/Layout/MatolaIngadi/SimpleLayout'
 import { billingHttpFetch } from '@lib/fetch'
 import { authOptions } from '@pages/api/auth/[...nextauth]'
@@ -42,30 +42,26 @@ const CreateBillPage: React.FC<Props> = ({ invoice, billId }) => {
                 {lang.h1} #{invoice.invoiceCode}
               </h1>
               <p className='text-lg'>
-                Criada em {createdAtLocalized}
+                {lang.invoice.createdAt} {createdAtLocalized}
               </p>
-            </div>
-            <div className='w-full lg:flex justify-end'>
-              <div className='max-w-[22rem] w-full'>
-              </div>
             </div>
           </div>
           <div className='lg:divide-x lg:grid grid-cols-2 gap-4 py-3'>
             <div className='lg:grid grid-cols-2 gap-4 py-3 lg:pr-3'>
               <div className='space-y-4'>
                 <div className=''>
-                  <span className='block text-sm text-gray-500'>Evento esperado</span>
+                  <span className='block text-sm text-gray-500'>{lang.invoice.eventType}</span>
                   <p className='text-xl font-medium'>{eventType}</p>
                 </div>
                 <div>
-                  <span className='block text-sm text-gray-500'>Data do evento</span>
+                  <span className='block text-sm text-gray-500'>{lang.invoice.eventDate}</span>
                   <p className='text-sm font-medium'>{eventDateLocalized}</p>
                 </div>
               </div>
 
               <div className='space-y-4'>
                 <div>
-                  <span className='block text-sm text-gray-500'>Número de convidados</span>
+                  <span className='block text-sm text-gray-500'>{lang.invoice.guestsNumber}</span>
                   <p className='text-sm font-medium'>{guestsNumber}</p>
                 </div>
               </div>
@@ -74,13 +70,13 @@ const CreateBillPage: React.FC<Props> = ({ invoice, billId }) => {
             <div className='lg:grid grid-cols-2 gap-4 py-3 lg:pl-3'>
               <div className='space-y-4'>
                 <div className='py-3'>
-                  <span className='block text-sm text-gray-500'>Fatura para</span>
+                  <span className='block text-sm text-gray-500'>{lang.invoice.service}</span>
                   <p className='text-sm font-medium'>{activity.name}</p>
                 </div>
               </div>
               <div className='space-y-4'>
                 <div>
-                  <span className='block text-sm text-gray-500'>Total valor da fatura</span>
+                  <span className='block text-sm text-gray-500'>{lang.invoice.total}</span>
                   <p className='text-xl font-medium'>{moneyFormatter(total)}</p>
                 </div>
               </div>
@@ -91,16 +87,16 @@ const CreateBillPage: React.FC<Props> = ({ invoice, billId }) => {
         <div className='w-full max-w-5xl'>
           <div className=''>
             <div className='my-6'>
-              <h2 className='text-2xl font-semibold'>Transações</h2>
+              <h2 className='text-2xl font-semibold'>{lang.transaction.title}</h2>
               <p className='text-sm my-1 max-w-4xl text-gray-600'>
-                A sua fatura for dividida em dua transações,
+                {lang.splitInvoiceDescription.text1}
                 <span className='font-bold'> 25% </span>
-                que deve ser concluída imediatamente para reservar a data do seu evento e
+                {lang.splitInvoiceDescription.text2}
                 <span className='font-bold'> 75% </span>
-                para o restante do pagamento da fatura.
+                {lang.splitInvoiceDescription.text3}
               </p>
             </div>
-            <CardUserInvoices
+            <CardTransactions
               locale={locale!}
               invoiceCode={invoiceCode}
               billId={billId}

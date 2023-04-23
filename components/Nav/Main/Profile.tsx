@@ -1,14 +1,16 @@
 import { Menu, Transition } from '@headlessui/react'
 import Person4Icon from '@mui/icons-material/Person4'
 import { signIn, signOut, useSession } from 'next-auth/react'
+import Link from 'next/link'
 import React, { Fragment } from 'react'
 
 interface Props {
   signInTitle: string
   signOutTitle: string
+  billTitle: string
 }
 
-export const ProfileButton: React.FC<Props> = ({ signInTitle, signOutTitle }) => {
+export const ProfileButton: React.FC<Props> = ({ signInTitle, signOutTitle, billTitle }) => {
   const { data: session } = useSession()
 
   return (
@@ -31,31 +33,54 @@ export const ProfileButton: React.FC<Props> = ({ signInTitle, signOutTitle }) =>
         leaveTo="transform opacity-0 scale-95"
       >
         <Menu.Items className="absolute right-0 z-10 mt-2 w-44 origin-top-right rounded-lg bg-white px-2 py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-          <Menu.Item>
-            {({ active }) => (
+          {
+            !session
+              ? (
+              <Menu.Item>
+                {({ active }) => (
+                  <button
+                    onClick={() => signIn()}
+                    className={`
+                      ${active ? 'bg-gray-100' : ''}
+                      w-full text-start hover:bg-gray-100 block px-3 py-1 text-sm text-gray-700 rounded-full
+                    `}
+                  >
+                    {signInTitle}
+                  </button>
+                )}
+              </Menu.Item>
+                )
+              : (
               <>
-                {
-                  !session
-                    ? (
-                      <button
-                        onClick={() => signIn()}
-                        className='w-full text-start hover:bg-gray-100 block px-3 py-1 text-sm text-gray-700 rounded-full'
-                      >
-                        {signInTitle}
-                      </button>
-                      )
-                    : (
-                      <button
-                        onClick={() => signOut()}
-                        className='w-full text-start hover:bg-gray-100 block px-3 py-1 text-sm text-gray-700 rounded-full focus:outline-none ring-0'
-                      >
-                        {signOutTitle}
-                      </button>
-                      )
-                }
+                <Menu.Item>
+                  {({ active }) => (
+                    <button
+                      onClick={() => signOut()}
+                      className={`
+                        ${active ? 'bg-gray-100' : ''}
+                        w-full text-start hover:bg-gray-100 block px-3 py-1 text-sm text-gray-700 rounded-full
+                    `}
+                    >
+                      {signOutTitle}
+                    </button>
+                  )}
+                </Menu.Item>
+                <Menu.Item>
+                  {({ active }) => (
+                    <Link
+                      href='/precos/invoice'
+                      className={`
+                        ${active ? 'bg-gray-100' : ''}
+                        w-full text-start hover:bg-gray-100 block px-3 py-1 text-sm text-gray-700 rounded-full
+                    `}
+                    >
+                      {billTitle}
+                    </Link>
+                  )}
+                </Menu.Item>
               </>
-            )}
-          </Menu.Item>
+                )
+          }
         </Menu.Items>
       </Transition>
     </Menu>

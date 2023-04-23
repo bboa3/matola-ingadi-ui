@@ -4,6 +4,7 @@ export const langOptions = [
     profileView: 'Your Profile',
     signIn: 'Sign In',
     signOut: 'Sign Out',
+    billTitle: 'Billing',
     contactButton: 'Contact Sales',
     menu: [
       {
@@ -25,6 +26,7 @@ export const langOptions = [
     profileView: 'Perfil',
     signIn: 'Entrar',
     signOut: 'sair',
+    billTitle: 'Sua conta',
     contactButton: 'Fale conosco',
     menu: [
       {
