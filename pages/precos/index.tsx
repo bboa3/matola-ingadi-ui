@@ -19,10 +19,9 @@ const PricingPage: React.FC<Props> = ({ pricing }) => {
 
   return (
     <SimpleLayout
-      robots='noindex nofollow'
       title='Preços | Matola Ingadi'
-      description='Preço dos serviços da Matola Ingadi'
-      keywords='moçambique, economia, dados, finança, comércio, mercado, capital, despesas, Hipoteca, dinheiro'
+      description='Preço dos serviços da Matola Ingadi. Organizamos eventos que caminham de mãos dadas com o amor, felicidade, amizade, carinho e companheirismo.'
+      keywords='Matola Ingadi, Salão de Eventos, Casamentos, Aniversários'
     >
       <div className='flex flex-col min-h-full items-center justify-center pb-12 pt-4 md:pt-6 px-4 sm:px-6 lg:px-8'>
           <EventHall pricing={pricing} locale={locale!} />

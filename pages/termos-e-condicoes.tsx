@@ -6,8 +6,8 @@ const TermsAndConditions: React.FC = () => (
   <SimpleLayout
     robots='noindex nofollow'
     title='Termos e Condições da Matola Ingadi'
-    description='Termos e Condições de utilização dos serviços oferecidos pela Matola Ingadi'
-    keywords='moçambique, economia, dados, finança, comércio, mercado, capital, despesas, Hipoteca, dinheiro'
+    description='Organizamos eventos que caminham de mãos dadas com o amor, felicidade, amizade, carinho e companheirismo.'
+    keywords='Matola Ingadi, Salão de Eventos, Casamentos, Aniversários'
   >
     <div className='max-w-6xl min-h-screen mx-auto px-4 sm:px-6 py-12 overflow-hidden'>
         <div className='border-b border-gray-300'>

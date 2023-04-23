@@ -38,9 +38,9 @@ const LogIn: React.FC<Props> = ({ callbackUrl }) => {
 
   return (
     <Layout
-      title='Dados Financeiros Moçambique - Usa Conta'
-      keywords='moçambique, login, economia, dados, finança, comércio, mercado, capital, despesas, Hipoteca, dinheiro'
-      description='Pagina de login da MozEconomia. Fornecendo informação económica e financeira para negócios e investimentos em Moçambique.'
+      title='Salão de Eventos Matola Ingadi - Sua Conta'
+      description='Organizamos eventos que caminham de mãos dadas com o amor, felicidade, amizade, carinho e companheirismo.'
+      keywords='Matola Ingadi, Salão de Eventos, Casamentos, Aniversários'
     >
       <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-md space-y-8">

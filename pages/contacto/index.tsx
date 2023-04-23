@@ -61,10 +61,9 @@ const ContactPage: React.FC = () => {
 
   return (
     <SimpleLayout
-      robots='noindex nofollow'
-      title='Preços | matolaingadi'
-      description='Preço dos serviços da matolaingadi'
-      keywords='moçambique, economia, dados, finança, comércio, mercado, capital, despesas, Hipoteca, dinheiro'
+      title='Fale connosco | Matola Ingadi'
+      description='Organizamos eventos que caminham de mãos dadas com o amor, felicidade, amizade, carinho e companheirismo.'
+      keywords='Matola Ingadi, Salão de Eventos, Casamentos, Aniversários'
     >
       <div className='flex w-full flex-col md:flex-row min-h-full py-12 md:py-0 px-4 sm:px-6 md:px-0'>
         <section className='w-full md:w-1/2 h-fit md:h-full text-white overflow-hidden'>

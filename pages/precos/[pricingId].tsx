@@ -35,9 +35,9 @@ const CreateBillPage: React.FC<Props> = ({ pricingId, reservedDates }) => {
   return (
     <SimpleLayout
       robots='noindex nofollow'
-      title='Preços | MozEconomia'
-      description='Preço dos serviços da MozEconomia'
-      keywords='moçambique, economia, dados, finança, comércio, mercado, capital, despesas, Hipoteca, dinheiro'
+      title='Preços | Matola Ingadi'
+      description='Preço dos serviços da Matola Ingadi. Organizamos eventos que caminham de mãos dadas com o amor, felicidade, amizade, carinho e companheirismo.'
+      keywords='Matola Ingadi, Salão de Eventos, Casamentos, Aniversários'
     >
       <div className='flex flex-col min-h-full items-center justify-center pb-12 pt-12 px-4 sm:px-6 lg:px-8'>
         <div className='w-full max-w-6xl p-3'>

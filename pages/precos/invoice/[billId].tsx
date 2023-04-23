@@ -30,9 +30,9 @@ const CreateBillPage: React.FC<Props> = ({ invoice, billId }) => {
   return (
     <SimpleLayout
       robots='noindex nofollow'
-      title='Preços | MozEconomia'
-      description='Preço dos serviços da MozEconomia'
-      keywords='moçambique, economia, dados, finança, comércio, mercado, capital, despesas, Hipoteca, dinheiro'
+      title='Preços | Matola Ingadi'
+      description='Preço dos serviços da Matola Ingadi. Organizamos eventos que caminham de mãos dadas com o amor, felicidade, amizade, carinho e companheirismo.'
+      keywords='Matola Ingadi, Salão de Eventos, Casamentos, Aniversários'
     >
       <div className='w-full flex flex-col justify-center items-center pb-8 pt-14 px-9 sm:px-6 lg:px-8'>
         <div className='w-full h-full max-w-5xl relative bg-white py-6 rounded-lg divide-y'>

@@ -21,8 +21,8 @@ const AboutUs: React.FC<Props> = () => {
   return (
   <SimpleLayout
     title='Quem Somos'
-    description='Fornecendo informação económica e financeira para negócios e investimentos em Moçambique. Dados da economia Moçambicana para negócios, investimentos em Moçambique.'
-    keywords='moçambique, economia, dados, finança, comércio, mercado, capital, despesas, Hipoteca, dinheiro'
+    description='Organizamos eventos que caminham de mãos dadas com o amor, felicidade, amizade, carinho e companheirismo.'
+    keywords='Matola Ingadi, Salão de Eventos, Casamentos, Aniversários'
   >
     <div className='w-full flex flex-col items-center min-h-screen mx-auto py-14 overflow-hidden'>
       <section className='w-full max-w-5xl px-6 lg:px-12 mb-24 space-y-6 lg:space-y-8'>

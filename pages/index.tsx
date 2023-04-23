@@ -21,8 +21,8 @@ const Home: React.FC<Props> = () => {
   return (
     <SimpleLayout
       title='Salão de Eventos Matola Ingadi'
-      description='Fornecendo informação económica e financeira para negócios e investimentos em Moçambique. Dados da economia Moçambicana para negócios, investimentos em Moçambique. Moz Economia'
-      keywords='moçambique, mozeconomia, moz economia, economia moçambicana, negócios em moçambique, empreendedorismo, empreendedor, negócios, economia, informação financeira, investimento, investidor, notícias do mercado'
+      description='Organizamos eventos que caminham de mãos dadas com o amor, felicidade, amizade, carinho e companheirismo.'
+      keywords='Matola Ingadi, Salão de Eventos, Casamentos, Aniversários'
     >
       <div className='w-full flex flex-col items-center pt-16 px-4 lg:px-20 mb-16'>
         <div className='w-full max-w-4xl flex flex-col items-center text-center space-y-6'>

@@ -63,9 +63,9 @@ const CreateBillPage: React.FC<Props> = ({ token, invoice, billId, transaction }
   return (
     <SimpleLayout
       robots='noindex nofollow'
-      title='Preços | MozEconomia'
-      description='Preço dos serviços da MozEconomia'
-      keywords='moçambique, economia, dados, finança, comércio, mercado, capital, despesas, Hipoteca, dinheiro'
+      title='Preços | Matola Ingadi'
+      description='Preço dos serviços da Matola Ingadi. Organizamos eventos que caminham de mãos dadas com o amor, felicidade, amizade, carinho e companheirismo.'
+      keywords='Matola Ingadi, Salão de Eventos, Casamentos, Aniversários'
     >
       <div className='flex min-h-full items-center justify-center pt-9 lg:pt-10 pb-12 px-4 sm:px-6 lg:px-8'>
         <section className='w-full md:grid grid-cols-3 border border-gray-200 rounded-lg divide-y md:divide-x divide-slate-100'>

@@ -15,9 +15,10 @@ const VerifyRequest: React.FC<Props> = ({ URL }) => {
 
   return (
     <Layout
-      title='Dados Financeiros Moçambique - Usa Conta'
-      keywords=''
-      description=''
+      robots='noindex nofollow'
+      title='Salão de Eventos Matola Ingadi - Sua Conta'
+      description='Organizamos eventos que caminham de mãos dadas com o amor, felicidade, amizade, carinho e companheirismo.'
+      keywords='Matola Ingadi, Salão de Eventos, Casamentos, Aniversários'
     >
       <div className='flex min-h-full items-center justify-center py-24 px-4 sm:px-6 lg:px-8'>
         <div className='max-w-3xl border border-gray-600 rounded-md text-center p-9'>

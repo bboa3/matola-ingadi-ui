@@ -14,9 +14,9 @@ const CreateBillPage: React.FC = () => {
   return (
     <SimpleLayout
       robots='noindex nofollow'
-      title='Preços | Matola Ingadi'
-      description='Preço dos serviços da Matola Ingadi'
-      keywords='moçambique, economia, dados, finança, comércio, mercado, capital, despesas, Hipoteca, dinheiro'
+      title='Fale connosco | Matola Ingadi'
+      description='Organizamos eventos que caminham de mãos dadas com o amor, felicidade, amizade, carinho e companheirismo.'
+      keywords='Matola Ingadi, Salão de Eventos, Casamentos, Aniversários'
     >
       <div className='flex flex-col md:flex-row min-h-full'>
         <section className='w-full md:w-1/2 h-[60vh] md:h-screen text-white'>
