@@ -1,4 +1,3 @@
-import NotFoundImg from '@assets/img/NotFoundImg'
 import { getLanguage } from '@common/404/lang/page'
 import Head from 'next/head'
 import Link from 'next/link'
@@ -18,7 +17,7 @@ const NotFound: React.FC = () => {
     <main className='max-w-2xl min-h-screen mx-auto px-4 sm:px-6 pt-24 lg:pt-24 overflow-hidden'>
       <div className='w-full flex flex-col items-center'>
           <div className='w-24 mt-6 mb-3'>
-            <NotFoundImg />
+            <h2 className='text-5xl font-bold'>404</h2>
           </div>
           <div className='m-4 text-center'>
             <h1 className='text-5xl font-bold'>{lang.h1}</h1>
