@@ -78,7 +78,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   if (!bills[0]) {
     return {
       redirect: {
-        destination: '/precos',
+        destination: `${locale}/precos`,
         permanent: false
       }
     }
