@@ -79,7 +79,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   if (!session || !token) {
     return {
       redirect: {
-        destination: `login?callbackUrl=${nextAuthUrl}/${locale}${resolvedUrl}`,
+        destination: `/login?callbackUrl=${nextAuthUrl}/${locale}${resolvedUrl}`,
         permanent: false
       }
     }
