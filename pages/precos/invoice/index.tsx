@@ -66,9 +66,23 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     }
   }
 
-  const { data: bills } = await billingHttpFetch.get('/billing/', {
+  let bills: Bill[] = []
+
+  await billingHttpFetch.get('/billing', {
     headers: { Authorization: `beaer ${token}` }
+  }).then(({ data }) => {
+    bills = data
   })
+    .catch(err => console.log(err))
+
+  if (!bills[0]) {
+    return {
+      redirect: {
+        destination: '/precos',
+        permanent: false
+      }
+    }
+  }
 
   return {
     props: {

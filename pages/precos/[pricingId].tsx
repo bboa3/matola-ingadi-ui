@@ -85,9 +85,14 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     }
   }
 
-  const { data: reservedDates } = await billingHttpFetch.get('/billing/dates/40', {
+  let reservedDates: EventDate[] = []
+
+  await billingHttpFetch.get('/billing/dates/40', {
     headers: { Authorization: `beaer ${token}` }
+  }).then(({ data }) => {
+    reservedDates = data
   })
+    .catch(err => console.log(err))
 
   return {
     props: {
