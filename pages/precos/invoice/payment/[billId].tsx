@@ -138,7 +138,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   if (!session || !token) {
     return {
       redirect: {
-        destination: `/login?callbackUrl=${nextAuthUrl}/${locale}${resolvedUrl}`,
+        destination: `/${locale}/login?callbackUrl=${nextAuthUrl}/${locale}${resolvedUrl}`,
         permanent: false
       }
     }
@@ -155,7 +155,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   if (!transaction) {
     return {
       redirect: {
-        destination: `/precos/invoice/${billId}?invoiceCode=${invoiceCode}`,
+        destination: `/${locale}/precos/invoice/${billId}?invoiceCode=${invoiceCode}`,
         permanent: false
       }
     }
