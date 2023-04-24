@@ -1,3 +1,4 @@
+import { totalCalculator } from '@common/Prices/invoice/total'
 import getLanguage from '@common/Prices/lang/payment/page'
 import { Button } from '@components/Button'
 import Radio from '@components/Form/Radio'
@@ -10,7 +11,7 @@ import { authOptions } from '@pages/api/auth/[...nextauth]'
 import { getMonths } from '@utils/date/months'
 import { cookiesName, nextAuthUrl } from '@utils/env'
 import { moneyFormatter } from '@utils/number-formatter'
-import { Invoice, Transaction } from 'bill'
+import { Invoice, Pricing, Transaction } from 'bill'
 import { GetServerSideProps } from 'next'
 import { getServerSession } from 'next-auth/next'
 import Image from 'next/image'
@@ -21,18 +22,21 @@ interface Props {
   token: string
   transaction: Transaction
   invoice: Invoice
+  pricing: Pricing
   billId: string
 }
 
 type SetPaymentMethod = React.Dispatch<React.SetStateAction<ItemSelect>>
 
-const CreateBillPage: React.FC<Props> = ({ token, invoice, billId, transaction }) => {
+const CreateBillPage: React.FC<Props> = ({ token, invoice, billId, pricing, transaction }) => {
   const { locale, push } = useRouter()
   const lang = getLanguage(locale!)
   const { months, dateLocalizer } = getMonths(locale!)
   const [paymentMethod, setPaymentMethod] = useState(paymentMethods[0])
 
-  const { subTotal, paymentGatewayFee, total } = transaction
+  const { guestsNumber } = invoice
+
+  const { subTotal, paymentGatewayFee, total } = totalCalculator({ pricing, guestsNumber, commission: paymentMethod.commission })
 
   const tableData = [
     {
@@ -148,7 +152,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     headers: { Authorization: `beaer ${token}` }
   })
 
-  const { transactions }: Invoice = invoice
+  const { transactions, pricingId }: Invoice = invoice
 
   const transaction = transactions.find(({ id }) => id === transactionId)
 
@@ -161,12 +165,15 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     }
   }
 
+  const { data: pricing } = await billingHttpFetch.get(`/billing/pricing/${pricingId}/${locale}`)
+
   return {
     props: {
       token,
       billId,
       transaction,
-      invoice
+      invoice,
+      pricing
     }
   }
 }

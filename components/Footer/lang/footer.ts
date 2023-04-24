@@ -62,7 +62,7 @@ const getLanguage = (locale: string) => {
       terms: {
         text: 'todos direitos reservados.',
         page: {
-          title: 'Termos e Condiçõe',
+          title: 'Termos e Condições',
           href: '/termos-e-condicoes'
         }
       },
