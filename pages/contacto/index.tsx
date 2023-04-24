@@ -74,19 +74,19 @@ const ContactPage: React.FC = () => {
                   <div>
                     <TfiHeadphoneAlt className='w-9 h-9 block text-green-500' aria-hidden="true" />
                   </div>
-                  <span className='block'>+258 87 44 44 689</span>
+                  <span className='block'>+258 87 397 0401</span>
                 </div>
                 <div className='flex items-center gap-3'>
                   <div>
                     <MdOutlineAttachEmail className='w-9 h-9 block text-green-500' aria-hidden="true" />
                   </div>
-                  <span className='block'>contacto@matolaingadi.co.mz</span>
+                  <span className='block'>matola.ingadi@gmail.com</span>
                 </div>
                 <div className='w-full flex items-center gap-3'>
                   <div>
                     <OfficeLocationIcon className='w-9 h-9 block fill-green-500' aria-hidden="true" />
                   </div>
-                  <span className='block'>Matola J, Cidade da Matola, Matola 1114, Moçambique.</span>
+                  <span className='block'>Q.07, Matola J, Cidade De Matola, Moçambique.</span>
                 </div>
               </div>
             </div>

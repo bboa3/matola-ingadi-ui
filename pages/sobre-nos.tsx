@@ -75,10 +75,10 @@ const AboutUs: React.FC<Props> = () => {
       <section className='w-full flex  bg-white flex-col items-center justify-center text-center py-10'>
         <div className='w-full max-w-3xl'>
           <h1 className='text-4xl sm:text-5xl font-bold py-6'>{lang.chatTitle}</h1>
-          <p>Matola J, Matola Cidade, Maputo, Moçambique.</p>
+          <p>Q.07, Matola J, Cidade De Matola, Moçambique.</p>
           <div className='w-full flex flex-col items-center justify-center text-tenter mt-6'>
             <span className='block mt-1'>+258 87 397 0401</span>
-            <span className='block mb-3'>contacto@matolaingadi.co.mz</span>
+            <span className='block mb-3'>matola.ingadi@gmail.com</span>
             <Button solid asChild>
               <Link href='/contacto'>
                 {lang.chatButton}

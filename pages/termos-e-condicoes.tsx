@@ -344,13 +344,13 @@ Serviço.</p>
           <p className='my-5'>Se você tiver alguma dúvida sobre estes Termos e Condições, você pode entrar em contato conosco:</p>
           <ul>
             <li>
-              <p className='my-5'>Pelo email: contacto@matolaingadi.co.mz</p>
+              <p className='my-5'>Pelo email: matola.ingadi@gmail.com</p>
             </li>
             <li>
               <p className='my-5'>Pelo telefone: +258 87 397 0401</p>
             </li>
             <li>
-              <p className='my-5'>Pelo mail: Matola J, Cidade de Maputo</p>
+              <p className='my-5'>Pelo mail: Q.07, Matola J, Cidade De Matola, Moçambique</p>
             </li>
           </ul>
         </div>

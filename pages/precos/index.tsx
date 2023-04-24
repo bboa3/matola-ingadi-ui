@@ -29,10 +29,10 @@ const PricingPage: React.FC<Props> = ({ pricing }) => {
           <section className='w-full flex bg-white flex-col items-center justify-center text-center md:pt-52 lg:pt-48'>
             <div className='w-full max-w-3xl'>
               <h1 className='text-3xl lg:text-4xl font-bold py-6'>{lang.contact.title}</h1>
-              <p>Matola J, Cidade da Matola, Matola 1114, Moçambique.</p>
+              <p>Q.07, Matola J, Cidade De Matola, Moçambique</p>
               <div className='w-full flex flex-col items-center justify-center text-tenter mt-6'>
-                <span className='block mt-1'>+258 87 44 44 689</span>
-                <span className='block mb-3'>contacto@matolaingadi.co.mz</span>
+                <span className='block mt-1'>+258 87 397 0401</span>
+                <span className='block mb-3'>matola.ingadi@gmail.com</span>
                 <Button solid asChild>
                   <Link href='/visite-nos'>
                     {lang.visitButton}
