@@ -22,7 +22,6 @@ const GalleryPage: React.FC<Props> = () => {
     keywords='Matola Ingadi, Salão de Eventos, Casamentos, Aniversários'
   >
     <div className='w-full flex flex-col items-center min-h-screen mx-auto py-14 overflow-hidden'>
-
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div className="grid gap-4">
               <div>
