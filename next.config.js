@@ -33,6 +33,11 @@ const nextConfig = {
         hostname: 'media.licdn.com',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'flowbite.s3.amazonaws.com',
+        pathname: '/**',
+      },
     ],
   }
 }
