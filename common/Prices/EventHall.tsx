@@ -10,7 +10,7 @@ interface Props {
 }
 
 const EventHall: React.FC<Props> = ({ pricing, locale }) => {
-  const eventHall = activityFilter({ pricing, activityId: 'events-hall' })
+  const eventHall = activityFilter({ pricing, activityId: 'matola-ingadi-events-hall' })
   const lang = getLanguage(locale!)
 
   return (

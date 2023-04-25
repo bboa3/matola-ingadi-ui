@@ -1,4 +1,4 @@
-import { Menu } from 'blog'
+import { Menu } from 'ui'
 
 export const getMenu = (locale: string): Menu => {
   return {

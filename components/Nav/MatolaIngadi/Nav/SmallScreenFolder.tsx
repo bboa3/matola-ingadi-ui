@@ -1,6 +1,6 @@
-import { Menu } from 'blog'
 import Link from 'next/link'
 import React from 'react'
+import { Menu } from 'ui'
 
 interface Props {
   menu: Menu

@@ -10,7 +10,7 @@ declare module 'bill' {
   export type BillStatus = 'ACTIVE' | 'DISABLED'
   export type EventDateStatus = 'PENDING' | 'RESERVED'
   export type TransactionType = 'date-reservation' | 'remaining-payment'
-  export type ActivityId = 'events-hall'
+  export type ActivityId = 'matola-ingadi-events-hall'
 
   export interface EventDate {
     id: string

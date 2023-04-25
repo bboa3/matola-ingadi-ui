@@ -26,16 +26,8 @@ declare module 'ui' {
   }
 
   export interface Menu {
-    name: string
     id: string
-    Icon: any
-    open: boolean
     pages: Page[]
-  }
-
-  export interface SideMenuData {
-    selected: Menu
-    options: Menu[]
   }
 
   export interface Table4ColRow {
