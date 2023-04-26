@@ -10,7 +10,8 @@ const getLanguage = (locale: string) => {
       },
       commission: 'Payment gateway fee',
       header: { col1: 'Description', col2: 'Amount' },
-      dueAt: 'Due'
+      dueAt: 'Due',
+      transactionTerms: 'This amount is non-refundable.'
     },
     {
       locale: 'pt',
@@ -21,7 +22,8 @@ const getLanguage = (locale: string) => {
       },
       commission: 'Taxa gateway de pagamento',
       header: { col1: 'Descrição', col2: 'Montante' },
-      dueAt: 'Vencimento'
+      dueAt: 'Vencimento',
+      transactionTerms: 'Este valor não é reembolsável'
     }
   ]
 

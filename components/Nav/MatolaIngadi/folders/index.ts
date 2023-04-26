@@ -17,8 +17,8 @@ export const getMenu = (locale: string): Menu => {
         id: 'galeria'
       },
       {
-        name: locale === 'pt' ? 'Blog' : 'Blog',
-        id: 'blog'
+        name: locale === 'pt' ? 'Catálogo' : 'Catalog',
+        id: 'catalogo'
       },
       {
         name: locale === 'pt' ? 'Sobre nós' : 'About us',

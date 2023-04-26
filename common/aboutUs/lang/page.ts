@@ -10,7 +10,7 @@ export const getLanguage = (locale: string) => {
         team: 'All our effort is for the customer to leave our house satisfied and come back more often.'
       },
       chatTitle: 'Talk to us',
-      chatButton: 'Schedule chat',
+      chatButton: 'schedule visit',
       certified: {
         h2: 'We are a Certified Company',
         description: 'Our Economic and Financial Information provision activities have been tested and certified by the Bank of Mozambique through the BM Regulatory Sandbox incubator',
@@ -27,7 +27,7 @@ export const getLanguage = (locale: string) => {
         team: 'Todo o nosso esforço é para garantir que o cliente saia feliz do nosso estabelecimento e que venha mais vezes.'
       },
       chatTitle: 'Fale connosco',
-      chatButton: 'Agendar Chat',
+      chatButton: 'Agendar Visita',
       certified: {
         h2: 'Somos Uma Empresa Certificada',
         description: 'As nossas atividades de fornecimento de Informação Económica e Financeira foram testadas e certificadas pelo Banco de Moçambique através da encubadora Sandbox Regulatório.',

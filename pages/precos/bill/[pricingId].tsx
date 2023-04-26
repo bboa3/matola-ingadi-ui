@@ -1,4 +1,3 @@
-import { totalCalculator } from '@common/Prices/invoice/total'
 import getLanguage from '@common/Prices/lang/bills/page'
 import { Button } from '@components/Button'
 import Input from '@components/Form/Input'
@@ -11,7 +10,6 @@ import { authOptions } from '@pages/api/auth/[...nextauth]'
 import { countryList } from '@utils/address/countryList'
 import { cookiesName, nextAuthUrl } from '@utils/env'
 import getEventTypes from '@utils/event-types'
-import { moneyFormatter } from '@utils/number-formatter'
 import { Bill, Pricing } from 'bill'
 import { useFormik } from 'formik'
 import { GetServerSideProps } from 'next'
@@ -87,12 +85,6 @@ const CreateBillPage: React.FC<Props> = ({ pricing, token, eventDate }) => {
     }
   })
 
-  const { subTotal } = totalCalculator({
-    pricing,
-    guestsNumber: values.guestsNumber,
-    commission: paymentMethod.commission
-  })
-
   return (
     <SimpleLayout
       robots='noindex nofollow'
@@ -105,11 +97,6 @@ const CreateBillPage: React.FC<Props> = ({ pricing, token, eventDate }) => {
           <form onSubmit={handleSubmit} className="w-full lg:grid grid-cols-2 gap-6 mt-3 space-y-5 rounded-md p-3 md:p-12">
             <fieldset>
               <legend className='hidden'>Informação do evento</legend>
-              <div className='mb-6'>
-                <span>{lang.total}</span>
-                <span className='font-bold text-4xl ml-1'>{moneyFormatter(subTotal)}</span>
-              </div>
-
               <Input
                 label={lang.form.guestsNumber}
                 id='guestsNumber'

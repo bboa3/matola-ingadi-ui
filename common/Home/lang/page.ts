@@ -21,7 +21,9 @@ export const getLanguage = (locale: string) => {
           'Bridal and Groom suites',
           'Electric generator available throughout the event',
           'Decorative lighting at your parties',
-          'Toilets for women, men and for people with special needs'
+          'Decorative materials',
+          'Toilets for women, men and for people with special needs',
+          'Natural ponds'
         ]
       },
       details: 'We cultivate tranquility, authenticity, spontaneity. We organize events that go hand in hand with love, happiness, friendship, affection and companionship.',
@@ -48,8 +50,9 @@ export const getLanguage = (locale: string) => {
         groupTwo: [
           'Suíte para os Noivos',
           'Gerador disponível em todo o evento',
-          'Iluminação Decorativa nas suas festas',
-          'Banheiros Feminino, Masculino e para Pessoas com Necessidades Especiais'
+          'Matérias decorativas',
+          'Banheiros Feminino, Masculino e para Pessoas com Necessidades Especiais',
+          'Lagoas naturas'
         ]
       },
       details: 'Alimentamos tranquilidade, autenticidade, espontaneidade. Organizamos eventos que caminham de mãos dadas com o amor, felicidade, amizade, carinho e companheirismo.',

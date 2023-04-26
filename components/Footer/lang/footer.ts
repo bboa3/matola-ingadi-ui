@@ -28,8 +28,8 @@ const getLanguage = (locale: string) => {
               local: true
             },
             {
-              title: 'Blog',
-              href: '/blog',
+              title: 'Catalog',
+              href: '/catalogo',
               local: true
             }
           ]
@@ -80,8 +80,8 @@ const getLanguage = (locale: string) => {
               local: true
             },
             {
-              title: 'Blog',
-              href: '/blog',
+              title: 'Catálogo',
+              href: '/catálogo',
               local: true
             }
           ]

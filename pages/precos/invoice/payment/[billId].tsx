@@ -104,6 +104,14 @@ const CreateBillPage: React.FC<Props> = ({ token, invoice, billId, pricing, tran
             </form>
             <div className='w-full'>
               <Table2Cols header={lang.header} data={tableData as unknown as Row[]} tableNavigation={undefined} />
+              {transaction.transactionType === 'date-reservation'
+                ? (
+                <span className='text-xs text-gray-500'>
+                  <span className='text-gray-800'># </span>
+                  {lang.transactionTerms}
+                </span>
+                  )
+                : null}
             </div>
             <div className='w-full grid grid-cols-2'>
               <div className='text-sm w-full flex justify-end'>
