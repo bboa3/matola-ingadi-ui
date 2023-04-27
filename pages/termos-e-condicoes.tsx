@@ -43,7 +43,7 @@ parte dos nossos Serviços.</p>
             </li>
             <li className='ml-12'>
               <p className='my-5'><strong>Empresa</strong> Refere-se a uma pessoa jurídica colectiva e no caso em apreço refere a
-Matola Ingadi, LDA, Av. 25 de Setembro, n o 1695, 1 o andar, Maputo, Moçambique.</p>
+Matola Ingadi, LDA, Q.07, Matola J, Cidade De Matola, Moçambique.</p>
             </li>
             <li className='ml-12'>
               <p className='my-5'><strong>Dispositivo</strong> Refere-se a qualquer instrumento que pode ser usado para acessar o Serviço, tal
@@ -66,7 +66,7 @@ individuo e a Empresa independentemente do uso do Serviço.</p>
               <p className='my-5'><strong>Serviço de Mídia Social de terceiros</strong> significa quaisquer serviços ou conteúdo (incluindo dados, informações, produtos ou serviços) fornecidos por terceiros que possam ser exibidos, incluídos ou disponibilizados pelo Serviço.</p>
             </li>
             <li className='ml-12'>
-              <p className='my-5'><strong>Website</strong> refere-se a Matola Ingadi, acessível a partir de <a href="www.Matola Ingadi.co.mz" rel="external nofollow noopener" target="_blank">www.Matola Ingadi.co.mz</a></p>
+              <p className='my-5'><strong>Website</strong> refere-se a Matola Ingadi, acessível a partir de <a href="www.matolaingadi.co.mz" rel="external nofollow noopener" target="_blank">www.matolaingadi.co.mz</a></p>
             </li>
             <li className='ml-12'>
               <p className='my-5'><strong>Individuo</strong> Refere-se as pessoas jurídicas singulares ou colectivas que acessam ou usam o
@@ -108,7 +108,7 @@ certas informações relevantes para tua ordem incluindo, sem limitação o teu 
 numero de telefone, teu numero de cartão de credito, data de validade do Teu cartão de credito, teu
 endereço de cobrança e Suas informações de envio.</p>
           <p className='my-5'>Você representa e garante que: <br />
-          (i) Você tem direitos legais para usar qualquer cartão(s) de credito e de débito ou outros método(s) de pagamento em conexão com qualquer Ordem, e que
+          (i) Você tem direitos legais para usar qualquer cartão de credito e de débito ou outros métodos de pagamento em conexão com qualquer Ordem, e que
           (ii) a informação
             que Você fornecer para uso e verdadeira, correta e completa.</p>
           <p className='my-5'>Ao submeter tal informação, deverá conceder o direito para fornecer informação para processadores de
