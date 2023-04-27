@@ -20,7 +20,6 @@ export const getLanguage = (locale: string) => {
         groupTwo: [
           'Bridal and Groom suites',
           'Electric generator available throughout the event',
-          'Decorative lighting at your parties',
           'Decorative materials',
           'Toilets for women, men and for people with special needs',
           'Natural ponds'
