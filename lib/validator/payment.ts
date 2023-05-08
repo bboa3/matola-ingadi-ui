@@ -5,6 +5,15 @@ import { PaymentMethod } from 'bill'
 
 export const paymentMethods: PaymentMethod[] = [
   {
+    id: 'BankTransfer',
+    name: 'Transferência Bancária',
+    image: mobile24Img,
+    commission: {
+      model: 'VALUE',
+      value: 0
+    }
+  },
+  {
     id: 'SIMO/BCI/Mobile24',
     name: 'Conta Móvel',
     image: mobile24Img,

@@ -1,10 +1,6 @@
 import { totalCalculator } from '@common/Prices/invoice/total'
 import getLanguage from '@common/Prices/lang/payment/page'
-import { Button } from '@components/Button'
-import Radio from '@components/Form/Radio'
-import { ItemSelect } from '@components/Form/Select'
 import SimpleLayout from '@components/Layout/MatolaIngadi/SimpleLayout'
-import Table2Cols, { Row } from '@components/Tables/2Cols'
 import { billingHttpFetch } from '@lib/fetch'
 import { paymentMethods } from '@lib/validator/payment'
 import { authOptions } from '@pages/api/auth/[...nextauth]'
@@ -14,7 +10,6 @@ import { moneyFormatter } from '@utils/number-formatter'
 import { Invoice, Pricing, Transaction } from 'bill'
 import { GetServerSideProps } from 'next'
 import { getServerSession } from 'next-auth/next'
-import Image from 'next/image'
 import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 
@@ -26,43 +21,15 @@ interface Props {
   billId: string
 }
 
-type SetPaymentMethod = React.Dispatch<React.SetStateAction<ItemSelect>>
-
 const CreateBillPage: React.FC<Props> = ({ token, invoice, billId, pricing, transaction }) => {
-  const { locale, push } = useRouter()
+  const { locale } = useRouter()
   const lang = getLanguage(locale!)
   const { months, dateLocalizer } = getMonths(locale!)
-  const [paymentMethod, setPaymentMethod] = useState(paymentMethods[0])
+  const [paymentMethod] = useState(paymentMethods[0])
 
-  const { guestsNumber } = invoice
+  const { guestsNumber, eventType, eventDate } = invoice
 
-  const { subTotal, paymentGatewayFee, total } = totalCalculator({ pricing, guestsNumber, commission: paymentMethod.commission })
-
-  const tableData = [
-    {
-      col1: invoice.activity.name,
-      col2: moneyFormatter(subTotal)
-    },
-    {
-      col1: `${lang.commission} (${paymentMethod.name})`,
-      col2: moneyFormatter(paymentGatewayFee)
-    }
-  ]
-
-  const paymentHandler = () => {
-    billingHttpFetch.post('/invoice-payment', {
-      billId,
-      invoiceCode: invoice.invoiceCode,
-      paymentMethodId: paymentMethod.id
-    }, {
-      headers: { Authorization: `beaer ${token}` }
-    })
-      .then(({ data }) => {
-        const { invoiceCode } = data
-        push(`/precos/invoice/${billId}?invoiceCode=${invoiceCode}`)
-      })
-      .catch(err => console.log(err))
-  }
+  const { total } = totalCalculator({ pricing, guestsNumber, commission: paymentMethod.commission })
 
   return (
     <SimpleLayout
@@ -71,69 +38,44 @@ const CreateBillPage: React.FC<Props> = ({ token, invoice, billId, pricing, tran
       description='Preço dos serviços da Matola Ingadi. Organizamos eventos que caminham de mãos dadas com o amor, felicidade, amizade, carinho e companheirismo.'
       keywords='Matola Ingadi, Salão de Eventos, Casamentos, Aniversários'
     >
-      <div className='flex min-h-full items-center justify-center pt-9 lg:pt-10 pb-12 px-4 sm:px-6 lg:px-8'>
-        <section className='w-full md:grid grid-cols-3 border border-gray-200 rounded-lg divide-y md:divide-x divide-slate-100'>
-          <div className='col-span-1 flex flex-col justify-center items-center p-6 text-center space-y-5'>
-            <div
-              className='w-32 md:w-40'
-            >
-              <Image
-                width={500}
-                height={500}
-                className='w-full h-auto'
-                src={paymentMethod.image}
-                alt={paymentMethod.name}
-                priority
-              />
-            </div>
-            <span>
-              {paymentMethod.name} {lang.form.paymentMethodSelected}
-            </span>
-          </div>
-
-          <div className='col-span-2 p-3'>
-            <form className="w-full">
-              <Radio
-                isFlex
-                label={lang.form.paymentMethod}
-                name='paymentMethod'
-                items={paymentMethods}
-                selected={paymentMethod}
-                setSelected={setPaymentMethod as SetPaymentMethod}
-              />
-            </form>
-            <div className='w-full'>
-              <Table2Cols header={lang.header} data={tableData as unknown as Row[]} tableNavigation={undefined} />
-              {transaction.transactionType === 'date-reservation'
-                ? (
-                <span className='text-xs text-gray-500'>
+      <div className='w-full flex flex-col items-center min-h-screen mx-auto py-14 overflow-hidden'>
+        <section className='w-full max-w-5xl px-6 lg:px-12 mb-24'>
+          {
+            transaction.transactionType === 'date-reservation'
+              ? (
+              <h1 className='text-3xl font-medium mb-6'>
+                {lang.h1.reservation.text1}
+                <span className='font-bold text-green-600'> {eventType}, {dateLocalizer(eventDate, months)}</span>
+                , {lang.h1.reservation.text2}
+                <span className='font-bold'> {dateLocalizer(transaction.dueAt, months)}</span>.
+              </h1>
+                )
+              : (
+              <h1 className='text-3xl font-medium mb-6'>
+                {lang.h1.remaining.text1}
+                <span className='font-bold text-green-600'> {eventType}, {dateLocalizer(eventDate, months)}</span>.
+              </h1>
+                )
+          }
+          <p>
+            <span className='font-semibold'>Nome do banco:</span> BCI
+          </p>
+          <p>
+            <span className='font-semibold'>N° da conta</span>: 2151941131001
+          </p>
+          <p>
+            <span className='font-semibold'>Valor a transferir</span>: {moneyFormatter(total)}
+          </p>
+          <p className='mt-12'>
+            {transaction.transactionType === 'date-reservation'
+              ? (
+                <span className='text-xs text-gray-600'>
                   <span className='text-gray-800'># </span>
                   {lang.transactionTerms}
                 </span>
-                  )
-                : null}
-            </div>
-            <div className='w-full grid grid-cols-2'>
-              <div className='text-sm w-full flex justify-end'>
-                <div className='w-full max-w-[14rem]'>
-                  <span className='block font-bold'>Total</span>
-                  <span className='block'>{lang.dueAt} {dateLocalizer(transaction.dueAt, months)}</span>
-                </div>
-              </div>
-              <div className='w-full text-right'>
-                <span className='text-4xl'>
-                  {moneyFormatter(total)}
-                </span>
-              </div>
-            </div>
-            <div className='w-full flex justify-end mt-5 pr-6'>
-              <Button solid onClick={() => paymentHandler()}>
-                <span className='w-40'>
-                  {lang.form.submitButton}
-                </span>
-              </Button>
-            </div>
-          </div>
+                )
+              : null}
+          </p>
         </section>
       </div>
     </SimpleLayout>
