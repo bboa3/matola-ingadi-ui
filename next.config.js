@@ -3,8 +3,9 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   i18n: {
-    locales: ['en', 'pt'],
+    locales: ['pt', 'en'],
     defaultLocale: 'pt',
+    localeDetection: false
   },
   images: {
     remotePatterns: [
