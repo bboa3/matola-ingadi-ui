@@ -12,7 +12,15 @@ const getLanguage = (locale: string) => {
           text1: 'Please send the payment below 15 days before your event'
         }
       },
-      transactionTerms: 'This amount is non-refundable.'
+      transactionTerms: 'This amount is non-refundable.',
+      form: {
+        paymentMethod: 'Select your payment method',
+        paymentMethodSelected: 'is currently selected as your payment method',
+        submitButton: 'Next Step'
+      },
+      commission: 'Payment gateway fee',
+      header: { col1: 'Description', col2: 'Amount' },
+      dueAt: 'Due'
     },
     {
       locale: 'pt',
@@ -25,7 +33,15 @@ const getLanguage = (locale: string) => {
           text1: 'Por favor, envie o pagamento abaixo 15 dias antes do seu evento'
         }
       },
-      transactionTerms: 'Este valor não é reembolsável'
+      transactionTerms: 'Este valor não é reembolsável',
+      form: {
+        paymentMethod: 'Selecione a sua forma de Pagamento',
+        paymentMethodSelected: 'está atualmente selecionado como seu método de pagamento',
+        submitButton: 'Próximo passo'
+      },
+      commission: 'Taxa gateway de pagamento',
+      header: { col1: 'Descrição', col2: 'Montante' },
+      dueAt: 'Vencimento'
     }
   ]
 
