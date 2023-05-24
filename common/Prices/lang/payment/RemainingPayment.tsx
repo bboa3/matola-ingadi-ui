@@ -13,7 +13,7 @@ interface Props {
   pricing: Pricing
 }
 
-const DateReservationComponent: React.FC<Props> = ({ invoice, pricing, transaction }) => {
+const RemainingPaymentComponent: React.FC<Props> = ({ invoice, pricing, transaction }) => {
   const { locale } = useRouter()
   const lang = getLanguage(locale!)
   const { months, dateLocalizer } = getMonths(locale!)
@@ -25,7 +25,7 @@ const DateReservationComponent: React.FC<Props> = ({ invoice, pricing, transacti
 
   return (
     <div className='w-full flex flex-col items-center min-h-screen mx-auto py-14 overflow-hidden'>
-      <section className='w-full max-w-5xl px-6 lg:px-12 mb-24'>
+      <section className='w-full max-w-5xl px-6 lg:px-12 mb-24 space-y-2'>
           <h1 className='text-3xl font-medium mb-6'>
             {lang.h1.reservation.text1}
             <span className='font-bold text-green-600'> {eventType}, {dateLocalizer(eventDate, months)}</span>
@@ -55,4 +55,4 @@ const DateReservationComponent: React.FC<Props> = ({ invoice, pricing, transacti
   )
 }
 
-export default DateReservationComponent
+export default RemainingPaymentComponent
